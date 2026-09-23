@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocShield - Progresso do Projeto</title>
+    <meta name="description" content="DocShield: uma ferramenta fácil e prática para anonimizar documentos confidenciais. Acompanhe o nosso progresso.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Waves -->
+    <div class="background-waves" aria-hidden="true">
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <path class="wave wave-1" d="M0,1000 L0,780 Q250,730 500,780 T1000,780 L1000,1000 Z" fill="var(--wave-color-1)" fill-opacity="0.18" />
+            <path class="wave wave-2" d="M0,1000 L0,840 Q250,890 500,840 T1000,840 L1000,1000 Z" fill="var(--wave-color-2)" fill-opacity="0.15" />
+            <path class="wave wave-3" d="M0,0 L0,180 Q250,230 500,180 T1000,180 L1000,0 Z" fill="var(--wave-color-1)" fill-opacity="0.12" />
+        </svg>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="#" class="brand-logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 16L16 12L12 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    DocShield
+                </a>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#minutes" class="nav-item">Minutes</a></li>
+                <li><a href="#calendar" class="nav-item">Calendar</a></li>
+                <li class="dropdown">
+                    <a href="#milestones" class="nav-item dropdown-toggle">
+                        Milestones
+                        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#milestone-1">Milestone 1</a></li>
+                        <li><a href="#milestone-2">Milestone 2</a></li>
+                        <li><a href="#milestone-3">Milestone 3</a></li>
+                        <li><a href="#milestone-4">Milestone 4</a></li>
+                    </ul>
+                </li>
+                <li><a href="#team" class="nav-item">Team</a></li>
+                <li><a href="#documentation" class="nav-item">Documentation</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Alternar modo claro/escuro" title="Alternar modo">
+                    <!-- Sun Icon (for Dark Mode to switch to Light) -->
+                    <svg class="sun-icon" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <!-- Moon Icon (for Light Mode to switch to Dark) -->
+                    <svg class="moon-icon" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="https://github.com/PEI-DocShield" target="_blank" rel="noopener noreferrer" class="github-link" title="Visitar o nosso GitHub">
+                    <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section para demonstração -->
+    <main class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in-up">Progresso DocShield</h1>
+            <p class="fade-in-up delay-1">Uma ferramenta fácil e prática concebida para anonimizar documentos confidenciais de forma segura e eficiente.</p>
+            <div class="hero-buttons fade-in-up delay-2">
+                <a href="#milestones" class="btn btn-primary">Ver Milestones</a>
+                <a href="#documentation" class="btn btn-secondary">Ler Documentação</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Calendar Section -->
+    <section id="calendar" class="section">
+        <div class="section-container">
+            <h2 class="section-title fade-in-up">Project Calendar</h2>
+            
+            <div class="table-container fade-in-up delay-1">
+                <table class="calendar-table">
+                    <thead>
+                        <tr>
+                            <th class="highlight">Milestone</th>
+                            <th>Date</th>
+                            <th>Task List</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="milestone-name"><a href="#milestone-1">M1-Inception</a></td>
+                            <td class="milestone-date">22/09/2026 &ndash; 29/09/2026</td>
+                            <td class="milestone-tasks">
+                                <ul>
+                                    <li>Discord Group for Project communication</li>
+                                    <li>Project Website (João, Tiago)</li>
+                                    <li>Github Organization (Inês)</li>
+                                    <li>State-of-the-art and Context (Eduardo, Inês)</li>
+                                    <li>M1 Powerpoint presentation</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- Next milestone example template, uncomment and edit to use
+                        <tr>
+                            <td class="milestone-name"><a href="#milestone-2">M2-Elaboration</a></td>
+                            <td class="milestone-date">29/10 - 4/11</td>
+                            <td class="milestone-tasks">
+                                <ul>
+                                    <li>Design Mockups (Dinis, Henrique)</li>
+                                    <li>Database Diagrams (Pedro, Eduardo, Rafael)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section">
+        <div class="section-container">
+            <h2 class="section-title fade-in-up">Project Team</h2>
+            
+            <div class="polaroids-container fade-in-up delay-1">
+                <!-- Polaroid 1 -->
+                <div class="polaroid-wrapper" data-rotation="2" style="transform: rotate(2deg);">
+                    <div class="polaroid-inner">
+                        <div class="polaroid-front">
+                            <div class="polaroid-image">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </div>
+                            <p class="polaroid-name">Bernardo Coelho</p>
+                        </div>
+                        <div class="polaroid-back">
+                            <h3 class="back-name">Bernardo Coelho</h3>
+                            <span class="back-role">Developer</span>
+                            <p class="back-bio">Membro da equipa DocShield, a trabalhar no desenvolvimento da plataforma.</p>
+                            <div class="back-links">
+                                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" title="GitHub">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Polaroid 2 -->
+                <div class="polaroid-wrapper" data-rotation="-3" style="transform: rotate(-3deg);">
+                    <div class="polaroid-inner">
+                        <div class="polaroid-front">
+                            <div class="polaroid-image">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </div>
+                            <p class="polaroid-name">Eduardo Laranjeiro</p>
+                        </div>
+                        <div class="polaroid-back">
+                            <h3 class="back-name">Eduardo Laranjeiro</h3>
+                            <span class="back-role">Developer</span>
+                            <p class="back-bio">Membro da equipa DocShield, a trabalhar no desenvolvimento da plataforma.</p>
+                            <div class="back-links">
+                                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" title="GitHub">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Polaroid 3 -->
+                <div class="polaroid-wrapper" data-rotation="1" style="transform: rotate(1deg);">
+                    <div class="polaroid-inner">
+                        <div class="polaroid-front">
+                            <div class="polaroid-image">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </div>
+                            <p class="polaroid-name">Inês Gonçalves</p>
+                        </div>
+                        <div class="polaroid-back">
+                            <h3 class="back-name">Inês Gonçalves</h3>
+                            <span class="back-role">Developer</span>
+                            <p class="back-bio">Membro da equipa DocShield, a trabalhar no desenvolvimento da plataforma.</p>
+                            <div class="back-links">
+                                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" title="GitHub">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Polaroid 4 -->
+                <div class="polaroid-wrapper" data-rotation="-2" style="transform: rotate(-2deg);">
+                    <div class="polaroid-inner">
+                        <div class="polaroid-front">
+                            <div class="polaroid-image">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </div>
+                            <p class="polaroid-name">João Silva</p>
+                        </div>
+                        <div class="polaroid-back">
+                            <h3 class="back-name">João Silva</h3>
+                            <span class="back-role">Developer</span>
+                            <p class="back-bio">Membro da equipa DocShield, a trabalhar no desenvolvimento da plataforma.</p>
+                            <div class="back-links">
+                                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" title="GitHub">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Polaroid 5 -->
+                <div class="polaroid-wrapper" data-rotation="3" style="transform: rotate(3deg);">
+                    <div class="polaroid-inner">
+                        <div class="polaroid-front">
+                            <div class="polaroid-image">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </div>
+                            <p class="polaroid-name">Tiago Vale</p>
+                        </div>
+                        <div class="polaroid-back">
+                            <h3 class="back-name">Tiago Vale</h3>
+                            <span class="back-role">Developer</span>
+                            <p class="back-bio">Membro da equipa DocShield, a trabalhar no desenvolvimento da plataforma.</p>
+                            <div class="back-links">
+                                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" title="GitHub">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Card Overlay -->
+    <div class="card-overlay" id="card-overlay"></div>
+    
+    <!-- Theme Toggle Script -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.querySelector('.sun-icon');
+        const moonIcon = document.querySelector('.moon-icon');
+        
+        // Check local storage or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        // Default is dark mode, so we only need to switch to light if saved or system prefers light
+        if (savedTheme === 'light' || (!savedTheme && !systemPrefersDark)) {
+            document.documentElement.setAttribute('data-theme', 'light');
+            sunIcon.style.display = 'none';
+            moonIcon.style.display = 'block';
+        }
+        
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            let targetTheme = 'light';
+            
+            if (currentTheme === 'light') {
+                targetTheme = 'dark';
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            } else {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            }
+            
+            document.documentElement.setAttribute('data-theme', targetTheme);
+            localStorage.setItem('theme', targetTheme);
+        });
+
+        // ---- Polaroid Card Flip ----
+        const overlay = document.getElementById('card-overlay');
+        const polaroidWrappers = document.querySelectorAll('.polaroid-wrapper');
+        let activeCard = null;
+
+        function openCard(card) {
+            if (activeCard) closeCard();
+            activeCard = card;
+            overlay.classList.add('active');
+            card.classList.add('expanded');
+        }
+
+        function closeCard() {
+            if (!activeCard) return;
+            activeCard.classList.remove('expanded');
+            overlay.classList.remove('active');
+            activeCard = null;
+        }
+
+        polaroidWrappers.forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('.back-links a')) return;
+                if (activeCard === card) {
+                    closeCard();
+                } else {
+                    openCard(card);
+                }
+            });
+        });
+
+        overlay.addEventListener('click', closeCard);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeCard();
+        });
+    </script>
+</body>
+</html>
