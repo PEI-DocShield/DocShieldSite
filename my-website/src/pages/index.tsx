@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import BackgroundWaves from '../components/BackgroundWaves';
 import MeetingMinutesCarousel from '../components/MeetingMinutesCarousel';
 import TeamPolaroids from '../components/TeamPolaroids';
@@ -24,7 +25,7 @@ export default function Home(): React.JSX.Element {
           <h1 className="fade-in-up hero-title">
             Progresso{' '}
             <img
-              src="/assets/logoCompleta.png"
+              src={useBaseUrl('/assets/logoCompleta.png')}
               alt="DocShield"
               className="hero-logo-img"
             />
