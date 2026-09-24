@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://pei-docshield.github.io/DocShieldSite/blog</id>
+    <title>DocShield - Project Progress Blog</title>
+    <updated>2026-09-24T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://pei-docshield.github.io/DocShieldSite/blog"/>
+    <subtitle>DocShield - Project Progress Blog</subtitle>
+    <icon>https://pei-docshield.github.io/DocShieldSite/assets/logo.png</icon>
+    <entry>
+        <title type="html"><![CDATA[Bem-vindo ao DocShield]]></title>
+        <id>https://pei-docshield.github.io/DocShieldSite/blog/welcome-docshield</id>
+        <link href="https://pei-docshield.github.io/DocShieldSite/blog/welcome-docshield"/>
+        <updated>2026-09-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Damos as boas-vindas à plataforma DocShield, uma solução desenvolvida para garantir a anonimização prática, rápida e segura de documentos confidenciais.]]></summary>
+        <content type="html"><![CDATA[<p>Damos as boas-vindas à plataforma <strong>DocShield</strong>, uma solução desenvolvida para garantir a anonimização prática, rápida e segura de documentos confidenciais.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="objetivos-da-milestone-1">Objetivos da Milestone 1<a href="https://pei-docshield.github.io/DocShieldSite/blog/welcome-docshield#objetivos-da-milestone-1" class="hash-link" aria-label="Link direto para Objetivos da Milestone 1" title="Link direto para Objetivos da Milestone 1" translate="no">​</a></h2>
+<ul>
+<li class="">Criação da plataforma web em Docusaurus.</li>
+<li class="">Levantamento do estado da arte e arquitetura base de NER (Named Entity Recognition).</li>
+<li class="">Configuração da organização no GitHub e canais de comunicação.</li>
+</ul>
+<p>Acompanhe o nosso progresso através da página principal e na secção de documentação!</p>]]></content>
+        <author>
+            <name>Tiago Vale</name>
+            <uri>https://github.com/tiagofcvale</uri>
+        </author>
+        <category label="docshield" term="docshield"/>
+        <category label="kickoff" term="kickoff"/>
+        <category label="milestone1" term="milestone1"/>
+    </entry>
+</feed>

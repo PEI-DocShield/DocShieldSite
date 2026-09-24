@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([["788"],{9983(e){e.exports=JSON.parse('{"tags":[{"label":"docshield","permalink":"/DocShieldSite/blog/tags/docshield","count":1},{"label":"kickoff","permalink":"/DocShieldSite/blog/tags/kickoff","count":1},{"label":"milestone1","permalink":"/DocShieldSite/blog/tags/milestone-1","count":1}]}')}}]);

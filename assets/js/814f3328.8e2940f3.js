@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([["833"],{5513(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Bem-vindo ao DocShield","permalink":"/DocShieldSite/blog/welcome-docshield","unlisted":false,"date":"2026-09-24T00:00:00.000Z"}]}')}}]);

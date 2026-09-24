@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>DocShield - Project Progress Blog</title>
+        <link>https://pei-docshield.github.io/DocShieldSite/blog</link>
+        <description>DocShield - Project Progress Blog</description>
+        <lastBuildDate>Thu, 24 Sep 2026 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>pt</language>
+        <item>
+            <title><![CDATA[Bem-vindo ao DocShield]]></title>
+            <link>https://pei-docshield.github.io/DocShieldSite/blog/welcome-docshield</link>
+            <guid>https://pei-docshield.github.io/DocShieldSite/blog/welcome-docshield</guid>
+            <pubDate>Thu, 24 Sep 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Damos as boas-vindas à plataforma DocShield, uma solução desenvolvida para garantir a anonimização prática, rápida e segura de documentos confidenciais.]]></description>
+            <content:encoded><![CDATA[<p>Damos as boas-vindas à plataforma <strong>DocShield</strong>, uma solução desenvolvida para garantir a anonimização prática, rápida e segura de documentos confidenciais.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="objetivos-da-milestone-1">Objetivos da Milestone 1<a href="https://pei-docshield.github.io/DocShieldSite/blog/welcome-docshield#objetivos-da-milestone-1" class="hash-link" aria-label="Link direto para Objetivos da Milestone 1" title="Link direto para Objetivos da Milestone 1" translate="no">​</a></h2>
+<ul>
+<li class="">Criação da plataforma web em Docusaurus.</li>
+<li class="">Levantamento do estado da arte e arquitetura base de NER (Named Entity Recognition).</li>
+<li class="">Configuração da organização no GitHub e canais de comunicação.</li>
+</ul>
+<p>Acompanhe o nosso progresso através da página principal e na secção de documentação!</p>]]></content:encoded>
+            <category>docshield</category>
+            <category>kickoff</category>
+            <category>milestone1</category>
+        </item>
+    </channel>
+</rss>
