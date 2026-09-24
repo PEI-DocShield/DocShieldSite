@@ -12,7 +12,8 @@ const config: Config = {
   },
 
   url: 'https://pei-docshield.github.io',
-  baseUrl: '/',
+  baseUrl: '/DocShieldSite/',
+  trailingSlash: false,
 
   organizationName: 'PEI-DocShield',
   projectName: 'DocShieldSite',
