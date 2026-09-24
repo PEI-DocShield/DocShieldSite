@@ -599,7 +599,7 @@ body {
 }
 
 .polaroid-wrapper {
-    width: 240px;
+    width: 200px;
     height: 340px;
     perspective: 1200px;
     cursor: pointer;
