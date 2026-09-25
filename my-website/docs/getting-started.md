@@ -5,24 +5,24 @@ title: Getting Started & Installation
 
 # Getting Started & Installation
 
-Este guia explica passo a passo como instalar e configurar o **DocShield** no seu ambiente local ou servidor.
+This step-by-step guide explains how to install and configure **DocShield** in your local environment or server.
 
-## Requisitos Prévios
+## Prerequisites
 
 - **Node.js**: >= 20.0
-- **Python**: >= 3.10 (para módulos de NER e OCR)
-- **Tesseract OCR** (opcional, para processamento de imagens e digitalizações)
+- **Python**: >= 3.10 (for NER and OCR modules)
+- **Tesseract OCR** (optional, for processing scanned documents and images)
 
-## Passos de Instalação
+## Installation Steps
 
-### 1. Clonar o Repositório
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/PEI-DocShield/DocShield.git
 cd DocShield
 ```
 
-### 2. Configurar Dependências de Backend
+### 2. Configure Backend Dependencies
 
 ```bash
 python3 -m venv venv
@@ -30,9 +30,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 3. Configurar Variáveis de Ambiente
+### 3. Configure Environment Variables
 
-Crie um ficheiro `.env` na raiz do projeto com as seguintes definições:
+Create a `.env` file in the root of the project with the following settings:
 
 ```env
 PORT=3000
@@ -41,10 +41,11 @@ NER_MODEL_PATH=./models/pt_core_news_lg
 MAX_UPLOAD_SIZE=50MB
 ```
 
-### 4. Executar a Aplicação
+### 4. Run the Application
 
 ```bash
 npm run dev
 ```
 
-Aceda a `http://localhost:3000` para utilizar o DocShield.
+Access `http://localhost:3000` to start using DocShield.
+

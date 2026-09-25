@@ -22,8 +22,8 @@ const config: Config = {
   onBrokenAnchors: 'ignore',
 
   i18n: {
-    defaultLocale: 'pt',
-    locales: ['pt'],
+    defaultLocale: 'en',
+    locales: ['en'],
   },
 
   presets: [

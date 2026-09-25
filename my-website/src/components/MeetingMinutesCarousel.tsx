@@ -164,7 +164,7 @@ export default function MeetingMinutesCarousel(): React.JSX.Element {
 
               <div className="minimal-meeting-grid">
                 <div className="minimal-col">
-                  <h4>Tópicos Discutidos</h4>
+                  <h4>Topics Discussed</h4>
                   <ul>
                     {item.topicsDiscussed.map((topic, i) => (
                       <li key={i}>{topic}</li>
@@ -174,7 +174,7 @@ export default function MeetingMinutesCarousel(): React.JSX.Element {
 
                 {item.actionItems.length > 0 && (
                   <div className="minimal-col">
-                    <h4>Tarefas / Action Items</h4>
+                    <h4>Action Items</h4>
                     <ul>
                       {item.actionItems.map((action, i) => (
                         <li key={i}>
@@ -187,7 +187,7 @@ export default function MeetingMinutesCarousel(): React.JSX.Element {
               </div>
 
               <div className="minimal-attendees">
-                <strong>Participantes:</strong> {item.attendees}
+                <strong>Attendees:</strong> {item.attendees}
               </div>
             </div>
           );

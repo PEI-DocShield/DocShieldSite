@@ -1,18 +1,19 @@
 ---
 slug: welcome-docshield
-title: Bem-vindo ao DocShield
+title: Welcome to DocShield
 authors: [tiago]
 tags: [docshield, kickoff, milestone1]
 ---
 
-# Bem-vindo ao DocShield
+# Welcome to DocShield
 
-Damos as boas-vindas à plataforma **DocShield**, uma solução desenvolvida para garantir a anonimização prática, rápida e segura de documentos confidenciais.
+Welcome to the **DocShield** platform, a solution developed to ensure practical, fast, and secure anonymization of confidential documents.
 
-## Objetivos da Milestone 1
+## Milestone 1 Objectives
 
-- Criação da plataforma web em Docusaurus.
-- Levantamento do estado da arte e arquitetura base de NER (Named Entity Recognition).
-- Configuração da organização no GitHub e canais de comunicação.
+- Creation of the web platform using Docusaurus.
+- State-of-the-art survey and baseline NER (Named Entity Recognition) architecture.
+- Setup of the GitHub organization and communication channels.
 
-Acompanhe o nosso progresso através da página principal e na secção de documentação!
+Follow our progress through the home page and documentation section!
+

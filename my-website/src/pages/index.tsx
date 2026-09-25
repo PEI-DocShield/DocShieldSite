@@ -23,7 +23,7 @@ export default function Home(): React.JSX.Element {
       <main className="hero-custom">
         <div className="hero-content">
           <h1 className="fade-in-up hero-title">
-            Progresso{' '}
+            Progress{' '}
             <img
               src={useBaseUrl('/assets/logoCompleta.png')}
               alt="DocShield"
@@ -31,15 +31,15 @@ export default function Home(): React.JSX.Element {
             />
           </h1>
           <p className="fade-in-up delay-1 hero-subtitle">
-            Uma ferramenta fácil e prática concebida para anonimizar documentos
-            confidenciais de forma segura e eficiente.
+            An easy and practical tool designed to anonymize confidential documents
+            securely and efficiently.
           </p>
           <div className="hero-buttons fade-in-up delay-2">
             <a href="#calendar" className="btn-custom btn-primary-custom">
-              Ver Milestones
+              View Milestones
             </a>
             <Link to="/docs/intro" className="btn-custom btn-secondary-custom">
-              Ler Documentação
+              Read Documentation
             </Link>
           </div>
         </div>

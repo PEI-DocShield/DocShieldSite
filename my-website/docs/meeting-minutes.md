@@ -1,30 +1,31 @@
 ---
 sidebar_position: 6
-title: Meeting Minutes (Atas das Reuniões)
+title: Meeting Minutes
 ---
 
-# Meeting Minutes (Atas das Reuniões)
+# Meeting Minutes
 
-Registo oficial de todas as reuniões e decisões do projeto **DocShield**.
+Official record of all meetings and decisions for the **DocShield** project.
 
-## Reunião 1 — Kickoff & Planeamento Milestone 1
-- **Data**: 22 de Setembro de 2026
-- **Duração**: 45 min
-- **Local**: Discord
+## Meeting 1 — Kickoff & Milestone 1 Planning
+- **Date**: September 22, 2026
+- **Duration**: 45 min
+- **Location**: Discord
 
-### Tópicos Discutidos
-- Definição das diretrizes de comunicação do projeto.
-- Estruturação do repositório no GitHub Organization.
-- Distribuição de tarefas para a Milestone 1.
+### Topics Discussed
+- Definition of project communication guidelines.
+- Structuring the repository in the GitHub Organization.
+- Task distribution for Milestone 1.
 
 ---
 
-## Reunião 2 — Revisão de Arquitetura & Preparação da Apresentação
-- **Data**: 25 de Setembro de 2026
-- **Duração**: 60 min
-- **Local**: Sala B1.02
+## Meeting 2 — Architecture Review & Presentation Preparation
+- **Date**: September 25, 2026
+- **Duration**: 60 min
+- **Location**: Room B1.02
 
-### Tópicos Discutidos
-- Validação do design e layout responsivo do website.
-- Finalização dos diagramas de fluxo do processamento de documentos.
-- Divisão das partes de apresentação em PowerPoint.
+### Topics Discussed
+- Validation of website design and responsive layout.
+- Finalization of document processing flowcharts.
+- Division of PowerPoint presentation sections.
+

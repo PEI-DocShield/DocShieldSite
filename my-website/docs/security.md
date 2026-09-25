@@ -5,19 +5,20 @@ title: GDPR & Data Privacy Standards
 
 # GDPR & Data Privacy Standards
 
-A conformidade com o **Regulamento Geral sobre a Proteção de Dados (RGPD)** é um pilar fundamental do DocShield.
+Compliance with the **General Data Protection Regulation (GDPR)** is a core pillar of DocShield.
 
-## Princípios de Privacidade
+## Privacy Principles
 
 :::important
-O DocShield adota a política de **Zero Data Retention** (retenção zero de dados) quando configurado no modo estrito local.
+DocShield adopts a **Zero Data Retention** policy when configured in strict local mode.
 :::
 
-### 1. Processamento Local (On-Premise / Edge)
-Todos os ficheiros submetidos para anonimização são processados temporariamente em memória RAM e eliminados imediatamente após a geração do documento anonimizado.
+### 1. Local Processing (On-Premise / Edge)
+All files submitted for anonymization are processed temporarily in RAM and immediately deleted after generating the anonymized document.
 
-### 2. Criptografia em Trânsito e Repouso
-Se for utilizado o modo cloud, todas as comunicações são encriptadas via **TLS 1.3** e os ficheiros temporários utilizam cifra **AES-256**.
+### 2. Encryption in Transit and at Rest
+If cloud mode is used, all communications are encrypted via **TLS 1.3** and temporary files use **AES-256** encryption.
 
-### 3. Registos de Auditoria (Audit Logs)
-O sistema gera relatórios anonimizados que indicam o número de entidades mascaradas por categoria sem guardar o conteúdo original sensível.
+### 3. Audit Logs
+The system generates anonymized reports indicating the number of redacted entities by category without storing the sensitive original content.
+

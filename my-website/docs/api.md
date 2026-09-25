@@ -5,24 +5,24 @@ title: REST API & CLI References
 
 # REST API & CLI References
 
-O DocShield oferece interfaces flexíveis para integração com sistemas existentes via API REST e linha de comandos (CLI).
+DocShield offers flexible interfaces for integration with existing systems via REST API and command-line interface (CLI).
 
 ## REST API Endpoints
 
-### 1. Anonimizar Documento
+### 1. Anonymize Document
 
 `POST /api/v1/anonymize`
 
 #### Headers
 ```http
 Content-Type: multipart/form-data
-Authorization: Bearer <seu_token_api>
+Authorization: Bearer <your_api_token>
 ```
 
 #### Body Parameters
-- `file`: O documento a anonimizar.
+- `file`: The document to anonymize.
 - `mask_type`: `blackout` | `scramble` | `synthetic`.
-- `entities`: Lista de entidades a remover (ex: `["PERSON", "NIF", "PHONE"]`).
+- `entities`: List of entities to redact (e.g., `["PERSON", "NIF", "PHONE"]`).
 
 #### Response Example
 ```json
@@ -42,12 +42,13 @@ Authorization: Bearer <seu_token_api>
 
 ## CLI Usage
 
-O DocShield CLI permite processar lotes de documentos via terminal:
+The DocShield CLI allows batch document processing via terminal:
 
 ```bash
-# Processar um ficheiro único
-docshield anonymize --input contrato.pdf --output contrato_anon.pdf
+# Process a single file
+docshield anonymize --input contract.pdf --output contract_anon.pdf
 
-# Processar uma pasta inteira
-docshield batch --dir ./documentos/ --entities NIF,IBAN,NAME
+# Process an entire folder
+docshield batch --dir ./documents/ --entities NIF,IBAN,NAME
 ```
+

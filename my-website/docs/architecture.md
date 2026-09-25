@@ -5,28 +5,29 @@ title: Architecture & Processing Pipeline
 
 # Architecture & Processing Pipeline
 
-O DocShield utiliza uma arquitetura modular composta por pipelines de ingestão, reconhecimento de entidades (NER) e motor de redação.
+DocShield uses a modular architecture consisting of ingestion pipelines, Named Entity Recognition (NER), and a redaction engine.
 
 ```mermaid
 graph TD
-    A[Documento Original] --> B[Ingestão / OCR Parsing]
-    B --> C[Extração de Texto]
-    C --> D[Motor NER & Regex Matching]
-    D --> E[Mapeamento de Posições / Bounding Boxes]
-    E --> F[Redação / Ofuscação de Texto]
-    F --> G[Documento Anonimizado PDF/DOCX]
+    A[Original Document] --> B[Ingestion / OCR Parsing]
+    B --> C[Text Extraction]
+    C --> D[NER Engine & Regex Matching]
+    D --> E[Position Mapping / Bounding Boxes]
+    E --> F[Text Redaction / Obfuscation]
+    F --> G[Anonymized PDF/DOCX Document]
 ```
 
-## Componentes Chave
+## Key Components
 
-### 1. Ingestão de Documentos (Ingestion Engine)
-Suporta múltiplos formatos:
-- PDF (vetorial e digitalizado via OCR)
+### 1. Document Ingestion Engine
+Supports multiple formats:
+- PDF (vectorial and scanned via OCR)
 - Microsoft Word (DOCX)
-- Ficheiros de texto simples (TXT, CSV)
+- Plain text files (TXT, CSV)
 
-### 2. Reconhecimento de Entidades (NER & Regex Pipeline)
-Combina regras heurísticas de expressões regulares (para NIF, IBAN, Cartão de Cidadão) com modelos de Processamento de Linguagem Natural (NLP) para reconhecer nomes próprios e moradas.
+### 2. Entity Recognition (NER & Regex Pipeline)
+Combines heuristic regex rules (for Tax ID, IBAN, Citizen ID) with Natural Language Processing (NLP) models to identify names and addresses.
 
-### 3. Engine de Redação
-Aplica máscaras opacas ou substituição por pseudónimos mantendo a formatação visual e estrutura do documento original.
+### 3. Redaction Engine
+Applies opaque masks or pseudonym replacement while retaining the visual formatting and structure of the original document.
+
