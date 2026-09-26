@@ -1,19 +1,16 @@
 ---
-title: "Meeting 1 - Kickoff & Milestone 1 Planning"
+title: "Meeting 1 - First Contact with Advisor(s)"
 ---
 
-# Meeting 1 — Kickoff & Milestone 1 Planning
-- **Date**: September 22, 2026
-- **Duration**: 45 min
-- **Location**: Discord
+# Meeting 1 — First Contact with Advisor(s)
+- **Date**: 17 September, 2026
+- **Duration**: 20 min
 
 ### Topics Discussed
-- Definition of project communication guidelines.
-- Structuring the repository in the GitHub Organization.
-- Task distribution for Milestone 1.
+- What to research: Anonimization techniques, privacy models (k-anonimity, l-diversity, t-closeness), NLP
 
 ### Goals
-- Exist
+- Research about the project and what technologies we are going to use
 
 ### Who participated
 - Everyone

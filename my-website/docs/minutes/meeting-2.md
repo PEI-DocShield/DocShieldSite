@@ -1,19 +1,23 @@
 ---
-title: "Meeting 2 - Architecture Review & Presentation Preparation"
+title: "Meeting 2 - Research and Planning"
 ---
 
-# Meeting 2 — Architecture Review & Presentation Preparation
-- **Date**: September 25, 2026
-- **Duration**: 60 min
-- **Location**: Room B1.02
+# Meeting 2 — Research and Planning
+- **Date**: 23 septembre, 2026
+- **Duration**: 1h 30min
 
 ### Topics Discussed
-- Validation of website design and responsive layout.
-- Finalization of document processing flowcharts.
-- Division of PowerPoint presentation sections.
+- Research for similar apps and technologies that we will use
+- Start of Powerpoint presentation 
+- Spliting of tasks by the members of the group
 
-### Goals
-- Exist
+### Goals for next week
+- Powerpoint presentation done
+- Context, Goals and Expected Goals of the project
+- Problems that the project solves
+- State of The Art 
+- Project Calendar
+- Communication plan
 
 ### Who participated
 - Everyone

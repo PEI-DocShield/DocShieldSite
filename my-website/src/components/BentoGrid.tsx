@@ -21,6 +21,51 @@ function BentoCard({ title, description, link, className }: BentoCardProps) {
   );
 }
 
+function MilestonesBentoCard({ className, id }: { className?: string, id?: string }) {
+  return (
+    <div id={id} className={`bento-card ${className || ''}`} style={{ cursor: 'default' }}>
+      <div className="bento-image-placeholder" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr', gap: '0.75rem', padding: '0.75rem' }}>
+        {[1, 2, 3, 4].map((num) => (
+          <Link
+            key={num}
+            to={`/docs/milestones/milestone${num}`}
+            className="milestone-bento-btn"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: 'var(--ifm-background-color)',
+              border: 'none',
+              borderRadius: '8px',
+              color: 'var(--text-primary)',
+              fontWeight: 600,
+              fontSize: '1.2rem',
+              textDecoration: 'none',
+              transition: 'all 0.2s ease',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.color = 'var(--primary-color)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 4px 10px rgba(0,0,0,0.05)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.color = 'var(--text-primary)';
+              e.currentTarget.style.transform = 'none';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+          >
+            M{num}
+          </Link>
+        ))}
+      </div>
+      <div className="bento-content">
+        <h3 className="bento-title">Milestones</h3>
+        <p className="bento-desc">Track our progress against major project milestones.</p>
+      </div>
+    </div>
+  );
+}
+
 export default function BentoGrid() {
   return (
     <section className="bento-section">
@@ -36,15 +81,13 @@ export default function BentoGrid() {
           description="View our timeline and upcoming deadlines."
           link="/calendar"
         />
-        <BentoCard
-          title="Milestones"
-          description="Track our progress against major project milestones."
-          link="/calendar"
-        />
+        
+        <MilestonesBentoCard id="milestones-bento" />
+
         <BentoCard
           title="Documentation"
           description="Read the official documentation for DocShield."
-          link="/docs/intro"
+          link="/under-construction"
           className="span-2"
         />
       </div>

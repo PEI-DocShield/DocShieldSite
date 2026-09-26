@@ -71,7 +71,7 @@ const config: Config = {
           ],
         },
         {to: '/#team', label: 'Team', position: 'left'},
-        {to: '/docs/intro', label: 'Documentation', position: 'left'},
+        {to: '/under-construction', label: 'Documentation', position: 'left'},
         {
           href: 'https://github.com/PEI-DocShield',
           position: 'right',

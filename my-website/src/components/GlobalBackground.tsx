@@ -69,6 +69,30 @@ export default function GlobalBackground() {
           z-index: 1 !important;
         }
 
+        /* Expand container slightly to give enough room for both */
+        main .container {
+          max-width: 1250px !important;
+        }
+
+        /* Center the pair (main content + TOC) together */
+        .row {
+          justify-content: center !important;
+        }
+
+        /* Main content column */
+        div[class*="docItemCol_"] {
+          flex: 0 1 850px !important;
+          max-width: 850px !important;
+          margin: 0 !important;
+        }
+
+        /* TOC column */
+        div[class*="docItemCol_"] + .col {
+          flex: 0 0 250px !important;
+          max-width: 250px !important;
+          margin-left: 2rem !important;
+        }
+
         /* Make sure the footer stays on top of the background */
         .footer {
           position: relative !important;

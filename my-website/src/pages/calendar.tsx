@@ -17,44 +17,123 @@ export default function CalendarPage(): React.JSX.Element {
           zIndex: 0,
         }}
       />
-      <main className="container" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '3rem', marginBottom: '3rem', position: 'relative', zIndex: 1 }}>
-        <div style={{ position: 'relative', textAlign: 'center', marginBottom: '1rem', marginTop: '1rem' }}>
+      <main className="container" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginTop: '3rem', marginBottom: '4rem', position: 'relative', zIndex: 1, maxWidth: '1300px' }}>
+        
+        <div style={{ position: 'relative', textAlign: 'left', marginBottom: '1rem', marginTop: '1rem' }}>
           <div className="text-underlay" style={{ width: '100%', height: '250%' }} />
-          <h2 className="section-title fade-in-up" style={{ position: 'relative', zIndex: 2, margin: 0, fontSize: '1.75rem' }}>Project Calendar</h2>
+          <h2 className="fade-in-up" style={{ position: 'relative', zIndex: 2, margin: 0, fontSize: '2.5rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px' }}>Project Calendar</h2>
         </div>
 
-        <section style={{ padding: '0 2rem', width: '100%' }}>
-          <div className="section-container" style={{ margin: '0 auto', padding: '3rem 4rem', borderRadius: '24px', alignItems: 'flex-start', textAlign: 'left', width: '100%' }}>
-            <div className="table-container fade-in-up delay-1" style={{ width: '100%', overflowX: 'auto' }}>
-              <table className="calendar-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
-                <thead>
-                  <tr>
-                    <th className="highlight" style={{ padding: '1rem', borderBottom: '2px solid var(--ifm-color-emphasis-200)', textAlign: 'left' }}>Milestone</th>
-                    <th style={{ padding: '1rem', borderBottom: '2px solid var(--ifm-color-emphasis-200)', textAlign: 'left' }}>Date</th>
-                    <th style={{ padding: '1rem', borderBottom: '2px solid var(--ifm-color-emphasis-200)', textAlign: 'left' }}>Task List</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {calendarData.map((item) => (
-                    <tr key={item.id} id={item.id} style={{ borderBottom: '1px solid var(--ifm-color-emphasis-200)' }}>
-                      <td className="milestone-name" style={{ padding: '1.5rem 1rem', verticalAlign: 'top', fontWeight: 'bold', color: 'var(--primary-color, #25828e)' }}>
-                        {item.name}
-                      </td>
-                      <td className="milestone-date" style={{ padding: '1.5rem 1rem', verticalAlign: 'top' }}>{item.date}</td>
-                      <td className="milestone-tasks" style={{ padding: '1.5rem 1rem', verticalAlign: 'top' }}>
-                        <ul style={{ margin: 0, paddingLeft: '1.25rem' }}>
-                          {item.tasks.map((task, idx) => (
-                            <li key={idx} style={{ marginBottom: '0.25rem' }}>{task}</li>
-                          ))}
-                        </ul>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+        {/* The Grid layout perfectly aligns all columns and allows spanning rows */}
+        <div className="calendar-grid fade-in-up delay-1" style={{ 
+          display: 'grid', 
+          gridTemplateColumns: '15% 25% 1fr', 
+          gap: '1.5rem', 
+          width: '100%',
+          alignItems: 'stretch'
+        }}>
+          
+          {/* Header Row */}
+          <div style={{ 
+            backgroundColor: 'var(--primary-color)', 
+            color: 'white', 
+            padding: '1rem', 
+            borderRadius: '12px', 
+            textAlign: 'center', 
+            fontWeight: 700, 
+            letterSpacing: '2px', 
+            textTransform: 'uppercase' 
+          }}>
+            Milestone
           </div>
-        </section>
+          <div style={{ 
+            backgroundColor: 'var(--primary-color)', 
+            color: 'white', 
+            padding: '1rem', 
+            borderRadius: '12px', 
+            textAlign: 'center', 
+            fontWeight: 700, 
+            letterSpacing: '2px', 
+            textTransform: 'uppercase' 
+          }}>
+            Date
+          </div>
+          <div style={{ 
+            backgroundColor: 'var(--primary-color)', 
+            color: 'white', 
+            padding: '1rem', 
+            borderRadius: '12px', 
+            textAlign: 'center', 
+            fontWeight: 700, 
+            letterSpacing: '2px', 
+            textTransform: 'uppercase' 
+          }}>
+            Tasks
+          </div>
+
+          {/* Data Rows */}
+          {calendarData.map((item) => (
+            <div key={item.id} style={{ display: 'contents' }}>
+              
+              {/* Milestone Box spans vertically across all phases */}
+              <div style={{ 
+                gridRow: `span ${item.phases.length}`,
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                backgroundColor: 'var(--ifm-background-color)',
+                border: '1px solid var(--ifm-color-emphasis-300)', 
+                borderRadius: '24px', 
+                padding: '2rem 1rem',
+                fontSize: '1.5rem',
+                fontWeight: 800,
+                color: 'var(--text-primary)'
+              }}>
+                {item.name}
+              </div>
+              
+              {/* Phase Rows */}
+              {item.phases.map((phase, idx) => (
+                <React.Fragment key={idx}>
+                  
+                  {/* Date Box */}
+                  <div style={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    backgroundColor: 'var(--ifm-background-color)',
+                    border: '1px solid var(--ifm-color-emphasis-300)', 
+                    borderRadius: '24px', 
+                    padding: '2rem 1.5rem',
+                    fontWeight: 700,
+                    color: 'var(--primary-color)',
+                    textAlign: 'center'
+                  }}>
+                    {phase.date}
+                  </div>
+
+                  {/* Tasks Box */}
+                  <div style={{ 
+                    backgroundColor: 'var(--ifm-background-color)',
+                    border: '1px solid var(--ifm-color-emphasis-300)', 
+                    borderRadius: '24px', 
+                    padding: '2rem 2.5rem',
+                    color: 'var(--text-primary)'
+                  }}>
+                    <ul style={{ margin: 0, paddingLeft: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      {phase.tasks.map((task, tIdx) => (
+                        <li key={tIdx} style={{ fontWeight: 500 }}>{task}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                </React.Fragment>
+              ))}
+
+            </div>
+          ))}
+
+        </div>
       </main>
     </Layout>
   );

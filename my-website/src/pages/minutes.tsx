@@ -17,10 +17,10 @@ export default function MinutesPage(): React.JSX.Element {
           zIndex: 0,
         }}
       />
-      <main className="container" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '3rem', marginBottom: '3rem', position: 'relative', zIndex: 1 }}>
-        <div style={{ position: 'relative', textAlign: 'center', marginBottom: '1rem', marginTop: '1rem' }}>
+      <main className="container" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '3rem', marginBottom: '3rem', position: 'relative', zIndex: 1, maxWidth: '1300px' }}>
+        <div style={{ position: 'relative', textAlign: 'left', marginBottom: '1rem', marginTop: '1rem' }}>
           <div className="text-underlay" style={{ width: '100%', height: '250%' }} />
-          <h2 className="section-title fade-in-up" style={{ position: 'relative', zIndex: 2, margin: 0, fontSize: '1.75rem' }}>Meeting Minutes</h2>
+          <h2 className="fade-in-up" style={{ position: 'relative', zIndex: 2, margin: 0, fontSize: '2.5rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px' }}>Meeting Minutes</h2>
         </div>
         <MeetingMinutesViewer />
       </main>
