@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Caveat:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Caveat:wght@700&display=swap');
 
 /* CSS Variables for Dark & Light Theme in Docusaurus */
 :root, [data-theme='dark'] {
@@ -10,12 +10,10 @@
     --primary-hover: #2a818b; /* Darker teal-blue */
     --text-primary: #F8FAFC;
     --text-secondary: #94A3B8;
-    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-family: 'Sora', system-ui, -apple-system, sans-serif;
     --nav-height: 72px;
     --navbar-bg: #0B0F19;
     --dropdown-bg: #151A2A;
-    --wave-color-1: #25828e;
-    --wave-color-2: #2a818b;
 
     /* Infima Docusaurus Overrides */
     --ifm-background-color: #0B0F19;
@@ -27,11 +25,11 @@
     --ifm-color-primary-light: #2e9bb0;
     --ifm-color-primary-lighter: #34a8be;
     --ifm-color-primary-lightest: #45b7cd;
-    --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+    --ifm-font-family-base: 'Sora', system-ui, -apple-system, sans-serif;
     --ifm-font-color-base: #F8FAFC;
-    --ifm-heading-font-family: 'Outfit', 'Plus Jakarta Sans', var(--font-family);
+    --ifm-heading-font-family: 'Sora', system-ui, -apple-system, sans-serif;
     --ifm-navbar-height: 72px;
-    --ifm-navbar-link-color: #94A3B8;
+    --ifm-navbar-link-color: #9CA3AF;
     --ifm-navbar-link-hover-color: #F8FAFC;
     --ifm-footer-background-color: #0B0F19;
 }
@@ -47,15 +45,13 @@
     --text-secondary: #475569; /* Slate 600 */
     --navbar-bg: #FFFFFF;
     --dropdown-bg: #FFFFFF;
-    --wave-color-1: #25828e;
-    --wave-color-2: #2a818b;
 
     /* Infima Docusaurus Overrides */
     --ifm-background-color: #F8FAFC;
     --ifm-navbar-background-color: #FFFFFF;
     --ifm-color-primary: #25828e;
     --ifm-font-color-base: #0F172A;
-    --ifm-navbar-link-color: #475569;
+    --ifm-navbar-link-color: #374151;
     --ifm-navbar-link-hover-color: #0F172A;
     --ifm-footer-background-color: #F1F5F9;
 }
@@ -76,14 +72,41 @@ body {
 
 /* Navbar Custom Styling to Match Original index.html */
 .navbar {
-    border-bottom: 1px solid var(--surface-border);
-    box-shadow: none;
+    border: none;
+    border-radius: 9999px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     height: var(--nav-height);
-    padding: 0 1.5rem;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    max-width: 1440px;
+    margin: 1rem auto;
+    width: calc(100% - 2rem);
+    top: 1rem !important;
+}
+
+.navbar__inner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.navbar__items {
+    display: flex;
+    align-items: center;
+}
+
+.navbar__items--right {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
 }
 
 .navbar__brand {
-    margin-right: 2rem;
+    margin-right: 1rem;
 }
 
 .navbar__logo {
@@ -97,15 +120,17 @@ body {
 }
 
 .navbar__item {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    padding: 0.5rem 0.75rem;
-    border-radius: 6px;
-    transition: all 0.2s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--ifm-navbar-link-color);
 }
 
 .navbar__item:hover {
     background-color: var(--surface-hover);
+    color: var(--ifm-navbar-link-hover-color);
 }
 
 .navbar__dropdown {
@@ -113,6 +138,22 @@ body {
     border: 1px solid var(--surface-border);
     background-color: var(--dropdown-bg);
     padding: 0.5rem;
+}
+
+/* GitHub link and theme toggle alignment */
+.header-github-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    padding: 0 !important;
+}
+
+.navbar__items--right .clean-btn,
+.navbar__items--right > div {
+    display: flex;
+    align-items: center;
 }
 
 /* Header GitHub Link Button */
@@ -126,79 +167,46 @@ body {
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22'%3E%3C/path%3E%3C/svg%3E") no-repeat 50% 50%;
 }
 
-/* Dynamic Background Waves */
-.background-waves {
-    position: fixed;
-    inset: 0;
+/* Full-page Mouse Proximity Grid Background */
+.background-grid {
+    background-color: transparent;
     pointer-events: none;
-    overflow: hidden;
-    z-index: 0;
 }
 
-.background-waves svg {
-    width: 100%;
-    height: 100%;
-}
-
-.wave-1 {
-    animation: waveAnimation1 8s ease-in-out infinite;
-}
-
-.wave-2 {
-    animation: waveAnimation2 12s ease-in-out 1s infinite;
-}
-
-.wave-3 {
-    animation: waveAnimation3 10s ease-in-out infinite;
-}
-
-@keyframes waveAnimation1 {
-    0%, 100% {
-        d: path("M0,1000 L0,780 Q250,730 500,780 T1000,780 L1000,1000 Z");
-    }
-    50% {
-        d: path("M0,1000 L0,780 Q250,830 500,780 T1000,780 L1000,1000 Z");
-    }
-}
-
-@keyframes waveAnimation2 {
-    0%, 100% {
-        d: path("M0,1000 L0,840 Q250,890 500,840 T1000,840 L1000,1000 Z");
-    }
-    50% {
-        d: path("M0,1000 L0,840 Q250,790 500,840 T1000,840 L1000,1000 Z");
-    }
-}
-
-@keyframes waveAnimation3 {
-    0%, 100% {
-        d: path("M0,0 L0,180 Q250,230 500,180 T1000,180 L1000,0 Z");
-    }
-    50% {
-        d: path("M0,0 L0,180 Q250,130 500,180 T1000,180 L1000,0 Z");
-    }
+.text-underlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(ellipse at center, var(--ifm-background-color) 30%, transparent 70%);
+    z-index: -1;
+    pointer-events: none;
 }
 
 /* Main Homepage Layout & Hero */
 .hero-custom {
+    position: relative;
+    padding: 0 2rem;
     padding-top: calc(var(--nav-height) + 2rem);
-    min-height: 85vh;
+    min-height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding-bottom: 4rem;
-    position: relative;
-    z-index: 2;
+    z-index: 1;
 }
 
 .hero-content {
     max-width: 1000px;
     padding: 0 2rem;
+    position: relative;
 }
 
 .hero-title {
-    font-family: 'Outfit', 'Plus Jakarta Sans', var(--font-family);
+    font-family: 'Sora', system-ui, -apple-system, sans-serif;
     font-size: 3.5rem;
     font-weight: 700;
     letter-spacing: -0.025em;
@@ -304,14 +312,15 @@ body {
 }
 
 .section-title {
-    font-family: 'Outfit', 'Plus Jakarta Sans', var(--font-family);
-    font-size: 3rem;
-    font-weight: 700;
+    font-family: 'Sora', system-ui, -apple-system, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
     letter-spacing: -0.025em;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 0.5rem;
     color: #0F172A;
     width: 100%;
+    position: relative;
 }
 
 [data-theme="dark"] .section-title {
@@ -323,10 +332,6 @@ body {
 }
 
 /* Meeting Minutes Carousel */
-#minutes .section-container {
-    max-width: 1080px;
-    padding: 3.5rem 3.5rem;
-}
 
 .minutes-carousel-container {
     width: 100%;
@@ -416,7 +421,7 @@ body {
 }
 
 .minimal-meeting-header .meeting-topic {
-    font-family: 'Outfit', 'Plus Jakarta Sans', var(--font-family);
+    font-family: 'Sora', system-ui, -apple-system, sans-serif;
     font-size: 1.55rem;
     font-weight: 700;
     letter-spacing: -0.02em;
@@ -587,6 +592,10 @@ body {
 }
 
 /* Team / Polaroid Section */
+#team .section-title {
+    margin-bottom: 3rem;
+}
+
 .polaroids-container {
     display: flex;
     flex-wrap: wrap;
@@ -753,10 +762,6 @@ body {
 }
 
 /* Documentation Section */
-#documentation .section-container {
-    max-width: 1080px;
-    padding: 3.5rem 3.5rem;
-}
 
 .docs-container {
     width: 100%;
@@ -932,7 +937,7 @@ body {
 }
 
 .doc-card-title {
-    font-family: 'Outfit', 'Plus Jakarta Sans', var(--font-family);
+    font-family: 'Sora', system-ui, -apple-system, sans-serif;
     font-size: 1.15rem;
     font-weight: 700;
     color: #0F172A;
@@ -986,4 +991,91 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Meeting Minutes Viewer Layout */
+.minutes-viewer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.minutes-list-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--surface-border);
+}
+
+.minute-selector-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1.25rem;
+    background-color: var(--surface-bg, #ffffff);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+[data-theme='dark'] .minute-selector-btn {
+    background-color: #1E293B;
+    border-color: #334155;
+}
+
+.minute-selector-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+}
+
+.minute-selector-btn:hover .minute-title-preview,
+.minute-selector-btn.active .minute-title-preview {
+    color: var(--primary-color, #25828e);
+}
+
+.minute-selector-btn.active {
+    background-color: var(--surface-bg, #ffffff);
+}
+
+[data-theme='dark'] .minute-selector-btn.active {
+    background-color: #1E293B;
+}
+
+.minute-badge {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary-color, #25828e);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.minute-title-preview {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0F172A;
+    line-height: 1.3;
+}
+
+[data-theme='dark'] .minute-title-preview {
+    color: #F8FAFC;
+}
+
+.minute-detail-view {
+    background-color: var(--surface-bg, #ffffff);
+    border-radius: 16px;
+    border: none;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme='dark'] .minute-detail-view {
+    background-color: #1E293B;
+    border-color: #334155;
 }

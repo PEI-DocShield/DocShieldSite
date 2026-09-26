@@ -57,17 +57,17 @@ const config: Config = {
         src: 'assets/logoCompleta.png',
       },
       items: [
-        {to: '/#minutes', label: 'Minutes', position: 'left'},
-        {to: '/#calendar', label: 'Calendar', position: 'left'},
+        {to: '/minutes', label: 'Minutes', position: 'left'},
+        {to: '/calendar', label: 'Calendar', position: 'left'},
         {
           type: 'dropdown',
           label: 'Milestones',
           position: 'left',
           items: [
-            {label: 'Milestone 1', to: '/#milestone-1'},
-            {label: 'Milestone 2', to: '/#milestone-2'},
-            {label: 'Milestone 3', to: '/#milestone-3'},
-            {label: 'Milestone 4', to: '/#milestone-4'},
+            {label: 'Milestone 1', to: '/docs/milestones/milestone1'},
+            {label: 'Milestone 2', to: '/calendar#milestone-2'},
+            {label: 'Milestone 3', to: '/calendar#milestone-3'},
+            {label: 'Milestone 4', to: '/calendar#milestone-4'},
           ],
         },
         {to: '/#team', label: 'Team', position: 'left'},

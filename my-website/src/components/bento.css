@@ -1,0 +1,102 @@
+.bento-section {
+  padding: 4rem 2rem;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+}
+
+.bento-grid {
+  width: 100%;
+  max-width: 1300px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.bento-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: inherit;
+}
+
+[data-theme='dark'] .bento-card {
+  background-color: #111827;
+  border-color: #374151;
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+}
+
+[data-theme='dark'] .bento-card:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+.bento-image-placeholder {
+  background-color: #F1F5F9;
+  border-radius: 8px;
+  height: 240px;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+[data-theme='dark'] .bento-image-placeholder {
+  background-color: #1F2937;
+}
+
+.bento-content {
+  padding: 0 0.5rem;
+}
+
+.bento-title {
+  font-family: 'Sora', system-ui, -apple-system, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0F172A;
+  margin-bottom: 0.5rem;
+}
+
+[data-theme='dark'] .bento-title {
+  color: #F8FAFC;
+}
+
+.bento-desc {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
+}
+
+[data-theme='dark'] .bento-desc {
+  color: #9CA3AF;
+}
+
+.bento-card.span-2 {
+  grid-column: span 2;
+}
+
+@media (max-width: 996px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bento-card.span-2 {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+}
