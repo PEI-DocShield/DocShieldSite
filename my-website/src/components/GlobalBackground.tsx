@@ -32,7 +32,8 @@ export default function GlobalBackground() {
             width: '1200px', 
             maxWidth: '100vw',
             height: '100%', 
-            background: 'linear-gradient(to right, transparent 0%, var(--ifm-background-color) 15%, var(--ifm-background-color) 85%, transparent 100%)', 
+            background: 'radial-gradient(ellipse at center, rgba(11, 15, 25, 0.4) 0%, transparent 80%)', 
+            pointerEvents: 'none',
           }} 
         />
       </div>
