@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-labelledby="title desc">
+  <title id="title">Project calendar</title>
+  <desc id="desc">A calendar showing project milestones</desc>
+  <rect width="900" height="420" rx="28" fill="#fff1df"/>
+  <circle cx="145" cy="95" r="58" fill="#f5bd72"/>
+  <rect x="220" y="58" width="460" height="305" rx="18" fill="#fff" stroke="#633b2d" stroke-width="8"/>
+  <rect x="220" y="58" width="460" height="82" rx="18" fill="#e17852"/>
+  <path d="M310 40v55M590 40v55" stroke="#633b2d" stroke-width="18" stroke-linecap="round"/>
+  <rect x="270" y="175" width="95" height="48" rx="10" fill="#c6e0e5"/>
+  <rect x="395" y="175" width="95" height="48" rx="10" fill="#f5bd72"/>
+  <rect x="520" y="175" width="95" height="48" rx="10" fill="#8bb8c0"/>
+  <rect x="270" y="245" width="95" height="48" rx="10" fill="#f5bd72"/>
+  <rect x="395" y="245" width="95" height="48" rx="10" fill="#e17852"/>
+  <rect x="520" y="245" width="95" height="48" rx="10" fill="#c6e0e5"/>
+  <path d="M720 290h80M760 250v80" stroke="#633b2d" stroke-width="10" stroke-linecap="round"/>
+</svg>

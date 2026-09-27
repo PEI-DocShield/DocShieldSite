@@ -18,7 +18,7 @@ export default function UnderConstruction(): React.JSX.Element {
         }}
       />
       <main className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh', position: 'relative', zIndex: 1 }}>
-        <h1 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1rem', color: 'var(--text-primary)' }}>Under Construction 🚧</h1>
+        <h1 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '1rem', color: 'var(--text-primary)' }}> Updates soon </h1>
         <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', marginBottom: '2rem' }}>
           We're still working on the documentation. Check back later!
         </p>

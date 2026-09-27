@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-labelledby="title desc">
+  <title id="title">Documentation</title>
+  <desc id="desc">An open documentation book with a shield</desc>
+  <rect width="900" height="420" rx="28" fill="#e8edf7"/>
+  <circle cx="755" cy="100" r="68" fill="#c9d5ef"/>
+  <path d="M150 105c95-32 180-18 300 30v220c-120-48-205-62-300-30z" fill="#fff" stroke="#263b68" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M750 105c-95-32-180-18-300 30v220c120-48 205-62 300-30z" fill="#fff" stroke="#263b68" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M450 135v220" stroke="#263b68" stroke-width="8"/>
+  <path d="M210 160h150M210 200h170M210 240h125M540 160h150M540 200h170M540 240h125" stroke="#8b9fc9" stroke-width="12" stroke-linecap="round"/>
+  <path d="M450 68 535 98v72c0 64-85 100-85 100s-85-36-85-100V98z" fill="#e17852" stroke="#263b68" stroke-width="8" stroke-linejoin="round"/>
+  <path d="m408 145 27 27 54-60" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -37,7 +37,7 @@ export const calendarData: MilestoneItem[] = [
     link: '#milestone-2',
     phases: [
       {
-        date: '29 september - 13 october',
+        date: '30 september - 13 october',
         tasks: [
           'Requirements Gathering',
           'Personas',
@@ -56,12 +56,12 @@ export const calendarData: MilestoneItem[] = [
     link: '#milestone-3',
     phases: [
       {
-        date: '13 october - 3 november',
+        date: '14 october - 3 november',
         tasks: [
-          'Estudo sobre regulação e proteção de dados',
-          'Definição das políticas de privacidade',
-          'Análise de Riscos',
-          'Dívida Técnica e Manutenebilidade',
+          'Security',
+          'Privacy Politics - RGPD',
+          'Risks Analysis',
+          'Technical risks',
           'Negotiation Plan',
           'Presentation',
         ]
@@ -74,7 +74,7 @@ export const calendarData: MilestoneItem[] = [
     link: '#milestone-4',
     phases: [
       {
-        date: '3 november - 15 december',
+        date: '4 november - 15 december',
         tasks: [
           'To be defined...'
         ]
@@ -87,7 +87,7 @@ export const calendarData: MilestoneItem[] = [
     link: '#milestone-4+',
     phases: [
       {
-        date: '15 december+',
+        date: '16 december+',
         tasks: [
           'To be defined...'
         ]

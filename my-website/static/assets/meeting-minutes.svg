@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-labelledby="title desc">
+  <title id="title">Meeting minutes</title>
+  <desc id="desc">A meeting notes sheet with a pen and checklist</desc>
+  <rect width="900" height="420" rx="28" fill="#e8f1f4"/>
+  <circle cx="760" cy="92" r="72" fill="#c6e0e5"/>
+  <rect x="205" y="48" width="430" height="320" rx="16" fill="#ffffff" stroke="#163b4d" stroke-width="8"/>
+  <rect x="250" y="90" width="250" height="22" rx="11" fill="#163b4d"/>
+  <rect x="250" y="145" width="290" height="13" rx="6" fill="#8bb8c0"/>
+  <rect x="250" y="182" width="250" height="13" rx="6" fill="#c6e0e5"/>
+  <circle cx="266" cy="242" r="12" fill="#e17852"/>
+  <path d="m260 242 6 6 13-16" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="300" y="235" width="220" height="13" rx="6" fill="#8bb8c0"/>
+  <circle cx="266" cy="290" r="12" fill="#e17852"/>
+  <path d="m260 290 6 6 13-16" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="300" y="283" width="180" height="13" rx="6" fill="#8bb8c0"/>
+  <path d="m610 285 120-120 42 42-120 120-55 14z" fill="#e17852" stroke="#163b4d" stroke-width="8" stroke-linejoin="round"/>
+  <path d="m730 165 42 42" stroke="#fff" stroke-width="8"/>
+  <path d="m610 285-13 56 55-14" fill="#f5bd72" stroke="#163b4d" stroke-width="8" stroke-linejoin="round"/>
+</svg>
