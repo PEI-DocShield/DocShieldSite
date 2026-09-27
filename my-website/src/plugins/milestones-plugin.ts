@@ -20,6 +20,14 @@ export default function milestonesPlugin(context: LoadContext): Plugin<Milestone
   return {
     name: 'docusaurus-plugin-milestones',
 
+    getPathsToWatch() {
+      const milestonesDir = path.join(context.siteDir, 'docs', 'milestones');
+      if (!fs.existsSync(milestonesDir)) return [];
+      return fs.readdirSync(milestonesDir)
+        .filter((f) => f.endsWith('.md'))
+        .map((f) => path.join(milestonesDir, f));
+    },
+
     async loadContent(): Promise<MilestoneData[]> {
       const milestonesDir = path.join(context.siteDir, 'docs', 'milestones');
 

@@ -16,8 +16,36 @@ interface MilestoneData {
   phases: MilestonePhase[];
 }
 
+// Load milestone markdown files directly into the module graph so HMR updates instantly on edit
+const req = require.context('../../docs/milestones', false, /\.mdx?$/);
+
+function getMilestonesFromModules(): MilestoneData[] {
+  const items: MilestoneData[] = [];
+  req.keys().forEach((key) => {
+    const mod = req(key);
+    const data = mod.frontMatter || {};
+    if (data.milestone_name && data.phases) {
+      const docId = data.id || key.replace('./', '').replace(/\.mdx?$/, '');
+      items.push({
+        id: docId,
+        name: data.milestone_name,
+        link: `/docs/milestones/${docId}`,
+        order: data.order ?? 99,
+        phases: data.phases,
+      });
+    }
+  });
+  return items.sort((a, b) => a.order - b.order);
+}
+
 export default function CalendarPage(): React.JSX.Element {
-  const { milestones } = usePluginData('docusaurus-plugin-milestones') as { milestones: MilestoneData[] };
+  let milestones: MilestoneData[] = [];
+  try {
+    milestones = getMilestonesFromModules();
+  } catch (err) {
+    const globalData = usePluginData('docusaurus-plugin-milestones') as { milestones: MilestoneData[] };
+    milestones = globalData?.milestones || [];
+  }
 
   return (
     <Layout
