@@ -1,7 +1,15 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import { usePluginData } from '@docusaurus/useGlobalData';
 import './bento.css';
+
+interface MilestoneData {
+  id: string;
+  name: string;
+  link: string;
+  order: number;
+}
 
 interface BentoCardProps {
   title: string;
@@ -28,13 +36,15 @@ function BentoCard({ title, description, link, image, imageAlt, imageClassName, 
 }
 
 function MilestonesBentoCard({ className, id }: { className?: string, id?: string }) {
+  const { milestones } = usePluginData('docusaurus-plugin-milestones') as { milestones: MilestoneData[] };
+
   return (
     <div id={id} className={`bento-card ${className || ''}`} style={{ cursor: 'default' }}>
-      <div className="bento-image-placeholder" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr', gap: '0.75rem', padding: '0.75rem' }}>
-        {[1, 2, 3, 4].map((num) => (
+      <div className="bento-image-placeholder" style={{ display: 'grid', gridTemplateColumns: milestones.length > 4 ? 'repeat(3, 1fr)' : '1fr 1fr', gridTemplateRows: milestones.length > 4 ? 'repeat(2, 1fr)' : '1fr 1fr', gap: '0.75rem', padding: '0.75rem' }}>
+        {milestones.map((milestone) => (
           <Link
-            key={num}
-            to={`/docs/milestones/milestone${num}`}
+            key={milestone.id}
+            to={milestone.link}
             className="milestone-bento-btn"
             style={{
               display: 'flex',
@@ -60,7 +70,7 @@ function MilestonesBentoCard({ className, id }: { className?: string, id?: strin
               e.currentTarget.style.boxShadow = 'none';
             }}
           >
-            M{num}
+            {milestone.name}
           </Link>
         ))}
       </div>

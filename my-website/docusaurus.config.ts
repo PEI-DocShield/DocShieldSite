@@ -26,6 +26,10 @@ const config: Config = {
     locales: ['en'],
   },
 
+  plugins: [
+    './src/plugins/milestones-plugin.ts',
+  ],
+
   presets: [
     [
       'classic',
@@ -65,9 +69,10 @@ const config: Config = {
           position: 'left',
           items: [
             {label: 'Milestone 1', to: '/docs/milestones/milestone1'},
-            {label: 'Milestone 2', to: '/calendar#milestone-2'},
-            {label: 'Milestone 3', to: '/calendar#milestone-3'},
-            {label: 'Milestone 4', to: '/calendar#milestone-4'},
+            {label: 'Milestone 2', to: '/docs/milestones/milestone2'},
+            {label: 'Milestone 3', to: '/docs/milestones/milestone3'},
+            {label: 'Milestone 4', to: '/docs/milestones/milestone4'},
+            {label: 'Milestone 4+', to: '/docs/milestones/milestone4plus'},
           ],
         },
         {to: '/#team', label: 'Team', position: 'left'},

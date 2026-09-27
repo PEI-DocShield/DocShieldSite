@@ -2,11 +2,20 @@
 id: milestone1
 title: "Milestone 1: Inception"
 displayed_sidebar: null
+milestone_name: M1
+order: 1
+phases:
+  - date: "22 - 29 September"
+    tasks:
+      - Context
+      - Communication Plan
+      - Tools Study
+      - Problems and goals
+      - Tasks Definition
+      - Project Calendar
+      - Microsite
+      - Presentation
 ---
-
-import GlobalBackground from '@site/src/components/GlobalBackground';
-
-<GlobalBackground />
 
 <br/>
 

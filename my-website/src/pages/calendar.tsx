@@ -1,9 +1,24 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import { calendarData } from '../data/calendarData';
+import { usePluginData } from '@docusaurus/useGlobalData';
 import MouseProximityGrid from '../components/MouseProximityGrid';
 
+interface MilestonePhase {
+  date: string;
+  tasks: string[];
+}
+
+interface MilestoneData {
+  id: string;
+  name: string;
+  link: string;
+  order: number;
+  phases: MilestonePhase[];
+}
+
 export default function CalendarPage(): React.JSX.Element {
+  const { milestones } = usePluginData('docusaurus-plugin-milestones') as { milestones: MilestoneData[] };
+
   return (
     <Layout
       title="Project Calendar"
@@ -72,7 +87,7 @@ export default function CalendarPage(): React.JSX.Element {
           </div>
 
           {/* Data Rows */}
-          {calendarData.map((item) => (
+          {milestones.map((item) => (
             <div key={item.id} style={{ display: 'contents' }}>
               
               {/* Milestone Box spans vertically across all phases */}
