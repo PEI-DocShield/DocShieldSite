@@ -18,6 +18,22 @@ npm run start
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
+### Local Development with Docker
+
+From this directory, build and start the development container:
+
+```bash
+docker compose up --build
+```
+
+Open [http://localhost:3000](http://localhost:3000). Source files are mounted into the container, so changes are reflected automatically. Stop the container with `Ctrl+C`, or run:
+
+```bash
+docker compose down
+```
+
+Dependencies are installed inside the container and stored in a Docker volume, so `node_modules` does not need to be installed on the host machine.
+
 ## Build
 
 ```bash
