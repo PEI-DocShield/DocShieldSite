@@ -42,18 +42,11 @@ export default function Home(): React.JSX.Element {
             securely and efficiently.
           </p>
           <div className="hero-buttons fade-in-up delay-2">
-            <a 
-              href="#milestones-bento" 
-              className="btn-custom btn-primary-custom"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('milestones-bento')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
+            <Link to="/calendar" className="btn-custom btn-primary-custom">
               View Milestones
-            </a>
-            <Link to="/docs/intro" className="btn-custom btn-secondary-custom">
-              Read Documentation
+            </Link>
+            <Link to="/under-construction" className="btn-custom btn-secondary-custom">
+              View Documentation
             </Link>
           </div>
         </div>

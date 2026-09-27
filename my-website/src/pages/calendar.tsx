@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
+import Link from '@docusaurus/Link';
 import { usePluginData } from '@docusaurus/useGlobalData';
 import MouseProximityGrid from '../components/MouseProximityGrid';
 
@@ -119,21 +120,36 @@ export default function CalendarPage(): React.JSX.Element {
             <div key={item.id} style={{ display: 'contents' }}>
               
               {/* Milestone Box spans vertically across all phases */}
-              <div style={{ 
-                gridRow: `span ${item.phases.length}`,
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center',
-                backgroundColor: 'var(--ifm-background-color)',
-                border: '1px solid var(--ifm-color-emphasis-300)', 
-                borderRadius: '24px', 
-                padding: '2rem 1rem',
-                fontSize: '1.5rem',
-                fontWeight: 800,
-                color: 'var(--text-primary)'
-              }}>
+              <Link 
+                to={item.link}
+                style={{ 
+                  gridRow: `span ${item.phases.length}`,
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center',
+                  backgroundColor: 'var(--ifm-background-color)',
+                  border: '1px solid var(--ifm-color-emphasis-300)', 
+                  borderRadius: '24px', 
+                  padding: '2rem 1rem',
+                  fontSize: '1.5rem',
+                  fontWeight: 800,
+                  color: 'var(--text-primary)',
+                  textDecoration: 'none',
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.color = 'var(--primary-color)';
+                  e.currentTarget.style.borderColor = 'var(--primary-color)';
+                  e.currentTarget.style.transform = 'scale(1.02)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.color = 'var(--text-primary)';
+                  e.currentTarget.style.borderColor = 'var(--ifm-color-emphasis-300)';
+                  e.currentTarget.style.transform = 'none';
+                }}
+              >
                 {item.name}
-              </div>
+              </Link>
               
               {/* Phase Rows */}
               {item.phases.map((phase, idx) => (
