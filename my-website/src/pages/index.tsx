@@ -30,12 +30,12 @@ export default function Home(): React.JSX.Element {
         <div className="hero-content">
           <div className="text-underlay" />
           <h1 className="fade-in-up hero-title">
-            Progress{' '}
             <img
               src={useBaseUrl('/assets/logoCompleta.png')}
               alt="DocShield"
               className="hero-logo-img"
             />
+            Progress{' '}
           </h1>
           <p className="fade-in-up delay-1 hero-subtitle">
             An easy and practical tool designed to anonymize confidential documents
