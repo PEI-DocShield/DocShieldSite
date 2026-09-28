@@ -317,7 +317,7 @@ body {
     font-weight: 600;
     letter-spacing: -0.025em;
     text-align: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
     color: #0F172A;
     width: 100%;
     position: relative;
@@ -470,7 +470,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--primary-color);
-    margin-bottom: 1rem;
+    margin-bottom: 0;
 }
 
 .minimal-col ul {
@@ -986,7 +986,7 @@ body {
     font-size: 1.15rem;
     font-weight: 700;
     color: #0F172A;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
 }
 
 [data-theme="dark"] .doc-card-title {
@@ -997,7 +997,7 @@ body {
     font-size: 0.9rem;
     color: #475569;
     line-height: 1.6;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
 }
 
 [data-theme="dark"] .doc-card-desc {
@@ -1096,7 +1096,7 @@ body {
     font-size: 0.85rem;
     font-weight: 700;
     color: var(--primary-color, #25828e);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -1226,3 +1226,248 @@ body {
     }
 }
 
+/* ═══════════════════════════════════════════════════════ */
+/*  ANIMATED HERO  (in-page, plays on load)               */
+/* ═══════════════════════════════════════════════════════ */
+
+/* Make the hero fill the viewport and center content */
+.hero-custom--animated {
+    min-height: calc(100vh - var(--ifm-navbar-height, 72px));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+.hero-custom--animated .hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: none;
+}
+
+
+/* Wrapper — centered column */
+.animated-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    /* Adjust visual centering: shift left to offset large shield width padding,
+       and shift up to overcome navbar padding and feel visually centered */
+    transform: translate(0, -3rem);
+}
+
+/* Row: shield + letters, centered */
+.animated-hero__logo-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    user-select: none;
+}
+
+/* ── Shield icon ──
+   Sized to match / slightly exceed the letter height.
+   The shield starts rotated 90° clockwise and animates back to 0°. */
+.animated-hero__shield {
+    /* Match or exceed the visual height of the letters */
+    width: 8rem;
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: -0.3rem;
+
+    /* start state: invisible + rotated 90° clockwise */
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+.animated-hero__shield--visible {
+    animation: shieldTilt 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes shieldTilt {
+    0% {
+        opacity: 0;
+        transform: rotate(90deg) scale(0.7);
+    }
+    30% {
+        opacity: 1;
+    }
+    70% {
+        transform: rotate(-5deg) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+.animated-hero__shield img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* ── Letters ── */
+.animated-hero__letters {
+    display: flex;
+    align-items: center;
+    margin-left: 0.3rem;
+}
+
+.animated-hero__letter {
+    font-family: 'Sora', system-ui, -apple-system, sans-serif;
+    font-size: 5.5rem;
+    font-weight: 700;
+    color: var(--primary-color, #25828e);
+    display: inline-block;
+    line-height: 1;
+
+    /* start state — collapsed left, transparent, blurred */
+    opacity: 0;
+    transform: translateX(-12px);
+    filter: blur(4px);
+
+    /* long smooth easing for a fluid feel */
+    transition:
+        opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+        transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+        filter 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.animated-hero__letter--visible {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+}
+
+/* ── Phrase (encryption) ── */
+.animated-hero__phrase {
+    font-family: 'Sora', 'Courier New', monospace;
+    font-size: 1.25rem;
+    color: var(--text-secondary, #94A3B8);
+    letter-spacing: 0.025em;
+    min-height: 1.8em;
+    text-align: center;
+    white-space: pre;
+    margin: 0;
+    
+    margin-top: 1rem;
+
+    /* start hidden */
+    opacity: 0;
+    transform: translateY(6px);
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+.animated-hero__phrase--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .animated-hero {
+        transform: translate(0, -2rem);
+    }
+
+    .animated-hero__shield {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .animated-hero__letters {
+        margin-left: -0.25rem;
+    }
+
+    .animated-hero__letter {
+        font-size: 3.5rem;
+    }
+
+    .animated-hero__phrase {
+        font-size: 1rem;
+        padding: 0 1rem;
+        white-space: normal;
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .animated-hero {
+        transform: translate(0, -1rem);
+    }
+
+    .animated-hero__shield {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .animated-hero__letters {
+        margin-left: -0.1rem;
+    }
+
+    .animated-hero__letter {
+        font-size: 2.4rem;
+    }
+
+    .animated-hero__phrase {
+        font-size: 0.85rem;
+        margin-top: 0.25rem;
+        margin-bottom: 0;
+    }
+}
+
+
+/* ═══════════════════════════════════════════════════════ */
+/*  SCROLL INDICATOR (Hero bottom)                        */
+/* ═══════════════════════════════════════════════════════ */
+.hero-scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--text-secondary, #94A3B8);
+    opacity: 0.7;
+    pointer-events: auto;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.3s ease;
+}
+
+.hero-scroll-indicator:hover {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.15);
+}
+
+.hero-scroll-text {
+    font-family: 'Sora', system-ui, sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.hero-scroll-arrow {
+    width: 20px;
+    height: 20px;
+    transition: height 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-scroll-indicator:hover .hero-scroll-arrow {
+    height: 30px;
+}

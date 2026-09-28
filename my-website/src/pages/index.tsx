@@ -1,11 +1,11 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import MouseProximityGrid from '../components/MouseProximityGrid';
 import BentoGrid from '../components/BentoGrid';
 import TeamPolaroids from '../components/TeamPolaroids';
+import AnimatedHero from '../components/AnimatedHero';
 
 export default function Home(): React.JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -26,29 +26,22 @@ export default function Home(): React.JSX.Element {
         }}
       />
 
-      {/* Hero Section */}
-      <main className="hero-custom">
+      {/* Hero Section — animated logo + phrase */}
+      <main className="hero-custom hero-custom--animated" style={{ position: 'relative' }}>
         <div className="hero-content">
           <div className="text-underlay" />
-          <h1 className="fade-in-up hero-title">
-            <img
-              src={useBaseUrl('/assets/logoCompleta.png')}
-              alt="DocShield"
-              className="hero-logo-img"
-            />
-            Progress{' '}
-          </h1>
-          <p className="fade-in-up delay-1 hero-subtitle">
-            A safe and practical solution for document anonymization.
-          </p>
-          <div className="hero-buttons fade-in-up delay-2">
-            <Link to="/calendar" className="btn-custom btn-primary-custom">
-              View Milestones
-            </Link>
-            <Link to="/under-construction" className="btn-custom btn-secondary-custom">
-              View Documentation
-            </Link>
-          </div>
+          <AnimatedHero />
+        </div>
+
+        {/* Scroll Indicator */}
+        <div
+          className="hero-scroll-indicator"
+          onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}
+        >
+          <span className="hero-scroll-text">Discover</span>
+          <svg className="hero-scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 5v14M19 12l-7 7-7-7"/>
+          </svg>
         </div>
       </main>
 
