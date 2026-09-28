@@ -19,14 +19,14 @@ export const calendarData: MilestoneItem[] = [
       {
         date: '22 - 29 September',
         tasks: [
-          'Context',
-          'Communication Plan',
+          'Context, Problems and Goals',
+          'Microsite',
           'Tools Study',
-          'Problems and goals',
+          'Communication Plan',
+          'Presentation',
+          'Presentation',
           'Tasks Definition',
           'Project Calendar',
-          'Microsite',
-          'Presentation',
         ]
       }
     ]
@@ -44,7 +44,8 @@ export const calendarData: MilestoneItem[] = [
           'User Stories',
           'Deployment Diagram',
           'Domain Model',
-          'First Mockups',
+          'System Architecture',
+          'Mockup',
           'Presentation',
         ]
       }
@@ -58,11 +59,12 @@ export const calendarData: MilestoneItem[] = [
       {
         date: '14 october - 3 november',
         tasks: [
-          'Security',
-          'Privacy Politics - RGPD',
-          'Risks Analysis',
-          'Technical risks',
+          'Privacy Policy Definition',
+          'Analysis of the Risks',
+          'Technical Risks and Maintainability',
           'Negotiation Plan',
+          'Frontend:  Simple page with a file input and output',
+          'Backend: Simple anonymization implementation (supression)',
           'Presentation',
         ]
       }
@@ -76,7 +78,10 @@ export const calendarData: MilestoneItem[] = [
       {
         date: '4 november - 15 december',
         tasks: [
-          'To be defined...'
+          'MVP',
+          'Frontend: more anonymization techniques and other file formats options',
+          'Backend: apply more anonymization techniques and processing of other file formats',
+          'Simple database',
         ]
       }
     ]
@@ -89,7 +94,14 @@ export const calendarData: MilestoneItem[] = [
       {
         date: '16 december+',
         tasks: [
-          'To be defined...'
+          'User Guide',
+          'Differenciation between no login required system and full system with login: Login Page & Authentication',
+          'Implementation of reverse anonymization option',
+          'Expand the anonymization: Images & Multilingual support and selection of specific areas for anonymization',
+          'Deployment',
+          'Optimization',
+          'Testing: Usability & Stress',
+          'Students@DETI',
         ]
       }
     ]
