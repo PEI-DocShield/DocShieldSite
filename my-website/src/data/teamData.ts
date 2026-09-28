@@ -4,6 +4,7 @@ export interface TeamMember {
   bio: string;
   github: string;
   rotation: number;
+  image?: string;
 }
 
 export const teamData: TeamMember[] = [
@@ -13,6 +14,7 @@ export const teamData: TeamMember[] = [
     bio: 'DocShield team member, working on platform development.',
     github: 'https://github.com/Bernardo2409',
     rotation: 2,
+    image: '/assets/foto_bernardo.jpeg',
   },
   {
     name: 'Eduardo Laranjeiro',
@@ -20,6 +22,7 @@ export const teamData: TeamMember[] = [
     bio: 'DocShield team member, working on platform development.',
     github: 'https://github.com/EduWo18',
     rotation: -3,
+    image: '/assets/foto_edu.jpeg',
   },
   {
     name: 'Mª Inês Gonçalves',
@@ -27,6 +30,7 @@ export const teamData: TeamMember[] = [
     bio: 'DocShield team member, working on platform development.',
     github: 'https://github.com/inecalves',
     rotation: 1,
+    image: '/assets/foto_ines.jpeg',
   },
   {
     name: 'João Silva',
@@ -34,6 +38,7 @@ export const teamData: TeamMember[] = [
     bio: 'DocShield team member, working on platform development.',
     github: 'https://github.com/ojuoumua',
     rotation: -2,
+    image: '/assets/foto_joao.jpeg',
   },
   {
     name: 'Tiago Vale',
@@ -41,5 +46,6 @@ export const teamData: TeamMember[] = [
     bio: 'DocShield team member, working on platform development.',
     github: 'https://github.com/tiagofcvale',
     rotation: 3,
+    image: '/assets/foto_vale.jpeg',
   },
 ];

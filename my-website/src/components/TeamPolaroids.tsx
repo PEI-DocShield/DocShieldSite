@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import { teamData, TeamMember } from '../data/teamData';
 
 export default function TeamPolaroids(): React.JSX.Element {
@@ -46,17 +47,25 @@ export default function TeamPolaroids(): React.JSX.Element {
               {/* Front Face */}
               <div className="polaroid-front">
                 <div className="polaroid-image">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
+                  {member.image ? (
+                    <img 
+                      src={useBaseUrl(member.image)} 
+                      alt={`${member.name} photo`} 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    />
+                  ) : (
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
+                    </svg>
+                  )}
                 </div>
                 <p className="polaroid-name">{member.name}</p>
               </div>
