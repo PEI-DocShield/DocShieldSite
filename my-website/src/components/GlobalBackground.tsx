@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import MouseProximityGrid from './MouseProximityGrid';
+import { useLocation } from '@docusaurus/router';
 
 export default function GlobalBackground() {
   const [mounted, setMounted] = useState(false);
+  const location = useLocation();
+  const isMilestone = location.pathname.includes('/milestone');
 
   useEffect(() => {
     setMounted(true);
@@ -14,28 +17,17 @@ export default function GlobalBackground() {
   return createPortal(
     <>
       <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none', overflow: 'hidden' }}>
-        <MouseProximityGrid
-          className="background-grid"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-          }}
-        />
-        <div 
-          style={{ 
-            position: 'absolute', 
-            top: 0, 
-            left: '50%', 
-            transform: 'translateX(-50%)', 
-            width: '1200px', 
-            maxWidth: '100vw',
-            height: '100%', 
-            background: 'radial-gradient(ellipse at center, rgba(11, 15, 25, 0.4) 0%, transparent 80%)', 
-            pointerEvents: 'none',
-          }} 
-        />
+        {!isMilestone && (
+          <MouseProximityGrid
+            className="background-grid"
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+            }}
+          />
+        )}
       </div>
       <style>{`
         /* Elevate the actual content to zIndex 1 so it sits above our zIndex 0 background */

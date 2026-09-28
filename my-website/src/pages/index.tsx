@@ -18,6 +18,7 @@ export default function Home(): React.JSX.Element {
       {/* Full-page Mouse Proximity Grid Background */}
       <MouseProximityGrid
         className="background-grid"
+        interactive={true}
         style={{
           position: 'fixed',
           inset: 0,

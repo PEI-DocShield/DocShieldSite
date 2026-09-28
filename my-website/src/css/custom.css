@@ -626,6 +626,10 @@ body {
     z-index: 999;
 }
 
+.polaroid-wrapper.expanded:hover {
+    transform: scale(1.08) rotate(0deg) !important;
+}
+
 .polaroid-inner {
     position: relative;
     width: 100%;

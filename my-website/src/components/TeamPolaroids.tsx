@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { teamData, TeamMember } from '../data/teamData';
 
 export default function TeamPolaroids(): React.JSX.Element {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [flippedIndexes, setFlippedIndexes] = useState<number[]>([]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setActiveIndex(null);
+        setFlippedIndexes([]);
       }
     };
     const handleClickOutside = () => {
-      setActiveIndex(null);
+      setFlippedIndexes([]);
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -24,17 +24,17 @@ export default function TeamPolaroids(): React.JSX.Element {
 
   const handleCardClick = (e: React.MouseEvent, index: number) => {
     e.stopPropagation();
-    if (activeIndex === index) {
-      setActiveIndex(null);
-    } else {
-      setActiveIndex(index);
-    }
+    setFlippedIndexes((prev) => 
+      prev.includes(index) 
+        ? prev.filter((i) => i !== index)
+        : [...prev, index]
+    );
   };
 
   return (
     <div className="polaroids-container fade-in-up delay-1">
       {teamData.map((member: TeamMember, idx: number) => {
-        const isExpanded = activeIndex === idx;
+        const isExpanded = flippedIndexes.includes(idx);
         return (
           <div
             key={member.name}

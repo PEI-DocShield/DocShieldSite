@@ -1,52 +1,10 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
-import { usePluginData } from '@docusaurus/useGlobalData';
 import MouseProximityGrid from '../components/MouseProximityGrid';
-
-interface MilestonePhase {
-  date: string;
-  tasks: string[];
-}
-
-interface MilestoneData {
-  id: string;
-  name: string;
-  link: string;
-  order: number;
-  phases: MilestonePhase[];
-}
-
-// Load milestone markdown files directly into the module graph so HMR updates instantly on edit
-const req = require.context('../../docs/milestones', false, /\.mdx?$/);
-
-function getMilestonesFromModules(): MilestoneData[] {
-  const items: MilestoneData[] = [];
-  req.keys().forEach((key) => {
-    const mod = req(key);
-    const data = mod.frontMatter || {};
-    if (data.milestone_name && data.phases) {
-      const docId = data.id || key.replace('./', '').replace(/\.mdx?$/, '');
-      items.push({
-        id: docId,
-        name: data.milestone_name,
-        link: `/docs/milestones/${docId}`,
-        order: data.order ?? 99,
-        phases: data.phases,
-      });
-    }
-  });
-  return items.sort((a, b) => a.order - b.order);
-}
+import { calendarData } from '../data/calendarData';
 
 export default function CalendarPage(): React.JSX.Element {
-  let milestones: MilestoneData[] = [];
-  try {
-    milestones = getMilestonesFromModules();
-  } catch (err) {
-    const globalData = usePluginData('docusaurus-plugin-milestones') as { milestones: MilestoneData[] };
-    milestones = globalData?.milestones || [];
-  }
 
   return (
     <Layout
@@ -116,7 +74,7 @@ export default function CalendarPage(): React.JSX.Element {
           </div>
 
           {/* Data Rows */}
-          {milestones.map((item) => (
+          {calendarData.map((item) => (
             <div key={item.id} style={{ display: 'contents' }}>
               
               {/* Milestone Box spans vertically across all phases */}

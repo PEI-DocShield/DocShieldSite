@@ -10,15 +10,18 @@ interface Cell {
   char: string;
   originalChar: string;
   isSpecial: boolean;
+  isHighlighted: boolean;
+  isBlue: boolean;
   scrambleTimer: number;
 }
 
 interface MouseProximityGridProps {
   className?: string;
   style?: React.CSSProperties;
+  interactive?: boolean;
 }
 
-export default function MouseProximityGrid({ className, style }: MouseProximityGridProps): React.JSX.Element {
+export default function MouseProximityGrid({ className, style, interactive = false }: MouseProximityGridProps): React.JSX.Element {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -60,6 +63,8 @@ export default function MouseProximityGrid({ className, style }: MouseProximityG
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
           const isSpecial = Math.random() < 0.04;
+          const isHighlighted = Math.random() < 0.05;
+          const isBlue = Math.random() < 0.4;
           const char = CHARS[Math.floor(Math.random() * CHARS.length)];
           cells.push({
             x: c * CELL_SIZE + CELL_SIZE / 2,
@@ -67,6 +72,8 @@ export default function MouseProximityGrid({ className, style }: MouseProximityG
             char,
             originalChar: char,
             isSpecial,
+            isHighlighted,
+            isBlue,
             scrambleTimer: 0,
           });
         }
@@ -91,8 +98,10 @@ export default function MouseProximityGrid({ className, style }: MouseProximityG
       mouse.active = false;
     };
 
-    window.addEventListener('pointermove', handlePointerMove, { passive: true });
-    window.addEventListener('pointerleave', handlePointerLeave);
+    if (interactive) {
+      window.addEventListener('pointermove', handlePointerMove, { passive: true });
+      window.addEventListener('pointerleave', handlePointerLeave);
+    }
 
     const render = () => {
       animId = requestAnimationFrame(render);
@@ -110,8 +119,8 @@ export default function MouseProximityGrid({ className, style }: MouseProximityG
 
       const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
       const baseColor = isDark ? '148, 163, 184' : '100, 116, 139';
-      const accentCyan = '0, 242, 254';
-      const accentTeal = '37, 130, 142';
+      const accentCyan = '36, 108, 119';
+      const accentTeal = '36, 108, 119';
 
       // 1. Lightweight Radial Glow Spotlight
       if (mouse.x > -500 && mouse.y > -500) {
@@ -165,16 +174,32 @@ export default function MouseProximityGrid({ className, style }: MouseProximityG
         }
 
         let opacity = cell.isSpecial ? 0.3 : 0.12;
-        if (intensity > 0) {
-          opacity = Math.min(0.9, opacity + intensity * 0.75);
+        let charColor = `rgba(${baseColor}, ${opacity})`;
+
+        if (interactive) {
+          if (intensity > 0) {
+            opacity = Math.min(0.9, opacity + intensity * 0.75);
+          }
+          if (intensity > 0.5) {
+            charColor = `rgba(${accentCyan}, ${opacity})`;
+          } else if (intensity > 0.2) {
+            charColor = `rgba(${accentTeal}, ${opacity})`;
+          }
+        } else {
+          // Make the static background more noticeable
+          opacity = cell.isSpecial ? 0.45 : 0.25;
+          charColor = `rgba(${baseColor}, ${opacity})`;
+          
+          if (cell.isHighlighted) {
+            opacity = 0.7;
+            if (cell.isBlue) {
+              charColor = `rgba(${accentCyan}, ${opacity})`;
+            } else {
+              charColor = `rgba(148, 163, 184, ${opacity})`;
+            }
+          }
         }
 
-        let charColor = `rgba(${baseColor}, ${opacity})`;
-        if (intensity > 0.5) {
-          charColor = `rgba(${accentCyan}, ${opacity})`;
-        } else if (intensity > 0.2) {
-          charColor = `rgba(${accentTeal}, ${opacity})`;
-        }
 
         ctx.fillStyle = charColor;
         ctx.fillText(cell.char, cell.x + displacementX, cell.y + displacementY);
@@ -211,8 +236,10 @@ export default function MouseProximityGrid({ className, style }: MouseProximityG
     return () => {
       cancelAnimationFrame(animId);
       resizeObserver.disconnect();
-      window.removeEventListener('pointermove', handlePointerMove);
-      window.removeEventListener('pointerleave', handlePointerLeave);
+      if (interactive) {
+        window.removeEventListener('pointermove', handlePointerMove);
+        window.removeEventListener('pointerleave', handlePointerLeave);
+      }
     };
   }, []);
 
