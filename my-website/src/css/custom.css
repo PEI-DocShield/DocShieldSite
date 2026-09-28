@@ -1159,7 +1159,8 @@ body {
 .footer-partner-logos {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    width: 280px;
+    max-width: 100%;
     margin-left: auto;
 }
 
