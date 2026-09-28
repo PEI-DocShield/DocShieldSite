@@ -1124,3 +1124,105 @@ body {
     background-color: #1E293B;
     border-color: #334155;
 }
+
+/* Custom Footer Bottom Row */
+.footer-bottom-custom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme='light'] .footer-bottom-custom {
+    border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+.footer-copyright-container,
+.footer-copyright-container *,
+.footer__copyright {
+    font-size: 0.875rem;
+    color: #E2E8F0 !important;
+}
+
+[data-theme='light'] .footer-copyright-container,
+[data-theme='light'] .footer-copyright-container *,
+[data-theme='light'] .footer__copyright {
+    color: #FFFFFF !important;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.footer-partner-logos {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+.footer-logo-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 0.75rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme='light'] .footer-logo-link {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+.footer-logo-link:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme='light'] .footer-logo-link:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: var(--primary-color);
+}
+
+.footer-logo-img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    transition: filter 0.25s ease, opacity 0.25s ease;
+}
+
+.logo-ua {
+    height: 32px;
+}
+
+.logo-ieeta {
+    height: 30px;
+}
+
+[data-theme='dark'] .footer-logo-img {
+    filter: brightness(1.1) contrast(1.05);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .footer-bottom-custom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .footer-partner-logos {
+        margin-left: 0;
+        justify-content: center;
+    }
+}
+

@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'DocShield - Project Progress',
-  tagline: 'An easy and convenient tool designed to anonymize confidential documents securely and efficiently.',
+  tagline: 'A safe and practical solution for document anonymization.',
   favicon: 'assets/logo.png',
 
   future: {

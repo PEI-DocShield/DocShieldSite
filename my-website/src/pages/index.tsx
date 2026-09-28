@@ -39,8 +39,7 @@ export default function Home(): React.JSX.Element {
             Progress{' '}
           </h1>
           <p className="fade-in-up delay-1 hero-subtitle">
-            An easy and practical tool designed to anonymize confidential documents
-            securely and efficiently.
+            A safe and practical solution for document anonymization.
           </p>
           <div className="hero-buttons fade-in-up delay-2">
             <Link to="/calendar" className="btn-custom btn-primary-custom">
