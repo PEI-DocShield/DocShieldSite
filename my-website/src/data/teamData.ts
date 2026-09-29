@@ -10,7 +10,7 @@ export interface TeamMember {
 export const teamData: TeamMember[] = [
   {
     name: 'Bernardo Coelho',
-    role: 'DevOps',
+    role: 'QA',
     bio: 'DocShield team member, working on platform development.',
     github: 'https://github.com/Bernardo2409',
     rotation: 2,
