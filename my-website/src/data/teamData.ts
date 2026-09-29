@@ -10,7 +10,7 @@ export interface TeamMember {
 export const teamData: TeamMember[] = [
   {
     name: 'Bernardo Coelho',
-    role: 'Developer',
+    role: 'DevOps',
     bio: 'DocShield team member, working on platform development.',
     github: 'https://github.com/Bernardo2409',
     rotation: 2,
@@ -18,7 +18,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Eduardo Laranjeiro',
-    role: 'Developer',
+    role: 'Architect',
     bio: 'DocShield team member, working on platform development.',
     github: 'https://github.com/EduWo18',
     rotation: -3,
@@ -26,7 +26,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Mª Inês Gonçalves',
-    role: 'Design Manager',
+    role: 'Team Manager | Designer',
     bio: 'DocShield team member, working on platform development.',
     github: 'https://github.com/inecalves',
     rotation: 1,
@@ -34,7 +34,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'João Silva',
-    role: 'Developer',
+    role: 'DevOps',
     bio: 'DocShield team member, working on platform development.',
     github: 'https://github.com/ojuoumua',
     rotation: -2,
@@ -42,7 +42,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Tiago Vale',
-    role: 'Developer',
+    role: 'Product Owner | DPO',
     bio: 'DocShield team member, working on platform development.',
     github: 'https://github.com/tiagofcvale',
     rotation: 3,
