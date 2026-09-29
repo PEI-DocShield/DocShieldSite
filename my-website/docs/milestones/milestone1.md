@@ -59,14 +59,31 @@ DocShield is a powerful platform that...
 - **Multilingual support and selective anonymization:** Support multiple languages and allow users to choose specific areas for anonymization.
 
 
-## Main Features
+## Related Work
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+|                                   |ILovePDF|ARx data anonymization tool|Anonymization App|DocShield|
+|-----------------------------------|:------:|:-------------------------:|:---------------:|:-------:|
+|Multilingual Support               |✅       |✅                          |✅               |✅       |
+|Automated                          |❌       |✅                          |✅               |✅       |
+|Multi Doc Support                  |✅       |✅                          |✅               |✅       |
+|Multi Anonymization Techniques (2+)|❌       |✅                          |❌                |✅       |
+|Reversible                         |❌       |❌                          |❌                |✅       |
+|Open Source                        |❌       |✅                          |❌                |✅       |
+|Customizable                       |✅       |❌                          |❌                |✅       |
 
 ## Expected Results
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+- A system that can fastly **handle large volumes of data**
+- A singular system with **different options of anonymization and document formats**
+- A **safe and reliable** option for anyone that might need to anonymize documents
 
 ## Project Timeline
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+See our calendar in **[HERE](http://localhost:3001/DocShieldSite/calendar)**
+
+## Comunication Plan
+
+- **GitHub**: Website & Project repository - Central codebase and documentation hub
+- **GitHub Projects**: Management & Planning - Task tracking and periodic reporting
+- **Discord**: Communication with advisors and ideas - Channel for meetings, link sharing, and follow-ups
+- **WhatsApp**: Internal Communication - Quick messaging and urgent team coordination
