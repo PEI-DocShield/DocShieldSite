@@ -1496,3 +1496,28 @@ body {
 .hero-scroll-indicator:hover .hero-scroll-arrow {
     height: 30px;
 }
+
+/* View Transitions API for theme toggle */
+html.theme-transitioning::view-transition-old(root),
+html.theme-transitioning::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+html.theme-transitioning::view-transition-old(root) {
+  z-index: 1;
+}
+
+html.theme-transitioning::view-transition-new(root) {
+  z-index: 9999;
+  animation: theme-reveal 0.6s ease-out forwards;
+}
+
+@keyframes theme-reveal {
+  0% {
+    clip-path: circle(0px at var(--theme-toggle-x, 50%) var(--theme-toggle-y, 50%));
+  }
+  100% {
+    clip-path: circle(var(--theme-toggle-r, 100vw) at var(--theme-toggle-x, 50%) var(--theme-toggle-y, 50%));
+  }
+}

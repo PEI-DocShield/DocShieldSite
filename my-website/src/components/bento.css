@@ -95,7 +95,7 @@
   color: #9CA3AF;
 }
 
-.bento-card.span-2 {
+.span-2 {
   grid-column: span 2;
 }
 
@@ -103,7 +103,7 @@
   .bento-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .bento-card.span-2 {
+  .span-2 {
     grid-column: span 1;
   }
 }
@@ -113,3 +113,4 @@
     grid-template-columns: 1fr;
   }
 }
+
