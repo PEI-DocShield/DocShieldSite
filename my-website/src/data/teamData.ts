@@ -26,7 +26,7 @@ export const teamData: TeamMember[] = [
   },
   {
     name: 'Mª Inês Gonçalves',
-    role: 'Team Manager | Designer',
+    role: 'Team Manager',
     bio: 'DocShield team member, working on platform development.',
     github: 'https://github.com/inecalves',
     rotation: 1,
