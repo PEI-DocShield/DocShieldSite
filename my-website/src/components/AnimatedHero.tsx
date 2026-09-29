@@ -8,26 +8,27 @@ const CIPHER_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012345
 export default function AnimatedHero(): React.JSX.Element {
   const shieldUrl = useBaseUrl('/assets/logo.png');
 
-  const [shieldReady, setShieldReady] = useState(false);
   const [revealedLetters, setRevealedLetters] = useState(0);
   const [phraseText, setPhraseText] = useState('');
   const [phraseVisible, setPhraseVisible] = useState(false);
-  const [phase, setPhase] = useState<'shield' | 'letters' | 'phrase' | 'done'>('shield');
+  const [phase, setPhase] = useState<'centered' | 'sliding' | 'letters' | 'phrase' | 'done'>('centered');
 
   const phraseIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const phraseIterRef = useRef(0);
 
-  // Phase 1: Shield rotates from 90° clockwise back to 0°
+  // Phase 1: Shield appears centered (fade in + rotation)
+  // Phase 2: Shield slides left; letters start appearing while slide finishes
   useEffect(() => {
+    // After the centered entrance animation, trigger the slide-left
     const timer = setTimeout(() => {
-      setShieldReady(true);
-      // Wait for shield animation to finish, then start letters
-      setTimeout(() => setPhase('letters'), 1100);
-    }, 400);
+      setPhase('sliding');
+      // Start letters while the slide is still finishing — overlap for fluidity
+      setTimeout(() => setPhase('letters'), 300);
+    }, 1400);
     return () => clearTimeout(timer);
   }, []);
 
-  // Phase 2: Letters appear one by one, smooth stagger
+  // Phase 3: Letters appear one by one, smooth stagger
   useEffect(() => {
     if (phase !== 'letters') return;
 
@@ -44,7 +45,7 @@ export default function AnimatedHero(): React.JSX.Element {
     return () => clearInterval(interval);
   }, [phase]);
 
-  // Phase 3: Encryption text — full length appears immediately,
+  // Phase 4: Encryption text — full length appears immediately,
   // all characters resolve at roughly the same time
   const scramblePhrase = useCallback(() => {
     const totalChars = PHRASE.length;
@@ -95,11 +96,15 @@ export default function AnimatedHero(): React.JSX.Element {
     };
   }, [phase, scramblePhrase]);
 
+  // The shield is "centered" when in the 'centered' phase, and slides left after
+  const isCentered = phase === 'centered';
+  const hasSlid = phase !== 'centered'; // sliding, letters, phrase, done
+
   return (
     <div className="animated-hero">
       {/* Logo: shield + letters side by side */}
-      <div className="animated-hero__logo-row">
-        <div className={`animated-hero__shield ${shieldReady ? 'animated-hero__shield--visible' : ''}`}>
+      <div className={`animated-hero__logo-row ${isCentered ? 'animated-hero__logo-row--centered' : ''}`}>
+        <div className={`animated-hero__shield ${isCentered ? 'animated-hero__shield--centered' : ''} ${hasSlid ? 'animated-hero__shield--visible' : ''}`}>
           <img src={shieldUrl} alt="DocShield Shield" draggable={false} />
         </div>
         <div className="animated-hero__letters">
