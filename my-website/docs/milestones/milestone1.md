@@ -77,6 +77,10 @@ DocShield is a powerful platform that...
 - A singular system with **different options of anonymization and document formats**
 - A **safe and reliable** option for anyone that might need to anonymize documents
 
+## High Level Architecture
+
+![High Level Architecture](/milestones_imgs/high_level_architecture.png)
+
 ## Project Timeline
 
 See our calendar in **[HERE](/DocShieldSite/calendar)**
