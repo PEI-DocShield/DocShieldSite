@@ -79,7 +79,7 @@ DocShield is a powerful platform that...
 
 ## Project Timeline
 
-See our calendar in **[HERE](http://localhost:3001/DocShieldSite/calendar)**
+See our calendar in **[HERE](/DocShieldSite/calendar)**
 
 ## Comunication Plan
 
