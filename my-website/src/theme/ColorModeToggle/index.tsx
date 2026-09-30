@@ -52,7 +52,7 @@ export default function ColorModeToggleWrapper(props: Props): JSX.Element {
   };
 
   return (
-    <div onClickCapture={handleCapture} style={{ display: 'inline-flex' }}>
+    <div onClickCapture={handleCapture} className="custom-color-mode-toggle" style={{ display: 'inline-flex' }}>
       <ColorModeToggle {...props} onChange={handleChange} />
     </div>
   );

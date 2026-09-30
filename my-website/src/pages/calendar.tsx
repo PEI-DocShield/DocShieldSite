@@ -27,51 +27,12 @@ export default function CalendarPage(): React.JSX.Element {
         </div>
 
         {/* The Grid layout perfectly aligns all columns and allows spanning rows */}
-        <div className="calendar-grid fade-in-up delay-1" style={{ 
-          display: 'grid', 
-          gridTemplateColumns: '15% 25% 1fr', 
-          gap: '1.5rem', 
-          width: '100%',
-          alignItems: 'stretch'
-        }}>
+        <div className="calendar-grid fade-in-up delay-1">
           
           {/* Header Row */}
-          <div style={{ 
-            backgroundColor: 'var(--primary-color)', 
-            color: 'white', 
-            padding: '1rem', 
-            borderRadius: '12px', 
-            textAlign: 'center', 
-            fontWeight: 700, 
-            letterSpacing: '2px', 
-            textTransform: 'uppercase' 
-          }}>
-            Milestone
-          </div>
-          <div style={{ 
-            backgroundColor: 'var(--primary-color)', 
-            color: 'white', 
-            padding: '1rem', 
-            borderRadius: '12px', 
-            textAlign: 'center', 
-            fontWeight: 700, 
-            letterSpacing: '2px', 
-            textTransform: 'uppercase' 
-          }}>
-            Date
-          </div>
-          <div style={{ 
-            backgroundColor: 'var(--primary-color)', 
-            color: 'white', 
-            padding: '1rem', 
-            borderRadius: '12px', 
-            textAlign: 'center', 
-            fontWeight: 700, 
-            letterSpacing: '2px', 
-            textTransform: 'uppercase' 
-          }}>
-            Tasks
-          </div>
+          <div className="calendar-header">Milestone</div>
+          <div className="calendar-header">Date</div>
+          <div className="calendar-header">Tasks</div>
 
           {/* Data Rows */}
           {calendarData.map((item) => (
@@ -80,20 +41,9 @@ export default function CalendarPage(): React.JSX.Element {
               {/* Milestone Box spans vertically across all phases */}
               <Link 
                 to={item.link}
+                className="calendar-milestone-link"
                 style={{ 
                   gridRow: `span ${item.phases.length}`,
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center',
-                  backgroundColor: 'var(--ifm-background-color)',
-                  border: '1px solid var(--ifm-color-emphasis-300)', 
-                  borderRadius: '24px', 
-                  padding: '2rem 1rem',
-                  fontSize: '1.5rem',
-                  fontWeight: 800,
-                  color: 'var(--text-primary)',
-                  textDecoration: 'none',
-                  transition: 'all 0.2s ease',
                 }}
                 onMouseOver={(e) => {
                   e.currentTarget.style.color = 'var(--primary-color)';

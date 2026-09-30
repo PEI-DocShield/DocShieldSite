@@ -1,5 +1,5 @@
 import "../css/carousel.css";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Require all .md or .mdx files in the docs/minutes folder using Docusaurus' default loader
 const req = require.context('../../docs/minutes', false, /\.mdx?$/);
@@ -49,7 +49,17 @@ export default function MeetingMinutesViewer(): React.JSX.Element {
   const currentMeeting = meetingMinutesData.find(m => m.id === selectedId) || meetingMinutesData[0];
 
   const [startIndex, setStartIndex] = useState(0);
-  const visibleCount = 3;
+  const [visibleCount, setVisibleCount] = useState(3);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) setVisibleCount(1);
+      else if (window.innerWidth < 1024) setVisibleCount(2);
+      else setVisibleCount(3);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   const maxStartIndex = Math.max(0, meetingMinutesData.length - visibleCount);
 
   const nextSlide = () => setStartIndex(p => Math.min(p + 1, maxStartIndex));
@@ -62,7 +72,7 @@ export default function MeetingMinutesViewer(): React.JSX.Element {
       {/* Top Component: Selected Minute Details in its own separated container */}
       {currentMeeting && (
         <section style={{ width: '100%' }}>
-          <div className="section-container" style={{ margin: '0 auto', padding: '3rem 4rem', borderRadius: '24px', alignItems: 'flex-start', textAlign: 'left' }}>
+          <div className="section-container minute-detail-container" style={{ margin: '0 auto', borderRadius: '24px', alignItems: 'flex-start', textAlign: 'left' }}>
             <div className="minute-detail-view fade-in-up" style={{ border: 'none', padding: 0, boxShadow: 'none', background: 'transparent', width: '100%' }}>
               <div className="markdown-content" style={{ width: '100%' }}>
                 <currentMeeting.Content />
@@ -74,7 +84,7 @@ export default function MeetingMinutesViewer(): React.JSX.Element {
 
       {/* Bottom Component: List of available minutes in its own separated container */}
       <section style={{ width: '100%' }}>
-        <div className="section-container" style={{ margin: '0 auto', padding: '1rem 3rem', borderRadius: '50px' }}>
+        <div className="section-container minute-slider-container" style={{ margin: '0 auto', borderRadius: '50px' }}>
           
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', width: '100%' }}>
             <button 

@@ -264,3 +264,44 @@
     border-color: #334155;
 }
 
+
+.minute-detail-container {
+    padding: 3rem 4rem !important;
+}
+
+.minute-slider-container {
+    padding: 1rem 3rem !important;
+}
+
+@media (max-width: 640px) {
+  .minute-detail-container {
+      padding: 1.5rem 1rem !important;
+  }
+  .minute-slider-container {
+      padding: 0.5rem 0.5rem !important;
+  }
+  .minute-title-preview {
+      font-size: 0.85rem;
+  }
+  .minute-badge {
+      font-size: 0.75rem;
+  }
+  .minute-selector-btn {
+      padding: 0.75rem 0.5rem;
+  }
+  .minimal-meeting-header .meeting-topic {
+      font-size: 1.2rem;
+  }
+  .meeting-meta {
+      font-size: 0.8rem;
+  }
+  .minimal-col h4 {
+      font-size: 0.9rem;
+  }
+  .minimal-col ul {
+      font-size: 0.85rem;
+  }
+  .minimal-attendees {
+      font-size: 0.8rem;
+  }
+}

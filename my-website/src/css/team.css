@@ -223,3 +223,50 @@
 [data-theme="light"] .team-github-icon {
     background-image: url("/assets/GitHub_Invertocat_Black.svg");
 }
+
+@media (max-width: 640px) {
+  .polaroids-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    padding-bottom: 2rem;
+    width: 100%;
+    margin: 0;
+  }
+  .polaroid-wrapper {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3.4;
+  }
+  .polaroid-wrapper:nth-child(1),
+  .polaroid-wrapper:nth-child(3) {
+    grid-column: 1 / span 2;
+  }
+  .polaroid-wrapper:nth-child(2),
+  .polaroid-wrapper:nth-child(4) {
+    grid-column: 3 / span 2;
+  }
+  .polaroid-wrapper:nth-child(5) {
+    grid-column: 2 / span 2;
+  }
+  .polaroid-front {
+    padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+  }
+  .polaroid-name {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+  .polaroid-back {
+    padding: 0.5rem;
+  }
+  .back-name {
+    font-size: 1rem;
+  }
+  .back-role {
+    font-size: 0.5rem;
+    padding: 0.2rem 0.4rem;
+  }
+  .back-bio {
+    font-size: 0.6rem;
+  }
+}

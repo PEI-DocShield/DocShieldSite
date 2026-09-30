@@ -111,6 +111,23 @@
 @media (max-width: 640px) {
   .bento-grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .bento-card {
+    padding: 1.25rem;
+  }
+  .bento-image-placeholder {
+    height: 160px;
+    margin-bottom: 1rem;
+  }
+  .bento-title {
+    font-size: 1.2rem;
+  }
+  .bento-desc {
+    font-size: 0.9rem;
+  }
+  .span-2 {
+    grid-column: span 1;
   }
 }
 
