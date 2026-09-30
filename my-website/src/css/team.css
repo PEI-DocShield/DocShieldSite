@@ -1,0 +1,225 @@
+/* Team / Polaroid Section */
+#team .section-title {
+    margin-bottom: 3rem;
+}
+
+.polaroids-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    perspective: 1200px;
+    padding-bottom: 3rem;
+}
+
+.polaroid-wrapper {
+    width: 200px;
+    height: 340px;
+    perspective: 1200px;
+    cursor: pointer;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), z-index 0s 0.5s;
+    z-index: 1;
+}
+
+.polaroid-wrapper:hover {
+    transform: scale(1.08) rotate(0deg) !important;
+    z-index: 10;
+}
+
+.polaroid-wrapper.expanded {
+    transform: rotate(0deg) !important;
+    z-index: 999;
+}
+
+.polaroid-wrapper.expanded:hover {
+    transform: scale(1.08) rotate(0deg) !important;
+}
+
+.polaroid-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+.polaroid-wrapper.expanded .polaroid-inner {
+    transform: rotateY(180deg);
+}
+
+.polaroid-wrapper.expanded .polaroid-front {
+    pointer-events: none;
+}
+
+.polaroid-wrapper.expanded .polaroid-back {
+    pointer-events: auto;
+}
+
+.polaroid-front,
+.polaroid-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 2px;
+}
+
+.polaroid-front {
+    background: #FFF;
+    padding: 1rem 1rem 3rem 1rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), inset 0 0 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.polaroid-back {
+    background: #FFF;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), inset 0 0 3px rgba(0, 0, 0, 0.1);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.75rem;
+}
+
+.back-name {
+    font-family: 'Caveat', cursive;
+    font-size: 1.8rem;
+    color: #0F172A;
+    margin: 0;
+}
+
+.back-role {
+    display: inline-block;
+    font-family: var(--font-family);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #FFF;
+    background-color: var(--primary-color);
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+}
+
+.back-bio {
+    font-family: var(--font-family);
+    font-size: 0.85rem;
+    color: #475569;
+    line-height: 1.5;
+    margin: 0;
+    max-width: none;
+}
+
+.back-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.back-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+    border: none;
+    color: #475569;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.back-links a:hover {
+    transform: scale(1.15);
+}
+
+.polaroid-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #E2E8F0;
+    border: 1px solid #CBD5E1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94A3B8;
+}
+
+.polaroid-image svg {
+    width: 40%;
+    height: 40%;
+}
+
+.polaroid-name {
+    font-family: 'Caveat', cursive;
+    font-size: 1.7rem;
+    color: #0F172A;
+    margin-top: 1.5rem;
+    text-align: center;
+    transform: rotate(-2deg);
+    width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* Polaroid Dark Theme */
+[data-theme="dark"] .polaroid-front {
+    background: #1E293B;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), inset 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .polaroid-back {
+    background: #1E293B;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), inset 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .polaroid-image {
+    background-color: #0F172A;
+    border-color: #334155;
+    color: #475569;
+}
+
+[data-theme="dark"] .polaroid-name {
+    color: #F1F5F9;
+}
+
+[data-theme="dark"] .back-name {
+    color: #F1F5F9;
+}
+
+[data-theme="dark"] .back-bio {
+    color: #94A3B8;
+}
+
+[data-theme="dark"] .back-links a {
+    background-color: transparent;
+    border: none;
+    color: #94A3B8;
+}
+
+[data-theme="dark"] .back-links a:hover {
+    transform: scale(1.15);
+}
+
+
+.team-github-icon {
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("/assets/GitHub_Invertocat_White.svg");
+    transition: background-image 0.2s ease;
+}
+
+[data-theme="light"] .team-github-icon {
+    background-image: url("/assets/GitHub_Invertocat_Black.svg");
+}

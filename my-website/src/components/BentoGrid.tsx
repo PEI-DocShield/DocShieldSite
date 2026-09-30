@@ -3,7 +3,7 @@ import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { usePluginData } from '@docusaurus/useGlobalData';
 import ScrollScrubReveal from './ScrollScrubReveal';
-import './bento.css';
+import '../css/bento.css';
 
 interface MilestoneData {
   id: string;

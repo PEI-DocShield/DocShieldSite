@@ -1,3 +1,4 @@
+import "../css/hero.css";
 import React from 'react';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -7,6 +8,7 @@ import TeamPolaroids from '../components/TeamPolaroids';
 import AnimatedHero from '../components/AnimatedHero';
 import ScrollScrubReveal from '../components/ScrollScrubReveal';
 import { motion, useScroll, useTransform } from 'framer-motion';
+
 
 export default function Home(): React.JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -81,6 +83,7 @@ export default function Home(): React.JSX.Element {
 
       {/* Feature Sections */}
       <BentoGrid />
+
 
       {/* Team Section */}
       <ScrollScrubReveal id="team" className="section-custom">

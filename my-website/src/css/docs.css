@@ -1,0 +1,232 @@
+/* Documentation Section */
+
+.docs-container {
+    width: 100%;
+}
+
+.docs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-bottom: 2.25rem;
+}
+
+.docs-search {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: #F1F5F9;
+    border: 1px solid #E2E8F0;
+    padding: 0.6rem 1rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 320px;
+    color: #64748B;
+}
+
+[data-theme="dark"] .docs-search {
+    background-color: #1F2937;
+    border-color: #374151;
+    color: #9CA3AF;
+}
+
+.docs-search input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 0.9rem;
+    color: #0F172A;
+    width: 100%;
+    font-family: inherit;
+}
+
+[data-theme="dark"] .docs-search input {
+    color: #F8FAFC;
+}
+
+.docs-filter-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.doc-filter-btn {
+    padding: 0.5rem 1.1rem;
+    border: 1px solid #E2E8F0;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: #64748B;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+[data-theme="dark"] .doc-filter-btn {
+    background-color: #1F2937;
+    border-color: #374151;
+    color: #9CA3AF;
+}
+
+.doc-filter-btn:hover {
+    color: #0F172A;
+    border-color: #CBD5E1;
+}
+
+[data-theme="dark"] .doc-filter-btn:hover {
+    color: #F8FAFC;
+    border-color: #6B7280;
+}
+
+.doc-filter-btn.active {
+    background-color: var(--primary-color) !important;
+    color: #FFFFFF !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 2px 8px rgba(37, 130, 142, 0.25);
+}
+
+.docs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .docs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.doc-card {
+    display: flex;
+    gap: 1.25rem;
+    background-color: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 1.75rem;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] .doc-card {
+    background-color: #1F2937;
+    border-color: #374151;
+}
+
+.doc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.08);
+    border-color: #CBD5E1;
+    background-color: #FFFFFF;
+}
+
+[data-theme="dark"] .doc-card:hover {
+    background-color: #111827;
+    border-color: #4B5563;
+}
+
+.doc-card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+[data-theme="dark"] .doc-card-icon {
+    background-color: #111827;
+    border-color: #374151;
+}
+
+.doc-card-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--primary-color);
+    background-color: rgba(37, 130, 142, 0.1);
+    padding: 0.2rem 0.65rem;
+    border-radius: 12px;
+    margin-bottom: 0.6rem;
+}
+
+.doc-card-badge.tech {
+    color: #8B5CF6;
+    background-color: rgba(139, 92, 246, 0.1);
+}
+
+.doc-card-badge.security {
+    color: #10B981;
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+.doc-card-badge.api {
+    color: #F59E0B;
+    background-color: rgba(245, 158, 11, 0.1);
+}
+
+.doc-card-title {
+    font-family: 'Sora', system-ui, -apple-system, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 0;
+}
+
+[data-theme="dark"] .doc-card-title {
+    color: #F8FAFC;
+}
+
+.doc-card-desc {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+[data-theme="dark"] .doc-card-desc {
+    color: #9CA3AF;
+}
+
+.doc-card-link {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.doc-card-link:hover {
+    gap: 0.6rem;
+    color: var(--primary-hover);
+    text-decoration: none;
+}
+
+/* Animations */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.15s; }
+.delay-2 { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+

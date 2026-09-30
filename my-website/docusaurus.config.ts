@@ -80,6 +80,7 @@ const config: Config = {
         {
           href: 'https://github.com/PEI-DocShield',
           position: 'right',
+          label: ' | follow us',
           className: 'header-github-link',
           'aria-label': 'GitHub Repository',
         },

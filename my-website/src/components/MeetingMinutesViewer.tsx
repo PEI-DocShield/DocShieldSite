@@ -1,3 +1,4 @@
+import "../css/carousel.css";
 import React, { useState } from 'react';
 
 // Require all .md or .mdx files in the docs/minutes folder using Docusaurus' default loader

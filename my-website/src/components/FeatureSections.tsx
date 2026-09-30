@@ -1,10 +1,11 @@
+import "../css/hero.css";
 import React from 'react';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { usePluginData } from '@docusaurus/useGlobalData';
 import ScrollFloat from './react_bits/ScrollFloat';
 import ScrollScrubReveal from './ScrollScrubReveal';
-import './feature-sections.css';
+import '../css/feature-sections.css';
 
 interface MilestoneData {
   id: string;

@@ -1,0 +1,81 @@
+/* Calendar Table */
+.table-container {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    overflow-x: auto;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] .table-container {
+    background-color: #1F2937;
+    border-color: #374151;
+}
+
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.calendar-table th,
+.calendar-table td {
+    padding: 1.5rem;
+    border-bottom: 1px solid #E2E8F0;
+    vertical-align: top;
+}
+
+[data-theme="dark"] .calendar-table th,
+[data-theme="dark"] .calendar-table td {
+    border-bottom-color: #374151;
+}
+
+.calendar-table th {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    white-space: nowrap;
+}
+
+.calendar-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.milestone-name a {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    color: #0F172A;
+}
+
+[data-theme="dark"] .milestone-name a {
+    color: #F8FAFC;
+}
+
+.milestone-name a:hover {
+    color: var(--primary-color);
+}
+
+.milestone-date {
+    color: #475569;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+[data-theme="dark"] .milestone-date {
+    color: #9CA3AF;
+}
+
+.milestone-tasks ul {
+    list-style-type: disc;
+    padding-left: 1.25rem;
+    color: #334155;
+    line-height: 1.6;
+}
+
+[data-theme="dark"] .milestone-tasks ul {
+    color: #D1D5DB;
+}
+

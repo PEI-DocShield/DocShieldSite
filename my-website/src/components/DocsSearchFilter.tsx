@@ -1,3 +1,4 @@
+import "../css/docs.css";
 import React, { useState } from 'react';
 import Link from '@docusaurus/Link';
 import { docsData, DocCardItem } from '../data/docsData';

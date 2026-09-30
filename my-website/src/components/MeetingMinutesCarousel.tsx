@@ -1,3 +1,4 @@
+import "../css/carousel.css";
 import React, { useState } from 'react';
 import rawMarkdown from '!!raw-loader!../../docs/meeting-minutes.md';
 
