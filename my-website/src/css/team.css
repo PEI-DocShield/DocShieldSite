@@ -224,6 +224,19 @@
     background-image: url("/assets/GitHub_Invertocat_Black.svg");
 }
 
+.team-linkedin-icon {
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    vertical-align: middle;
+    fill: #000000;
+    transition: fill 0.2s ease;
+}
+
+[data-theme="dark"] .team-linkedin-icon {
+    fill: #FFFFFF;
+}
+
 @media (max-width: 640px) {
   .polaroids-container {
     display: grid;

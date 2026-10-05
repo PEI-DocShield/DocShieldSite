@@ -3,6 +3,7 @@ export interface TeamMember {
   role: string;
   bio: string;
   github: string;
+  linkedin?: string;
   rotation: number;
   image?: string;
 }
@@ -29,6 +30,7 @@ export const teamData: TeamMember[] = [
     role: 'Team Manager',
     bio: 'DocShield team member, working on platform development.',
     github: 'https://github.com/inecalves',
+    linkedin: 'https://www.linkedin.com/in/in%C3%AAs-gon%C3%A7alves-67a65636a/',
     rotation: 1,
     image: '/assets/foto_ines.jpeg',
   },
@@ -45,6 +47,7 @@ export const teamData: TeamMember[] = [
     role: 'Product Owner | DPO',
     bio: 'DocShield team member, working on platform development.',
     github: 'https://github.com/tiagofcvale',
+    linkedin: 'https://www.linkedin.com/in/tiagofcvale/',
     rotation: 3,
     image: '/assets/foto_vale.jpeg',
   },
