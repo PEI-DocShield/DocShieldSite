@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'DocShield - Project Progress',
   tagline: 'A safe and practical solution for document anonymization.',
-  favicon: 'assets/logo.png',
+  favicon: 'assets/Logo.svg',
 
   future: {
     v4: true,
@@ -49,7 +49,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'assets/logoCompleta.png',
+    image: 'assets/Logo_complete_dark_mode.svg',
     colorMode: {
       defaultMode: 'dark',
       respectPrefersColorScheme: true,
@@ -58,7 +58,8 @@ const config: Config = {
       title: '',
       logo: {
         alt: 'DocShield Logo',
-        src: 'assets/logoCompleta.png',
+        src: 'assets/Logo_complete_light_mode.svg',
+        srcDark: 'assets/Logo_complete_dark_mode.svg',
       },
       items: [
         {to: '/minutes', label: 'Minutes', position: 'left'},

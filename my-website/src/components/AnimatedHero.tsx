@@ -1,13 +1,11 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import MorphingShield from './MorphingShield';
 
 const PHRASE = 'A safe and practical solution for document anonymization.';
 const LETTERS = 'ocShield';
 const CIPHER_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*!?<>{}[]~^';
 
 export default function AnimatedHero(): React.JSX.Element {
-  const shieldUrl = useBaseUrl('/assets/logo.png');
-
   const [revealedLetters, setRevealedLetters] = useState(0);
   const [phraseText, setPhraseText] = useState('');
   const [phraseVisible, setPhraseVisible] = useState(false);
@@ -23,26 +21,24 @@ export default function AnimatedHero(): React.JSX.Element {
     const timer = setTimeout(() => {
       setPhase('sliding');
       // Start letters while the slide is still finishing — overlap for fluidity
-      setTimeout(() => setPhase('letters'), 300);
-    }, 1400);
+      setTimeout(() => setPhase('letters'), 400);
+    }, 1325);
     return () => clearTimeout(timer);
   }, []);
 
-  // Phase 3: Letters appear one by one, smooth stagger
+  // Phase 3: Letters appear using pure CSS transition delays
   useEffect(() => {
     if (phase !== 'letters') return;
 
-    let count = 0;
-    const interval = setInterval(() => {
-      count++;
-      setRevealedLetters(count);
-      if (count >= LETTERS.length) {
-        clearInterval(interval);
-        setTimeout(() => setPhase('phrase'), 300);
-      }
-    }, 90);
+    // Trigger all letters to appear instantly; CSS transitionDelay handles the stagger
+    setRevealedLetters(LETTERS.length);
+    
+    // Wait for the longest letter transition (delay + duration) before moving to phrase
+    const maxDelay = 200 + (LETTERS.length * 40);
+    const duration = 600; // 0.6s transform transition
+    const timer = setTimeout(() => setPhase('phrase'), maxDelay + duration + 100);
 
-    return () => clearInterval(interval);
+    return () => clearTimeout(timer);
   }, [phase]);
 
   // Phase 4: Encryption text — full length appears immediately,
@@ -99,20 +95,21 @@ export default function AnimatedHero(): React.JSX.Element {
   // The shield is "centered" when in the 'centered' phase, and slides left after
   const isCentered = phase === 'centered';
   const hasSlid = phase !== 'centered'; // sliding, letters, phrase, done
+  const showLogoWithO = phase === 'letters' || phase === 'phrase' || phase === 'done';
 
   return (
     <div className="animated-hero">
       {/* Logo: shield + letters side by side */}
       <div className={`animated-hero__logo-row ${isCentered ? 'animated-hero__logo-row--centered' : ''}`}>
         <div className={`animated-hero__shield ${isCentered ? 'animated-hero__shield--centered' : ''} ${hasSlid ? 'animated-hero__shield--visible' : ''}`}>
-          <img src={shieldUrl} alt="DocShield Shield" draggable={false} />
+          <MorphingShield isMorphed={showLogoWithO} className="animated-hero__shield-img" />
         </div>
         <div className="animated-hero__letters">
           {LETTERS.split('').map((char, i) => (
             <span
               key={i}
               className={`animated-hero__letter ${i < revealedLetters ? 'animated-hero__letter--visible' : ''}`}
-              style={{ transitionDelay: `${i * 40}ms` }}
+              style={{ transitionDelay: `${150 + i * 80}ms` }}
             >
               {char}
             </span>
