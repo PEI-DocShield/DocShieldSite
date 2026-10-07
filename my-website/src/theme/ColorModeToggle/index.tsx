@@ -16,7 +16,7 @@ export default function ColorModeToggleWrapper(props: Props): JSX.Element {
   const handleChange = (value: string) => {
     // Check if View Transitions API is supported
     if (!document.startViewTransition) {
-      props.onChange(value);
+      props.onChange(value as any);
       return;
     }
 
@@ -42,7 +42,7 @@ export default function ColorModeToggleWrapper(props: Props): JSX.Element {
       document.documentElement.setAttribute('data-theme', resolvedValue);
       
       flushSync(() => {
-        props.onChange(value);
+        props.onChange(value as any);
       });
     });
 

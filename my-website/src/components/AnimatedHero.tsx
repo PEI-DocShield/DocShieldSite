@@ -34,7 +34,7 @@ export default function AnimatedHero(): React.JSX.Element {
     setRevealedLetters(LETTERS.length);
     
     // Wait for the longest letter transition (delay + duration) before moving to phrase
-    const maxDelay = 200 + (LETTERS.length * 40);
+    const maxDelay = 200 + (LETTERS.length * 10);
     const duration = 600; // 0.6s transform transition
     const timer = setTimeout(() => setPhase('phrase'), maxDelay + duration + 100);
 
