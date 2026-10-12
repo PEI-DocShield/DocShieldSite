@@ -320,4 +320,17 @@ States in which the entities of a document are: detected, confirmed, rejected, m
 <img src={require('@site/static/milestones_imgs/mockup_guest/5.png').default} alt="MockUp Guest" />
 <img src={require('@site/static/milestones_imgs/mockup_guest/6.png').default} alt="MockUp Guest" />
 
+## MockUps - Signed-in User
+
+The major diference between Signed-in Users and Guest Users, its that the signed-in user can put the files in the workspaces and manage them
+
+<img src={require('@site/static/milestones_imgs/mockup_signed_in/1.png').default} alt="MockUp Signed-in" />
+<img src={require('@site/static/milestones_imgs/mockup_signed_in/2.png').default} alt="MockUp Signed-in" />
+
+## MockUps - Workspaces
+
+<img src={require('@site/static/milestones_imgs/workspaces/1.png').default} alt="MockUp Workspace" />
+<img src={require('@site/static/milestones_imgs/workspaces/2.png').default} alt="MockUp Workspace" />
+<img src={require('@site/static/milestones_imgs/workspaces/3.png').default} alt="MockUp Workspace" />
+
 
