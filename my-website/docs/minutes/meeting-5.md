@@ -2,7 +2,7 @@
 title: "Meeting 5 - What to do the rest of the M2"
 ---
 
-# Meeting 4 — What to do the rest of the M2
+# Meeting 5 — What to do the rest of the M2
 - **Date**: 6 october, 2026
 - **Duration**: 30min
 
