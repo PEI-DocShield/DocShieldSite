@@ -40,6 +40,27 @@ export default function MouseProximityGrid({ className, style, interactive = fal
 
     // Mouse coordinates (target & current for lerp)
     let mouse = { x: -1000, y: -1000, targetX: -1000, targetY: -1000, active: false };
+    
+    // Document card aura (reacts to WorkflowSection document card scroll and step color)
+    let cardAura = {
+      x: -1000,
+      y: -1000,
+      targetX: -1000,
+      targetY: -1000,
+      active: false,
+      targetActive: false,
+      radius: 360,
+      r: 37,
+      g: 130,
+      b: 142,
+      targetR: 37,
+      targetG: 130,
+      targetB: 142,
+    };
+
+    let scrollVelocity = 0;
+    let lastScrollY = typeof window !== 'undefined' ? window.scrollY : 0;
+
     let cells: Cell[] = [];
 
     const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -103,6 +124,43 @@ export default function MouseProximityGrid({ className, style, interactive = fal
       window.addEventListener('pointerleave', handlePointerLeave);
     }
 
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const delta = Math.abs(currentScrollY - lastScrollY);
+      lastScrollY = currentScrollY;
+      scrollVelocity = Math.min(1, scrollVelocity + delta * 0.02);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    const handleCardGlow = (e: Event) => {
+      const custom = e as CustomEvent<{ x: number; y: number; active: boolean; rgb?: string; radius?: number }>;
+      if (custom.detail) {
+        const rect = canvas.getBoundingClientRect();
+        cardAura.targetX = custom.detail.x - rect.left;
+        cardAura.targetY = custom.detail.y - rect.top;
+        cardAura.targetActive = custom.detail.active;
+
+        // Snap immediately when waking up from offscreen so it doesn't streak across
+        if (cardAura.x < -500 && custom.detail.active) {
+          cardAura.x = cardAura.targetX;
+          cardAura.y = cardAura.targetY;
+        }
+
+        if (custom.detail.rgb) {
+          const parts = custom.detail.rgb.split(',').map((p) => parseFloat(p.trim()));
+          if (parts.length === 3 && !isNaN(parts[0]) && !isNaN(parts[1]) && !isNaN(parts[2])) {
+            cardAura.targetR = parts[0];
+            cardAura.targetG = parts[1];
+            cardAura.targetB = parts[2];
+          }
+        }
+        if (custom.detail.radius) cardAura.radius = custom.detail.radius;
+      }
+    };
+
+    window.addEventListener('docshield:card-glow', handleCardGlow);
+
     const render = () => {
       animId = requestAnimationFrame(render);
 
@@ -115,6 +173,25 @@ export default function MouseProximityGrid({ className, style, interactive = fal
         mouse.y += (-1000 - mouse.y) * 0.1;
       }
 
+      // Smooth card aura lerp
+      if (cardAura.targetActive) {
+        cardAura.x += (cardAura.targetX - cardAura.x) * 0.15;
+        cardAura.y += (cardAura.targetY - cardAura.y) * 0.15;
+        cardAura.active = true;
+      } else {
+        cardAura.x += (-1000 - cardAura.x) * 0.1;
+        cardAura.y += (-1000 - cardAura.y) * 0.1;
+        if (Math.abs(cardAura.x - -1000) < 5) cardAura.active = false;
+      }
+
+      // Smooth RGB color transition and scroll velocity decay
+      cardAura.r += (cardAura.targetR - cardAura.r) * 0.08;
+      cardAura.g += (cardAura.targetG - cardAura.g) * 0.08;
+      cardAura.b += (cardAura.targetB - cardAura.b) * 0.08;
+      const cardRgb = `${Math.round(cardAura.r)}, ${Math.round(cardAura.g)}, ${Math.round(cardAura.b)}`;
+
+      scrollVelocity *= 0.94;
+
       ctx.clearRect(0, 0, width, height);
 
       const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
@@ -122,7 +199,7 @@ export default function MouseProximityGrid({ className, style, interactive = fal
       const accentCyan = '36, 108, 119';
       const accentTeal = '36, 108, 119';
 
-      // 1. Lightweight Radial Glow Spotlight
+      // 1. Lightweight Radial Glow Spotlight (Mouse)
       if (mouse.x > -500 && mouse.y > -500) {
         const glowRadius = PROXIMITY_RADIUS * 1.1;
         const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, glowRadius);
@@ -136,7 +213,21 @@ export default function MouseProximityGrid({ className, style, interactive = fal
         ctx.fill();
       }
 
-      // 2. Fast Grid Cell Rendering (No heavy shadowBlur!)
+      // 1b. Document Card Radial Glow Spotlight (subtle, dimmed)
+      if (cardAura.active && cardAura.x > -500 && cardAura.y > -500) {
+        const cardGlowRadius = cardAura.radius;
+        const cardGradient = ctx.createRadialGradient(cardAura.x, cardAura.y, 30, cardAura.x, cardAura.y, cardGlowRadius);
+        cardGradient.addColorStop(0, `rgba(${cardRgb}, ${isDark ? 0.16 : 0.09})`);
+        cardGradient.addColorStop(0.5, `rgba(${cardRgb}, ${isDark ? 0.05 : 0.025})`);
+        cardGradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+        ctx.fillStyle = cardGradient;
+        ctx.beginPath();
+        ctx.arc(cardAura.x, cardAura.y, cardGlowRadius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // 2. Fast Grid Cell Rendering
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.font = "13px 'Courier New', Courier, monospace";
@@ -173,33 +264,64 @@ export default function MouseProximityGrid({ className, style, interactive = fal
           }
         }
 
+        // Proximity to Document Card (gently reacts to scroll near the card)
+        let cardIntensity = 0;
+        if (cardAura.active && cardAura.x > -500) {
+          const cdx = cardAura.x - cell.x;
+          const cdy = cardAura.y - cell.y;
+          const cDistSq = cdx * cdx + cdy * cdy;
+          const cardRadSq = cardAura.radius * cardAura.radius;
+
+          if (cDistSq < cardRadSq) {
+            const cDist = Math.sqrt(cDistSq);
+            cardIntensity = 1 - cDist / cardAura.radius;
+
+            // React to scrolling near the card: subtle scramble proportional to scroll speed
+            const scrambleChance = (0.03 + scrollVelocity * 0.15) * cardIntensity;
+            if (!prefersReducedMotion && Math.random() < scrambleChance) {
+              cell.char = CHARS[Math.floor(Math.random() * CHARS.length)];
+              cell.scrambleTimer = 6;
+            }
+          }
+        }
+
         let opacity = cell.isSpecial ? 0.3 : 0.12;
         let charColor = `rgba(${baseColor}, ${opacity})`;
 
+        const effectiveIntensity = Math.max(intensity, cardIntensity * 0.5);
+
         if (interactive) {
-          if (intensity > 0) {
-            opacity = Math.min(0.9, opacity + intensity * 0.75);
+          if (effectiveIntensity > 0) {
+            opacity = Math.min(0.85, opacity + effectiveIntensity * 0.45 + (cardIntensity > 0 ? scrollVelocity * 0.1 : 0));
           }
           if (intensity > 0.5) {
             charColor = `rgba(${accentCyan}, ${opacity})`;
           } else if (intensity > 0.2) {
             charColor = `rgba(${accentTeal}, ${opacity})`;
+          } else if (cardIntensity > 0.1) {
+            // Subtle character tint near the card with the step's pastel/teal color
+            charColor = `rgba(${cardRgb}, ${opacity})`;
           }
         } else {
-          // Make the static background more noticeable
-          opacity = cell.isSpecial ? 0.45 : 0.25;
-          charColor = `rgba(${baseColor}, ${opacity})`;
-          
-          if (cell.isHighlighted) {
-            opacity = 0.7;
-            if (cell.isBlue) {
-              charColor = `rgba(${accentCyan}, ${opacity})`;
-            } else {
-              charColor = `rgba(148, 163, 184, ${opacity})`;
+          // Even when static, if cardAura is active:
+          if (cardIntensity > 0.1) {
+            opacity = Math.min(0.8, 0.25 + cardIntensity * 0.35 + scrollVelocity * 0.1);
+            charColor = `rgba(${cardRgb}, ${opacity})`;
+          } else {
+            // Make the static background more noticeable
+            opacity = cell.isSpecial ? 0.45 : 0.25;
+            charColor = `rgba(${baseColor}, ${opacity})`;
+            
+            if (cell.isHighlighted) {
+              opacity = 0.7;
+              if (cell.isBlue) {
+                charColor = `rgba(${accentCyan}, ${opacity})`;
+              } else {
+                charColor = `rgba(148, 163, 184, ${opacity})`;
+              }
             }
           }
         }
-
 
         ctx.fillStyle = charColor;
         ctx.fillText(cell.char, cell.x + displacementX, cell.y + displacementY);
@@ -236,6 +358,8 @@ export default function MouseProximityGrid({ className, style, interactive = fal
     return () => {
       cancelAnimationFrame(animId);
       resizeObserver.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('docshield:card-glow', handleCardGlow);
       if (interactive) {
         window.removeEventListener('pointermove', handlePointerMove);
         window.removeEventListener('pointerleave', handlePointerLeave);

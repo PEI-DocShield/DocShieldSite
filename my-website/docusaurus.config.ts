@@ -37,6 +37,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           routeBasePath: 'docs',
+          breadcrumbs: false,
         },
         blog: {
           showReadingTime: true,
@@ -77,11 +78,11 @@ const config: Config = {
           ],
         },
         {to: '/#team', label: 'Team', position: 'left'},
-        {to: '/under-construction', label: 'Documentation', position: 'left'},
+        {to: '/documentation', label: 'Documentation', position: 'left'},
         {
           href: 'https://github.com/PEI-DocShield',
           position: 'right',
-          label: ' | follow us',
+          label: ' follow us',
           className: 'header-github-link',
           'aria-label': 'GitHub Repository',
         },

@@ -22,12 +22,20 @@ export default function UnderConstruction(): React.JSX.Element {
         <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', marginBottom: '2rem' }}>
           We're still working on the documentation. Check back later!
         </p>
-        <Link
-          className="button button--primary button--lg"
-          to="/"
-        >
-          Back to Home
-        </Link>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <Link
+            className="button button--primary button--lg"
+            to="/documentation"
+          >
+            Open Documentation Workspace
+          </Link>
+          <Link
+            className="button button--secondary button--lg"
+            to="/"
+          >
+            Back to Home
+          </Link>
+        </div>
       </main>
     </Layout>
   );

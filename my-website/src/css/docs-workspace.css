@@ -1,0 +1,899 @@
+/* ==========================================================================
+   DocShield Documentation Workspace CSS (3D Folder Style - Compact 4-Grid)
+   - Solid flat #25828e teal (no gradients, uniform color for tab, back, front)
+   - Seamless transition between tab and folder body
+   - Smaller, compact square-ish folder dimensions (205px width)
+   - Real pocket structure with pop-out document hover
+   ========================================================================== */
+
+.docs-workspace-wrapper {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   Workspace Window Frame Chassis
+   -------------------------------------------------------------------------- */
+.ws-window-frame {
+  background: var(--surface-color, #ffffff);
+  border: 1px solid var(--surface-border, rgba(0, 0, 0, 0.08));
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), 0 20px 48px -12px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  min-height: max(640px, calc(100vh - 240px));
+  transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .ws-window-frame {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5), 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   Window Header / Breadcrumbs / Search Bar
+   -------------------------------------------------------------------------- */
+.ws-window-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 0.95rem 1.5rem;
+  background: rgba(0, 0, 0, 0.025);
+  border-bottom: 1px solid var(--surface-border, rgba(0, 0, 0, 0.08));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+[data-theme='dark'] .ws-window-header {
+  background: rgba(255, 255, 255, 0.025);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Traffic light dots */
+.ws-window-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.ws-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  display: inline-block;
+}
+
+.ws-dot--red {
+  background-color: #ef4444;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
+}
+
+.ws-dot--yellow {
+  background-color: #f59e0b;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.4);
+}
+
+.ws-dot--green {
+  background-color: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.4);
+}
+
+/* Breadcrumb navigation */
+.ws-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary, #64748b);
+}
+
+.ws-breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 600;
+  color: var(--text-primary, #0f172a);
+}
+
+[data-theme='dark'] .ws-breadcrumb-item {
+  color: #f8fafc;
+}
+
+.ws-breadcrumb-active {
+  color: var(--primary-color);
+}
+
+.ws-breadcrumb-sep {
+  opacity: 0.4;
+  user-select: none;
+}
+
+.ws-breadcrumb-meta {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Search Box */
+.ws-search-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface-color, #ffffff);
+  border: 1px solid var(--surface-border, rgba(0, 0, 0, 0.1));
+  border-radius: 10px;
+  padding: 0.4rem 0.85rem;
+  width: 290px;
+  max-width: 100%;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+[data-theme='dark'] .ws-search-box {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.ws-search-box:focus-within {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(37, 130, 142, 0.2);
+}
+
+.ws-search-icon {
+  width: 15px;
+  height: 15px;
+  color: var(--text-secondary, #64748b);
+  flex-shrink: 0;
+}
+
+.ws-search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.86rem;
+  color: var(--text-primary, #0f172a);
+  width: 100%;
+}
+
+[data-theme='dark'] .ws-search-input {
+  color: #f8fafc;
+}
+
+.ws-search-clear {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.ws-search-clear:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Workspace Drive Container
+   -------------------------------------------------------------------------- */
+.ws-drive-container {
+  padding: 2.5rem 2.25rem 3.5rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .ws-drive-container {
+    padding: 1.75rem 1.25rem 2.25rem 1.25rem;
+    gap: 1.75rem;
+  }
+}
+
+.ws-drive-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ws-drive-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.ws-drive-title {
+  margin: 0;
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.ws-drive-count-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  background: rgba(37, 130, 142, 0.12);
+  color: var(--primary-color);
+}
+
+.ws-drive-subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   "START HERE" STRIP (Recommended Reading Path & Latest Update)
+   -------------------------------------------------------------------------- */
+.ws-start-here-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  background: rgba(37, 130, 142, 0.06);
+  border: 1px solid rgba(37, 130, 142, 0.2);
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+[data-theme='dark'] .ws-start-here-strip {
+  background: rgba(37, 130, 142, 0.1);
+  border-color: rgba(37, 130, 142, 0.25);
+}
+
+.ws-start-here-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.ws-start-here-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  background: var(--primary-color, #25828e);
+  color: #ffffff;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.ws-start-here-label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.ws-path-steps {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.ws-path-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.28rem 0.75rem;
+  border-radius: 8px;
+  background: var(--surface-color, #ffffff);
+  border: 1px solid var(--surface-border, rgba(0, 0, 0, 0.12));
+  color: var(--text-primary);
+  text-decoration: none !important;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme='dark'] .ws-path-step {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #f8fafc;
+}
+
+.ws-path-step:hover {
+  background: var(--primary-color, #25828e);
+  color: #ffffff !important;
+  border-color: var(--primary-color, #25828e);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 130, 142, 0.25);
+}
+
+.ws-path-num {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: rgba(37, 130, 142, 0.15);
+  color: var(--primary-color, #25828e);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.ws-path-step:hover .ws-path-num {
+  background: #ffffff;
+  color: var(--primary-color, #25828e);
+}
+
+.ws-path-arrow {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  user-select: none;
+}
+
+.ws-start-here-right {
+  display: flex;
+  align-items: center;
+}
+
+.ws-update-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgba(0, 0, 0, 0.03);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+}
+
+[data-theme='dark'] .ws-update-pill {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ws-update-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   PROJECT PHASES SECTION (Elaboration Phase)
+   -------------------------------------------------------------------------- */
+.ws-phase-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ws-phase-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--surface-border, rgba(0, 0, 0, 0.08));
+}
+
+[data-theme='dark'] .ws-phase-header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.ws-phase-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ws-phase-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  background: #25828e;
+  color: #ffffff;
+}
+
+.ws-phase-name {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.ws-phase-sep {
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.ws-phase-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.ws-phase-count {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  background: rgba(37, 130, 142, 0.1);
+  color: var(--primary-color, #25828e);
+}
+
+/* Upcoming Phase Section Styling */
+.ws-phase-section--future {
+  opacity: 0.9;
+  transition: opacity 0.25s ease;
+}
+
+.ws-phase-section--future:hover {
+  opacity: 1;
+}
+
+.ws-phase-badge--upcoming {
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--text-secondary);
+}
+
+[data-theme='dark'] .ws-phase-badge--upcoming {
+  background: rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+}
+
+.ws-phase-count--upcoming {
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text-secondary);
+}
+
+[data-theme='dark'] .ws-phase-count--upcoming {
+  background: rgba(255, 255, 255, 0.05);
+  color: #94a3b8;
+}
+
+.ws-future-phase-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.35rem 1.75rem;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1.5px dashed var(--surface-border, rgba(0, 0, 0, 0.12));
+  transition: all 0.25s ease;
+}
+
+[data-theme='dark'] .ws-future-phase-card {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.ws-future-phase-card:hover {
+  border-color: rgba(37, 130, 142, 0.35);
+  background: rgba(37, 130, 142, 0.03);
+}
+
+.ws-future-phase-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(37, 130, 142, 0.08);
+  color: var(--primary-color, #25828e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+[data-theme='dark'] .ws-future-phase-icon {
+  background: rgba(37, 130, 142, 0.15);
+  color: #5eead4;
+}
+
+.ws-future-phase-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ws-future-phase-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.ws-future-phase-text {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* --------------------------------------------------------------------------
+   5 FOLDERS PER ROW GRID (Centered)
+   Fixed compact width (205px) so folders stay square and never stretch too wide
+   -------------------------------------------------------------------------- */
+.ws-folders-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 205px);
+  gap: 2.25rem 1.75rem;
+  justify-content: center;
+}
+
+@media (max-width: 1240px) {
+  .ws-folders-grid {
+    grid-template-columns: repeat(4, 205px);
+    gap: 2rem 1.5rem;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .ws-folders-grid {
+    grid-template-columns: repeat(3, 205px);
+    gap: 2rem 1.5rem;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .ws-folders-grid {
+    grid-template-columns: repeat(2, 205px);
+    gap: 1.75rem 1.5rem;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .ws-folders-grid {
+    grid-template-columns: 205px;
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   3D FOLDER CARD CONTAINER
+   ========================================================================== */
+.ws-folder-3d {
+  position: relative;
+  display: inline-block;
+  width: 205px;
+  text-decoration: none !important;
+  color: inherit !important;
+  cursor: pointer;
+  padding-top: 14px;
+  box-sizing: border-box;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ws-folder-3d:hover {
+  transform: translateY(-5px);
+}
+
+.ws-folder-3d:active {
+  transform: translateY(-1px);
+}
+
+/* Physical folder construct */
+.ws-folder-construct {
+  position: relative;
+  width: 205px;
+  height: 155px;
+  user-select: none;
+}
+
+/* ==========================================================================
+   LAYER 1: BACK FLAP & TAB (Z-Index: 1)
+   Flat solid #25828e teal (no gradient), seamless tab-to-body transition
+   ========================================================================== */
+.ws-folder-back {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 125px;
+  z-index: 1;
+}
+
+/* Back body plate: flat #25828e */
+.ws-folder-back-body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #25828e;
+  border-radius: 0 12px 12px 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='dark'] .ws-folder-back-body {
+  background: #25828e;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Top Tab: exact same flat #25828e, flows seamlessly into the back body */
+.ws-folder-tab {
+  position: absolute;
+  top: -24px;
+  left: 10px;
+  height: 25px;
+  background: #25828e;
+  border-radius: 8px 8px 0 0;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  max-width: calc(100% - 20px);
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+[data-theme='dark'] .ws-folder-tab {
+  background: #25828e;
+}
+
+.ws-folder-tab-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   LAYER 2: DOCUMENTS (Z-Index: 2)
+   Sandwiched inside the folder pocket:
+   - Bottom rests 22px from card bottom (inside the 92px front flap)
+   - Top sticks out ~16px above front flap at rest
+   - Pop out on hover without detaching!
+   ========================================================================== */
+.ws-folder-docs {
+  position: absolute;
+  bottom: 22px;
+  left: 8px;
+  right: 8px;
+  height: 88px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ws-folder-doc {
+  position: absolute;
+  bottom: 0;
+  height: 82px;
+  width: 66%;
+  background: #ffffff;
+  border-radius: 6px 6px 3px 3px;
+  padding: 6px 8px;
+  box-sizing: border-box;
+  box-shadow:
+    0 2px 7px rgba(0, 0, 0, 0.12),
+    0 0 1px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.32s ease;
+  will-change: transform;
+}
+
+[data-theme='dark'] .ws-folder-doc {
+  background: #f8fafc;
+  box-shadow:
+    0 3px 9px rgba(0, 0, 0, 0.4),
+    0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+/* Mini document text and placeholder lines */
+.ws-folder-doc-label {
+  font-size: 0.63rem;
+  font-weight: 700;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.15;
+  display: block;
+}
+
+.ws-folder-doc-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5px;
+  margin-top: 1px;
+}
+
+.ws-folder-doc-line {
+  height: 2px;
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+
+.ws-folder-doc-line--1 {
+  width: 72%;
+}
+
+.ws-folder-doc-line--2 {
+  width: 48%;
+}
+
+/* Document orientations inside folder pocket */
+.ws-folder-doc--0 {
+  left: 3%;
+  transform: rotate(-5deg);
+  z-index: 2;
+}
+
+.ws-folder-doc--1 {
+  left: 17%;
+  transform: rotate(0deg);
+  z-index: 1;
+  height: 86px;
+}
+
+.ws-folder-doc--2 {
+  right: 3%;
+  left: auto;
+  transform: rotate(5deg);
+  z-index: 3;
+}
+
+/* ==========================================================================
+   POP-OUT HOVER ANIMATION: Documents slide UPWARD smoothly
+   ========================================================================== */
+.ws-folder-3d:hover .ws-folder-doc--0 {
+  transform: rotate(-7deg) translateY(-17px);
+  box-shadow:
+    0 5px 14px rgba(0, 0, 0, 0.18),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.ws-folder-3d:hover .ws-folder-doc--1 {
+  transform: rotate(0deg) translateY(-21px);
+  box-shadow:
+    0 5px 16px rgba(0, 0, 0, 0.2),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.ws-folder-3d:hover .ws-folder-doc--2 {
+  transform: rotate(7deg) translateY(-15px);
+  box-shadow:
+    0 5px 14px rgba(0, 0, 0, 0.18),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   LAYER 3: FRONT FLAP (Z-Index: 3)
+   Exact same flat #25828e teal (no gradient) as the back flap and tab!
+   Clean top rim highlight and soft drop shadow for physical separation.
+   ========================================================================== */
+.ws-folder-front {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 94px;
+  z-index: 3;
+  background: #25828e;
+  border-radius: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 -2px 6px rgba(0, 0, 0, 0.08),
+    0 6px 18px -2px rgba(25, 95, 105, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  transition: box-shadow 0.28s ease;
+}
+
+[data-theme='dark'] .ws-folder-front {
+  background: #25828e;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 -2px 6px rgba(0, 0, 0, 0.3),
+    0 8px 22px -3px rgba(0, 0, 0, 0.6);
+}
+
+.ws-folder-3d:hover .ws-folder-front {
+  box-shadow:
+    0 -2px 8px rgba(0, 0, 0, 0.1),
+    0 10px 24px -2px rgba(25, 95, 105, 0.4);
+}
+
+[data-theme='dark'] .ws-folder-3d:hover .ws-folder-front {
+  box-shadow:
+    0 -2px 8px rgba(0, 0, 0, 0.35),
+    0 12px 28px -3px rgba(0, 0, 0, 0.75);
+}
+
+/* Pastel teal icon on folder front */
+.ws-folder-front-icon {
+  color: #bce3e6;
+  opacity: 0.92;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+}
+
+.ws-folder-3d:hover .ws-folder-front-icon {
+  transform: scale(1.1);
+  color: #e8f9fa;
+  opacity: 1;
+}
+
+/* Metadata line on folder front ("Updated Oct 2026") */
+.ws-folder-front-meta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.63rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   EMPTY STATE & BUTTONS
+   ========================================================================== */
+.ws-empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-secondary);
+}
+
+.ws-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.ws-btn--secondary {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-primary);
+}
+
+[data-theme='dark'] .ws-btn--secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f8fafc;
+}

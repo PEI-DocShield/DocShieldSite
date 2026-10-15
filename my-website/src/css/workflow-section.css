@@ -1,0 +1,954 @@
+/* ==========================================================================
+   WorkflowSection CSS — Scroll-Driven Sticky Workflow Intro
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   CSS Variables & Theming
+   -------------------------------------------------------------------------- */
+:root {
+  /* Step 3 Entity Classification Colors */
+  --entity-person-border: #8b5cf6;
+  --entity-person-bg: rgba(139, 92, 246, 0.14);
+  --entity-person-text: #6d28d9;
+
+  --entity-id-border: #f59e0b;
+  --entity-id-bg: rgba(245, 158, 11, 0.14);
+  --entity-id-text: #b45309;
+
+  --entity-contact-border: #10b981;
+  --entity-contact-bg: rgba(16, 185, 129, 0.14);
+  --entity-contact-text: #047857;
+
+  /* Step 4 Dark Anonymized Token Colors (stays dark in both themes) */
+  --token-bg: #0f172a;
+  --token-text: #38bdf8;
+  --token-border: #334155;
+  --token-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+
+  /* Document Card Colors */
+  --doc-bg: #ffffff;
+  --doc-border: #e2e8f0;
+  --doc-header-bg: #f8fafc;
+  --doc-paper-bg: #ffffff;
+  --doc-text-color: #1e293b;
+  --doc-muted-color: #64748b;
+  --doc-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 12px 28px -6px rgba(0, 0, 0, 0.12), 0 30px 60px -12px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme='dark'] {
+  --entity-person-border: #a78bfa;
+  --entity-person-bg: rgba(139, 92, 246, 0.22);
+  --entity-person-text: #c4b5fd;
+
+  --entity-id-border: #fbbf24;
+  --entity-id-bg: rgba(245, 158, 11, 0.22);
+  --entity-id-text: #fcd34d;
+
+  --entity-contact-border: #34d399;
+  --entity-contact-bg: rgba(16, 185, 129, 0.22);
+  --entity-contact-text: #6ee7b7;
+
+  /* Dark mode token */
+  --token-bg: #030712;
+  --token-text: #38bdf8;
+  --token-border: rgba(255, 255, 255, 0.18);
+  --token-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+
+  /* Document Card Dark Theme */
+  --doc-bg: #111827;
+  --doc-border: #1f2937;
+  --doc-header-bg: #151d30;
+  --doc-paper-bg: #0b0f19;
+  --doc-text-color: #f1f5f9;
+  --doc-muted-color: #94a3b8;
+  --doc-card-shadow: 0 1px 4px rgba(0, 0, 0, 0.45), 0 16px 36px -8px rgba(0, 0, 0, 0.65), 0 35px 75px -15px rgba(0, 0, 0, 0.88), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   Main Section Layout (Desktop: Pin on scroll)
+   -------------------------------------------------------------------------- */
+.workflow-section {
+  position: relative;
+  /* 420vh provides ample scroll travel distance to step through all 6 stages smoothly */
+  height: 420vh;
+  width: 100%;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+/* Sticky viewport frame: stays fixed in the viewport while user scrolls the track */
+.workflow-sticky-frame {
+  position: sticky;
+  top: calc(var(--nav-height) + 1.25rem);
+  height: calc(100vh - var(--nav-height) - 2.5rem);
+  max-height: 860px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+/* Content Wrapper holding centered section title and two columns */
+.workflow-content-wrapper {
+  width: 100%;
+  max-width: 1300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* Section Header & Title (Row 1, Column 1 on Desktop) */
+.workflow-section-header {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.workflow-section-title {
+  font-family: var(--font-family);
+  font-size: 2.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  line-height: 1.2;
+}
+
+/* Centered blue/teal dot */
+.workflow-title-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  min-width: 10px;
+  border-radius: 9999px;
+  background-color: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
+  vertical-align: middle;
+}
+
+/* Two-column container with locked column tracks */
+.workflow-container {
+  width: 100%;
+  max-width: 1300px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  grid-template-rows: auto 1fr;
+  column-gap: 3.5rem;
+  row-gap: 1.25rem;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Left Column: Step List (Row 2, Column 1 on Desktop)
+   -------------------------------------------------------------------------- */
+.workflow-left {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Step list (Clean, locked total height matching the right card) */
+.workflow-stepper {
+  display: flex;
+  flex-direction: column;
+  height: 440px; /* Exactly occupies the same 440px size as the document card */
+  min-height: 440px;
+  max-height: 440px;
+  gap: 0.5rem;
+  position: relative;
+  overflow: visible;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  box-sizing: border-box;
+}
+
+.workflow-stepper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual step card button */
+.workflow-step-btn {
+  flex: 1; /* Collapsed step: equal base flex */
+  display: flex;
+  align-items: center; /* Collapsed step: circle and title are vertically centered */
+  gap: 1rem;
+  padding: 0.65rem 1.15rem;
+  background: var(--surface-color);
+  border: 1px solid var(--surface-border);
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+  z-index: 3;
+  transition: flex 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease,
+              transform 0.3s ease,
+              padding 0.35s ease;
+  color: inherit;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.workflow-step-btn::-webkit-scrollbar {
+  display: none;
+}
+
+.workflow-step-btn:hover {
+  border-color: rgba(var(--step-rgb, 37, 130, 142), 0.45);
+  transform: translateX(4px);
+}
+
+.workflow-step-btn:focus-visible {
+  outline: 2px solid var(--step-hex, var(--primary-color));
+  outline-offset: 2px;
+}
+
+/* Active Step: Expands to show all information while container remains locked at 440px */
+.workflow-step-btn.is-active {
+  flex: 2.1;
+  align-items: flex-start; /* Active step: circle and title align to the top with description below */
+  padding: 0.85rem 1.15rem;
+  background: #ffffff;
+  border-color: rgba(var(--step-rgb, 37, 130, 142), 0.5);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 0 0 1.5px var(--step-hex, var(--primary-color)), 0 0 12px -4px rgba(var(--step-rgb, 37, 130, 142), 0.2);
+  transform: translateX(6px);
+}
+
+[data-theme='dark'] .workflow-step-btn.is-active {
+  background: #111827;
+  border-color: rgba(var(--step-rgb, 37, 130, 142), 0.6);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 0 0 1.5px var(--step-hex, var(--primary-color)), 0 0 14px -4px rgba(var(--step-rgb, 37, 130, 142), 0.25);
+}
+
+/* Number circle */
+.workflow-step-circle {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.88rem;
+  background-color: var(--doc-bg);
+  border: 2px solid var(--surface-border);
+  color: var(--text-secondary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+/* Active number circle matching the step's specific color with smooth gradient */
+.workflow-step-btn.is-active .workflow-step-circle {
+  background: linear-gradient(135deg, var(--step-hex, var(--primary-color)) 0%, var(--step-light-hex, var(--step-hex, var(--primary-color))) 100%);
+  border-color: var(--step-hex, var(--primary-color));
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(var(--step-rgb, 37, 130, 142), 0.65);
+  transform: scale(1.08);
+  margin-top: 2px;
+}
+
+/* Completed past steps */
+.workflow-step-btn.is-completed .workflow-step-circle {
+  border-color: var(--step-hex, var(--primary-color));
+  color: var(--step-hex, var(--primary-color));
+  background-color: rgba(var(--step-rgb, 37, 130, 142), 0.12);
+}
+
+/* Step text info */
+.workflow-step-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  text-align: left;
+}
+
+.workflow-step-btn.is-active .workflow-step-content {
+  justify-content: flex-start;
+}
+
+.workflow-step-title {
+  font-family: var(--font-family);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.3;
+  transition: color 0.25s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.workflow-step-btn.is-active .workflow-step-title {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* Description Accordion Wrapper */
+.workflow-step-desc-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.2s ease,
+              margin-top 0.35s ease;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+.workflow-step-btn.is-active .workflow-step-desc-wrapper {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-top: 0.3rem;
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s 0.08s ease,
+              margin-top 0.35s ease;
+}
+
+.workflow-step-desc {
+  min-height: 0;
+  overflow: hidden;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.workflow-step-btn.is-active .workflow-step-desc {
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Right Column: Sticky Document Card & Paper Stack (Spans Rows 1 & 2, vertically centered with Title + Left Column)
+   -------------------------------------------------------------------------- */
+.workflow-right {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  width: 100%;
+  position: relative;
+}
+
+/* Ambient radial glow that shifts colors with the step (dimmed & subtle) */
+.workflow-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 520px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 1;
+  transition: background 0.75s ease, opacity 0.5s ease;
+}
+
+[data-theme='dark'] .workflow-ambient-glow {
+  opacity: 0.24;
+  filter: blur(90px);
+}
+
+.workflow-glow--step-0 {
+  background: radial-gradient(circle, rgba(37, 130, 142, 0.35) 0%, rgba(37, 130, 142, 0) 70%);
+}
+
+.workflow-glow--step-1 {
+  background: radial-gradient(circle, rgba(47, 140, 152, 0.35) 0%, rgba(47, 140, 152, 0) 70%);
+}
+
+.workflow-glow--step-2 {
+  background: radial-gradient(circle, rgba(60, 152, 163, 0.35) 0%, rgba(60, 152, 163, 0) 70%);
+}
+
+.workflow-glow--step-3 {
+  background: radial-gradient(circle, rgba(79, 168, 178, 0.35) 0%, rgba(79, 168, 178, 0) 70%);
+}
+
+.workflow-glow--step-4 {
+  background: radial-gradient(circle, rgba(107, 185, 194, 0.35) 0%, rgba(107, 185, 194, 0) 70%);
+}
+
+.workflow-glow--step-5 {
+  background: radial-gradient(circle, rgba(138, 202, 209, 0.35) 0%, rgba(138, 202, 209, 0) 70%);
+}
+
+/* Document Paper Stack container */
+.workflow-doc-stack {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  height: 440px;
+  min-height: 440px;
+  max-height: 440px;
+  z-index: 2;
+  perspective: 1200px;
+}
+
+/* Noticeable sheets of paper layered behind the main document */
+.workflow-doc-sheet {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  pointer-events: none;
+  overflow: hidden;
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.5s ease,
+              box-shadow 0.5s ease;
+}
+
+/* Subtle document header bar on paper sheets */
+.workflow-doc-sheet::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 46px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(0, 0, 0, 0.025);
+  border-radius: 16px 16px 0 0;
+}
+
+[data-theme='dark'] .workflow-doc-sheet::before {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+/* Subtle mock document line on paper sheets */
+.workflow-doc-sheet::after {
+  content: '';
+  position: absolute;
+  top: 66px;
+  left: 24px;
+  width: 140px;
+  height: 7px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme='dark'] .workflow-doc-sheet::after {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Deepest sheet (bottom paper) — clearly fanned out to top-left & bottom-left */
+.workflow-doc-sheet--deep {
+  z-index: 1;
+  background-color: #f1f5f9;
+  border: 1.5px solid #cbd5e1;
+  opacity: 0.95;
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  transform: rotate(-4.4deg) translate(-16px, 16px);
+}
+
+[data-theme='dark'] .workflow-doc-sheet--deep {
+  background-color: #0d131f;
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  opacity: 0.9;
+  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* Middle sheet — clearly fanned out to top-right & bottom-right */
+.workflow-doc-sheet--mid {
+  z-index: 2;
+  background-color: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  opacity: 0.98;
+  box-shadow: 0 14px 28px -4px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  transform: rotate(3.6deg) translate(16px, 10px);
+}
+
+[data-theme='dark'] .workflow-doc-sheet--mid {
+  background-color: #151d30;
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  opacity: 0.94;
+  box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* Top Document Card: paper feel with subtle tilt (1 to 2°) that straightens when active */
+.workflow-doc-card {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 620px;
+  /* Fixed locked height ensures the document card is strictly identical in size across every step */
+  height: 440px;
+  min-height: 440px;
+  max-height: 440px;
+  background-color: var(--doc-bg);
+  border: 1.5px solid var(--doc-border);
+  border-radius: 16px;
+  box-shadow: var(--doc-card-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transform-origin: center center;
+  transform: rotate(-2deg); /* Subtle 2° tilt when resting / inactive */
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s ease;
+}
+
+/* When the section is active: card straightens to 0° and paper stack stays prominently fanned out */
+.workflow-doc-stack.is-active .workflow-doc-card {
+  transform: rotate(0deg);
+  box-shadow: var(--doc-card-shadow);
+}
+
+.workflow-doc-stack.is-active .workflow-doc-sheet--mid {
+  transform: rotate(3.4deg) translate(18px, 10px);
+  opacity: 0.98;
+}
+
+[data-theme='dark'] .workflow-doc-stack.is-active .workflow-doc-sheet--mid {
+  opacity: 0.94;
+}
+
+.workflow-doc-stack.is-active .workflow-doc-sheet--deep {
+  transform: rotate(-4.0deg) translate(-18px, 16px);
+  opacity: 0.95;
+}
+
+[data-theme='dark'] .workflow-doc-stack.is-active .workflow-doc-sheet--deep {
+  opacity: 0.9;
+}
+
+/* Window Chrome / File Header: strictly locked height, clean without top labels */
+.workflow-doc-header {
+  height: 46px;
+  min-height: 46px;
+  max-height: 46px;
+  flex-shrink: 0;
+  background-color: var(--doc-header-bg);
+  border-bottom: 1px solid var(--doc-border);
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+
+/* macOS dots */
+.workflow-doc-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.workflow-doc-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+}
+
+.workflow-doc-dot--red { background-color: #ef4444; }
+.workflow-doc-dot--yellow { background-color: #f59e0b; }
+.workflow-doc-dot--green { background-color: #10b981; }
+
+.workflow-doc-filename {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--doc-muted-color);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.workflow-doc-file-icon {
+  width: 15px;
+  height: 15px;
+  color: var(--active-step-hex, var(--primary-color));
+  transition: color 0.35s ease;
+}
+
+/* Document Paper Content: fills remaining space with locked geometry */
+.workflow-doc-paper {
+  flex: 1;
+  background-color: var(--doc-paper-bg);
+  padding: 1.35rem 1.65rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Subtle watermark shield */
+.workflow-doc-watermark {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 80px;
+  height: 80px;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+[data-theme='dark'] .workflow-doc-watermark {
+  opacity: 0.08;
+}
+
+.workflow-doc-headline {
+  font-family: var(--font-family);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--doc-muted-color);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--doc-border);
+  padding-bottom: 0.45rem;
+}
+
+.workflow-doc-meta-id {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-weight: 500;
+  font-size: 0.68rem;
+}
+
+.workflow-doc-paragraph {
+  font-family: var(--font-family);
+  font-size: 0.88rem; /* Small, realistic document typography */
+  line-height: 1.85;
+  color: var(--doc-text-color);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Sensitive Entity Styling Across Steps
+   -------------------------------------------------------------------------- */
+.workflow-entity-wrapper {
+  display: inline;
+  vertical-align: baseline;
+}
+
+.workflow-entity {
+  display: inline-block;
+  padding: 0 4px;
+  border-radius: 5px;
+  border: 1.5px solid transparent;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
+  line-height: 1.35;
+  margin: 0 1px;
+}
+
+/* STEP 1: Plain Original Text */
+.step-state--plain {
+  border-color: transparent;
+  background-color: transparent;
+  color: inherit;
+  padding: 0 1px;
+}
+
+/* STEP 2: Teal Highlight (matching Step 2 gradient tone) */
+.step-state--detected {
+  border-color: #2f8c98;
+  background-color: rgba(47, 140, 152, 0.15);
+  color: var(--text-primary);
+  box-shadow: 0 0 10px rgba(47, 140, 152, 0.22);
+}
+
+[data-theme='light'] .step-state--detected {
+  background-color: rgba(47, 140, 152, 0.12);
+  color: #0c4d57;
+}
+
+/* STEP 3: Colored by Type */
+.step-state--classified.type--person {
+  border-color: var(--entity-person-border);
+  background-color: var(--entity-person-bg);
+  color: var(--entity-person-text);
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.2);
+}
+
+.step-state--classified.type--identifier {
+  border-color: var(--entity-id-border);
+  background-color: var(--entity-id-bg);
+  color: var(--entity-id-text);
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.2);
+}
+
+.step-state--classified.type--contact {
+  border-color: var(--entity-contact-border);
+  background-color: var(--entity-contact-bg);
+  color: var(--entity-contact-text);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.2);
+}
+
+/* STEP 4 & Beyond: Dark Anonymized Token with progressive transition */
+.step-state--tokenized {
+  color: var(--primary-color) !important;
+  border-color: var(--primary-color);
+  font-size: 0.82em !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  padding: 1px 6px !important;
+  border-radius: 5px !important;
+  transform: scale(1.02);
+  color: var(--text-primary);
+  box-shadow: 0 0 10px rgba(37, 130, 142, 0.22);
+}
+
+/* STEP 5: Interactive Reviewable Token */
+.step-state--reviewable {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.step-state--reviewable:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+  filter: brightness(1.15);
+}
+
+.step-state--reviewable:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* STEP 5 & 6: Reversed Entity (Manually restored to original value) */
+.step-state--reversed {
+  cursor: pointer;
+  user-select: none;
+  border: 1.5px dashed var(--primary-color) !important;
+  background-color: rgba(37, 130, 142, 0.14) !important;
+  color: var(--primary-color) !important;
+  font-weight: 600 !important;
+  padding: 1px 6px !important;
+  border-radius: 5px !important;
+  transition: all 0.2s ease;
+}
+
+[data-theme='light'] .step-state--reversed {
+  color: #0b4952 !important;
+  background-color: rgba(37, 130, 142, 0.12) !important;
+}
+
+.step-state--reversed:hover {
+  background-color: rgba(37, 130, 142, 0.25) !important;
+  transform: scale(1.03);
+}
+
+.step-state--reversed:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Document Card Footer: strictly locked height */
+.workflow-doc-footer {
+  height: 48px;
+  min-height: 48px;
+  max-height: 48px;
+  flex-shrink: 0;
+  background-color: var(--doc-header-bg);
+  border-top: 1px solid var(--doc-border);
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--doc-muted-color);
+  box-sizing: border-box;
+}
+
+.workflow-doc-footer-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.workflow-doc-footer-shield {
+  width: 14px;
+  height: 14px;
+  color: var(--active-step-hex, var(--primary-color));
+  transition: color 0.35s ease;
+}
+
+.workflow-doc-footer-progress {
+  font-weight: 600;
+  color: var(--active-step-hex, var(--primary-color));
+  transition: color 0.35s ease;
+}
+
+
+
+/* --------------------------------------------------------------------------
+   Mobile Layout (max-width: 996px / 768px):
+   Stack layout, sticky document at the top!
+   -------------------------------------------------------------------------- */
+@media (max-width: 996px) {
+  .workflow-section {
+    /* On mobile, use natural document flow so user scrolls past the 4 steps */
+    height: auto;
+    padding: 3rem 1.25rem;
+  }
+
+  .workflow-sticky-frame {
+    position: static;
+    height: auto;
+    max-height: none;
+    padding: 0;
+    display: block;
+  }
+
+  .workflow-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .workflow-section-header {
+    order: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  /* Document Card pinned at top on Mobile */
+  .workflow-right {
+    position: sticky;
+    top: calc(var(--nav-height) + 0.5rem);
+    z-index: 25;
+    order: 2;
+  }
+
+  .workflow-left {
+    order: 3;
+  }
+
+  /* Mobile document stack: also locked to a fixed size across every step */
+  .workflow-doc-stack {
+    width: 100%;
+    max-width: 100%;
+    height: 350px;
+    min-height: 350px;
+    max-height: 350px;
+  }
+
+  .workflow-ambient-glow {
+    width: 100%;
+    height: 320px;
+  }
+
+  .workflow-doc-card {
+    width: 100%;
+    max-width: 100%;
+    height: 350px;
+    min-height: 350px;
+    max-height: 350px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+  }
+
+  .workflow-doc-header {
+    height: 44px;
+    min-height: 44px;
+    max-height: 44px;
+    padding: 0 1rem;
+  }
+
+  .workflow-doc-paper {
+    padding: 1.25rem;
+    min-height: auto;
+  }
+
+  .workflow-doc-paragraph {
+    font-size: 0.82rem;
+    line-height: 1.75;
+  }
+
+  .workflow-doc-footer {
+    height: 40px;
+    min-height: 40px;
+    max-height: 40px;
+    padding: 0 1rem;
+  }
+
+  .workflow-section-title {
+    font-size: 1.75rem;
+    gap: 0.6rem;
+  }
+
+  .workflow-section-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .workflow-stepper {
+    height: auto;
+    gap: 0.75rem;
+  }
+
+  /* Steps stacked below the sticky document */
+  .workflow-step-btn {
+    flex: none;
+    padding: 0.9rem 1.15rem;
+    min-height: auto;
+  }
+
+  .workflow-step-btn.is-active {
+    flex: none;
+    padding: 1.15rem 1.15rem;
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Prefers Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .workflow-section,
+  .workflow-section *,
+  .workflow-section *::before,
+  .workflow-section *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .workflow-doc-card,
+  .workflow-doc-sheet,
+  .workflow-doc-sheet--deep,
+  .workflow-doc-sheet--mid {
+    transform: none !important;
+    transition: none !important;
+  }
+}

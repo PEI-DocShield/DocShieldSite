@@ -6,7 +6,7 @@ import { useLocation } from '@docusaurus/router';
 export default function GlobalBackground() {
   const [mounted, setMounted] = useState(false);
   const location = useLocation();
-  const isMilestone = location.pathname.includes('/milestone');
+  const isNoGrid = location.pathname.includes('/milestone') || location.pathname.includes('/documentation');
 
   useEffect(() => {
     setMounted(true);
@@ -17,7 +17,7 @@ export default function GlobalBackground() {
   return createPortal(
     <>
       <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none', overflow: 'hidden' }}>
-        {!isMilestone && (
+        {!isNoGrid && (
           <MouseProximityGrid
             className="background-grid"
             style={{
@@ -56,10 +56,10 @@ export default function GlobalBackground() {
           z-index: 1 !important;
         }
 
-        /* Breadcrumbs (if enabled) */
-        .theme-doc-breadcrumbs {
-          position: relative !important;
-          z-index: 1 !important;
+        /* Breadcrumbs (hidden) */
+        .theme-doc-breadcrumbs,
+        .breadcrumbs {
+          display: none !important;
         }
 
         /* Expand container slightly to give enough room for both */

@@ -6,6 +6,7 @@ import MouseProximityGrid from '../components/MouseProximityGrid';
 import BentoGrid from '../components/BentoGrid';
 import TeamPolaroids from '../components/TeamPolaroids';
 import AnimatedHero from '../components/AnimatedHero';
+import WorkflowSection from '../components/WorkflowSection';
 import ScrollScrubReveal from '../components/ScrollScrubReveal';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
@@ -68,7 +69,7 @@ export default function Home(): React.JSX.Element {
         {/* Scroll Indicator */}
         <motion.div
           className="hero-scroll-indicator"
-          onClick={() => document.getElementById('bento-grid-container')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
+          onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
           style={{ 
             opacity: indicatorOpacity, 
             willChange: 'opacity' 
@@ -80,6 +81,9 @@ export default function Home(): React.JSX.Element {
           </svg>
         </motion.div>
       </main>
+
+      {/* Introductory Scroll-Driven Sticky Workflow Section */}
+      <WorkflowSection />
 
       {/* Feature Sections */}
       <BentoGrid />
