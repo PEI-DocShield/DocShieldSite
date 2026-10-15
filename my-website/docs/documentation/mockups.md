@@ -69,7 +69,9 @@ Workspaces provide multi-tenant isolation, project-level encryption keys, and pe
 
 ## Activity Diagrams + Architecture Workflows
 
-### Activity Diagram - Anonymization of a Document as a Guest User
+See our activity diagrams and architecture workflows to see in detail on how our mockups interact with the system
+
+### Activity Diagram 1: Anonymization of a Document as a Guest User
 <div style={{ textAlign: 'center', margin: '1.5rem 0' }}>
   <img src={require('@site/static/milestones_imgs/ActivityDiagram1.png').default} alt="Activity Diagram 1" style={{ maxWidth: '100%', borderRadius: '10px', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }} />
 </div>
@@ -80,7 +82,9 @@ Workspaces provide multi-tenant isolation, project-level encryption keys, and pe
   <img src={require('@site/static/milestones_imgs/Workflow1.png').default} alt="Mockup Workspace 1" style={{ maxWidth: '100%', borderRadius: '10px', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }} />
 </div>
 
-### Activity Diagram - Import of a Workspace
+---
+
+### Activity Diagram 2: Import of a Workspace
 <div style={{ textAlign: 'center', margin: '1.5rem 0' }}>
   <img src={require('@site/static/milestones_imgs/ActivityDiagram2.png').default} alt="Activity Diagram 1" style={{ maxWidth: '70%', borderRadius: '10px', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }} />
 </div>
