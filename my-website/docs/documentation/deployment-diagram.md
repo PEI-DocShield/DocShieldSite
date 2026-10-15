@@ -18,7 +18,7 @@ displayed_sidebar: null
 - **Responsibilities**: Interactive document rendering, client-side preview manipulation, local workspace file generation, and HTTPS communication with the API Gateway.
 
 ### 2. Application Tier (FastAPI Backend)
-- **Container**: FastAPI application container running with Uvicorn workers on AWS Lambda or containerized ECS Fargate with automatic horizontal scaling.
+- **Container**: FastAPI application container running on Apache Cloud Stack
 - **Responsibilities**: Request authentication verification, document ingestion parsing, orchestration with the NLP service, tokenization execution, and reversibility handling.
 
 ### 3. Identity and Access Management (Keycloak)
@@ -27,7 +27,7 @@ displayed_sidebar: null
 - **Responsibilities**: User registration, login, password management, and JSON Web Token (JWT) session issuance.
 
 ### 4. Data Persistence Tier (PostgreSQL)
-- **Node**: PostgreSQL 16 relational database instance with volume encryption (LUKS / AWS KMS).
+- **Node**: PostgreSQL 14 relational database instance with volume encryption.
 - **Responsibilities**: Storing user workspace records, document metadata, audit logs, and encrypted token vault entries.
 
 ### 5. Object Storage (MinIO)

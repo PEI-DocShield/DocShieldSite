@@ -58,11 +58,11 @@ Beatriz is a compliance and operations manager who handles dozens of complex doc
   6. The system presents a preview interface
 - **Post-conditions**: The document is presented to the user ready to be reviewed and edited.
 
-> See the rest of the Use Cases in [here](/docs/documentation/use-cases).
+> See the rest of the Use Cases in **[HERE](/docs/documentation/use-cases)**
 
 ## Requirements
 
-> See the requirements in [here](/docs/documentation/requirements).
+> See the requirements in **[HERE](/docs/documentation/requirements)**
 
 ## Architecture
 
@@ -74,29 +74,27 @@ Beatriz is a compliance and operations manager who handles dozens of complex doc
 
 ## Architecture (with technologies)
 
-> See the architecture in detail in [here](/docs/documentation/architecture).
-
 <img src={require('@site/static/milestones_imgs/architecture_tec.png').default} alt="Architecture with technologies" />
+
+> See the architecture in detail in **[HERE](/docs/documentation/architecture)**
 
 ## Deployment Diagram
 
-> See the deployment diagram in detail in [here](/docs/documentation/deployment-diagram).
-
 <img src={require('@site/static/milestones_imgs/deployment.png').default} alt="Deployment Diagram" />
+
+> See the deployment diagram in detail in **[HERE](/docs/documentation/deployment-diagram)**
 
 ## Domain Model
 
-> See the domain model in detail in [here](/docs/documentation/domain-model).
-
 <img src={require('@site/static/milestones_imgs/Domain_Model.png').default} alt="Domain Model" />
+
+> See the domain model in detail in **[HERE](/docs/documentation/domain-model)**
 
 ## MockUps - Guest User
 
 <img src={require('@site/static/milestones_imgs/mockup_guest/1.png').default} alt="MockUp Guest" />
-<img src={require('@site/static/milestones_imgs/mockup_guest/2.png').default} alt="MockUp Guest" />
 <img src={require('@site/static/milestones_imgs/mockup_guest/3.png').default} alt="MockUp Guest" />
 <img src={require('@site/static/milestones_imgs/mockup_guest/4.png').default} alt="MockUp Guest" />
-<img src={require('@site/static/milestones_imgs/mockup_guest/5.png').default} alt="MockUp Guest" />
 <img src={require('@site/static/milestones_imgs/mockup_guest/6.png').default} alt="MockUp Guest" />
 
 ## MockUps - Signed-in User
@@ -112,4 +110,4 @@ The major diference between Signed-in Users and Guest Users, its that the signed
 <img src={require('@site/static/milestones_imgs/workspaces/2.png').default} alt="MockUp Workspace" />
 <img src={require('@site/static/milestones_imgs/workspaces/3.png').default} alt="MockUp Workspace" />
 
-> For the complete gallery and UI flow descriptions of the mockups see in [here](/docs/documentation/mockups).
+> For the complete gallery and UI flow descriptions of the mockups see in **[HERE](/docs/documentation/mockups)**
