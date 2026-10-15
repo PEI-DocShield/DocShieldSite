@@ -534,43 +534,35 @@
 }
 
 /* --------------------------------------------------------------------------
-   5 FOLDERS PER ROW GRID (Centered)
-   Fixed compact width (205px) so folders stay square and never stretch too wide
+   4 FOLDERS PER ROW GRID (Centered)
+   Fixed compact width (215px) so folders stay square and balanced
    -------------------------------------------------------------------------- */
 .ws-folders-grid {
   display: grid;
-  grid-template-columns: repeat(5, 205px);
-  gap: 2.25rem 1.75rem;
+  grid-template-columns: repeat(4, 215px);
+  gap: 2.25rem 2rem;
   justify-content: center;
 }
 
-@media (max-width: 1240px) {
+@media (max-width: 1060px) {
   .ws-folders-grid {
-    grid-template-columns: repeat(4, 205px);
-    gap: 2rem 1.5rem;
+    grid-template-columns: repeat(3, 215px);
+    gap: 2rem 1.75rem;
     justify-content: center;
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 780px) {
   .ws-folders-grid {
-    grid-template-columns: repeat(3, 205px);
-    gap: 2rem 1.5rem;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .ws-folders-grid {
-    grid-template-columns: repeat(2, 205px);
+    grid-template-columns: repeat(2, 215px);
     gap: 1.75rem 1.5rem;
     justify-content: center;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
   .ws-folders-grid {
-    grid-template-columns: 205px;
+    grid-template-columns: 215px;
     justify-content: center;
   }
 }
@@ -581,7 +573,7 @@
 .ws-folder-3d {
   position: relative;
   display: inline-block;
-  width: 205px;
+  width: 215px;
   text-decoration: none !important;
   color: inherit !important;
   cursor: pointer;
@@ -601,8 +593,8 @@
 /* Physical folder construct */
 .ws-folder-construct {
   position: relative;
-  width: 205px;
-  height: 155px;
+  width: 215px;
+  height: 160px;
   user-select: none;
 }
 
@@ -615,11 +607,11 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 125px;
+  height: 128px;
   z-index: 1;
 }
 
-/* Back body plate: flat #25828e */
+/* Back body plate: both left and right corners are round (14px) */
 .ws-folder-back-body {
   position: absolute;
   top: 0;
@@ -627,7 +619,7 @@
   left: 0;
   right: 0;
   background: #25828e;
-  border-radius: 0 12px 12px 12px;
+  border-radius: 14px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
@@ -636,20 +628,42 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
-/* Top Tab: exact same flat #25828e, flows seamlessly into the back body */
+/* Top Tab: positioned more to the left with rounded top and smooth fillet shoulders */
 .ws-folder-tab {
   position: absolute;
-  top: -24px;
-  left: 10px;
-  height: 25px;
+  top: -27px;
+  left: 16px;
+  height: 28px;
   background: #25828e;
-  border-radius: 8px 8px 0 0;
-  padding: 0 10px;
+  border-radius: 9px 9px 0 0;
+  padding: 0 12px;
   display: flex;
   align-items: center;
-  max-width: calc(100% - 20px);
+  max-width: calc(100% - 24px);
   z-index: 2;
   box-sizing: border-box;
+}
+
+.ws-folder-tab::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -6px;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle at top left, transparent 6px, #25828e 6.5px);
+  pointer-events: none;
+}
+
+.ws-folder-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: -7px;
+  width: 7px;
+  height: 7px;
+  background: radial-gradient(circle at top right, transparent 7px, #25828e 7.5px);
+  pointer-events: none;
 }
 
 [data-theme='dark'] .ws-folder-tab {
@@ -657,7 +671,7 @@
 }
 
 .ws-folder-tab-label {
-  font-size: 0.72rem;
+  font-size: 0.84rem;
   font-weight: 700;
   letter-spacing: 0.01em;
   color: #ffffff;
@@ -799,10 +813,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 94px;
+  height: 96px;
   z-index: 3;
   background: #25828e;
-  border-radius: 12px;
+  border-radius: 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow:
     0 -2px 6px rgba(0, 0, 0, 0.08),
