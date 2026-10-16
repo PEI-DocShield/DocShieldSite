@@ -18,7 +18,7 @@ export default function DocumentationPage(): React.JSX.Element {
         }}
       />
       <main
-        className="container"
+        className="container docs-workspace-page-main"
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -28,7 +28,6 @@ export default function DocumentationPage(): React.JSX.Element {
           position: 'relative',
           zIndex: 1,
           maxWidth: '1350px',
-          padding: '0 1.25rem',
           minHeight: 'calc(100vh - 100px)',
         }}
       >
@@ -36,12 +35,11 @@ export default function DocumentationPage(): React.JSX.Element {
         <div style={{ position: 'relative', textAlign: 'left', marginBottom: '0.5rem', marginTop: '0.5rem' }}>
           <div className="text-underlay" style={{ width: '100%', height: '250%' }} />
           <h1
-            className="fade-in-up"
+            className="fade-in-up docs-workspace-title"
             style={{
               position: 'relative',
               zIndex: 2,
               margin: '0 0 0.5rem 0',
-              fontSize: '2.4rem',
               fontWeight: 800,
               textTransform: 'uppercase',
               letterSpacing: '1px',
