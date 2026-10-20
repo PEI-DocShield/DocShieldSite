@@ -2,7 +2,7 @@
 title: "Meeting 6 - Researching and planning for MS3 (with Advisor(s))"
 ---
 
-# Meeting 5 — What to do the rest of the M2
+# Meeting 6 — Researching and planning for MS3 (with Advisor(s))
 - **Date**: 15 october, 2026
 - **Duration**: 60min
 
