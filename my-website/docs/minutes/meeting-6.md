@@ -17,6 +17,7 @@ title: "Meeting 6 - Researching and planning for MS3 (with Advisor(s))"
 - Basic frontend
 - Initial backend (Document processing and basic anonymization)
 - Negotiation plan and SWOT analysis
+- Git submodels and overall git organization
 
 ### Who participated
 - Everyone
