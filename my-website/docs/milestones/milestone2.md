@@ -24,7 +24,14 @@ phases:
 
 ## Overview
 
-*Content to be added...*
+The Elaboration phase (29 September – 13 October) focused on turning the vision defined in the Inception phase into a concrete, well-specified solution. During this milestone, the team:
+
+- **Gathered requirements**, defining the functional and non-functional requirements of the platform.
+- **Defined personas**, representing our two main target users: the occasional user, who needs quick anonymization without creating an account, and a member of the company's DPO team, who manages large volumes of documents in a secure workspace.
+- **Wrote use cases and user stories**, describing the main interactions with the system, such as automatic document anonymization.
+- **Designed the architecture**, including the technologies chosen for each component, and analysed the state of the art.
+- **Created the deployment diagram and domain model**, establishing how the system will be deployed and how its main entities relate to each other.
+- **Produced the first mockups**, covering the guest user flow, the signed-in user flow and workspace management.
 
 ## Personas
 
@@ -34,9 +41,9 @@ Francisco is a university student who occasionally needs to anonymize personal d
 
 - **Motivation:** He wants a quick, hassle-free way to mask sensitive data on the fly, enjoy complete privacy with zero server retention, and use a portable local workspace file whenever he needs to pause and finish editing later.
 
-### The Company's DPO - Beatriz
+### The Company's DPO Team Member - Beatriz
 
-Beatriz is a compliance and operations manager who handles dozens of complex documents every week for her organization. She needs a reliable, centralized place to store her ongoing projects, track her progress, and easily pick up where she left off across multiple sessions.
+Beatriz is a member of her company's DPO (Data Protection Officer) team who handles dozens of complex documents every week for her organization. She needs a reliable, centralized place to store her ongoing projects, track her progress, and easily pick up where she left off across multiple sessions.
 
 - **Motivation:** She wants to securely log in, save her documents  with robust encryption on the server, and use an efficient dashboard to manage her files, review NLP edits, selectively unmask data when preparing final reports, and when the company requires, a tool to accomadate large volumes of documents.
 
