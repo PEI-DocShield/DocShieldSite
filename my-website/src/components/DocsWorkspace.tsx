@@ -12,7 +12,7 @@ export interface FolderItem {
   description: string;
   itemCount: number;
   filesPreview: string[];
-  iconType: 'use-case' | 'checklist' | 'layers' | 'server' | 'database' | 'wireframe';
+  iconType: 'use-case' | 'checklist' | 'layers' | 'server' | 'database' | 'wireframe' | 'shield' | 'scale' | 'document' | 'accessibility';
   updatedAt: string;
 }
 
@@ -97,6 +97,61 @@ export const DOCUMENTATION_FOLDERS: FolderItem[] = [
   },
 ];
 
+export const CONSTRUCTION_FOLDERS: FolderItem[] = [
+  {
+    id: 'data-protection',
+    name: 'Data Protection',
+    link: '/docs/documentation/data-protection',
+    badge: 'Privacy Policy • Security',
+    color: '#25828e',
+    accentBg: 'rgba(37, 130, 142, 0.12)',
+    description: 'Data collected and purpose, anonymisation strategy, Right to Be Forgotten and security measures.',
+    itemCount: 5,
+    filesPreview: ['Data & Purpose', 'Right to Be Forgotten', 'Privacy Policy'],
+    iconType: 'shield',
+    updatedAt: 'Updated Nov 2026',
+  },
+  {
+    id: 'licensing-regulation',
+    name: 'Licensing & Regulation',
+    link: '/docs/documentation/licensing-regulation',
+    badge: 'Licenses • AI Act',
+    color: '#25828e',
+    accentBg: 'rgba(37, 130, 142, 0.12)',
+    description: 'License analysis of the tech stack, replaced AGPLv3 components and sector-specific regulation.',
+    itemCount: 3,
+    filesPreview: ['Licenses', 'Sector Regulation', 'AI Act'],
+    iconType: 'scale',
+    updatedAt: 'Updated Nov 2026',
+  },
+  {
+    id: 'terms-and-conditions',
+    name: 'Terms & Conditions',
+    link: '/docs/documentation/terms-and-conditions',
+    badge: '6 Clauses',
+    color: '#25828e',
+    accentBg: 'rgba(37, 130, 142, 0.12)',
+    description: 'Terms of use, liability disclaimers, jurisdiction and conditions of service.',
+    itemCount: 6,
+    filesPreview: ['Conditions of Use', 'Liability', 'Jurisdiction'],
+    iconType: 'document',
+    updatedAt: 'Updated Nov 2026',
+  },
+  {
+    id: 'accessibility',
+    name: 'Accessibility',
+    link: '/docs/documentation/accessibility',
+    badge: '4 Matrices • 11 Issues',
+    color: '#25828e',
+    accentBg: 'rgba(37, 130, 142, 0.12)',
+    description: 'Usability and digital accessibility evaluation with WCAG matrices for each step of the flow.',
+    itemCount: 11,
+    filesPreview: ['Tools Used', 'WCAG Matrices', 'Solutions'],
+    iconType: 'accessibility',
+    updatedAt: 'Updated Nov 2026',
+  },
+];
+
 function renderFolderIcon(type: FolderItem['iconType']): React.JSX.Element {
   switch (type) {
     case 'use-case':
@@ -150,7 +205,95 @@ function renderFolderIcon(type: FolderItem['iconType']): React.JSX.Element {
           <line x1="9" y1="21" x2="9" y2="9" />
         </svg>
       );
+    case 'shield':
+      return (
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <rect x="9" y="10" width="6" height="5" rx="1" />
+          <path d="M10 10V8.5a2 2 0 0 1 4 0V10" />
+        </svg>
+      );
+    case 'scale':
+      return (
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <line x1="12" y1="3" x2="12" y2="21" />
+          <line x1="7" y1="21" x2="17" y2="21" />
+          <line x1="5" y1="7" x2="19" y2="7" />
+          <path d="M5 7l-3 6a3 3 0 0 0 6 0z" />
+          <path d="M19 7l-3 6a3 3 0 0 0 6 0z" />
+        </svg>
+      );
+    case 'document':
+      return (
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <line x1="8" y1="13" x2="16" y2="13" />
+          <line x1="8" y1="17" x2="13" y2="17" />
+        </svg>
+      );
+    case 'accessibility':
+      return (
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <circle cx="12" cy="4" r="2" />
+          <path d="M4 8l8 2 8-2" />
+          <path d="M12 10v5" />
+          <path d="M9 22l3-7 3 7" />
+        </svg>
+      );
   }
+}
+
+function FoldersGrid({ folders }: { folders: FolderItem[] }): React.JSX.Element {
+  // Centered Folders Grid (5 per row)
+  return (
+    <div className="ws-folders-grid">
+      {folders.map((folder) => (
+        <Link
+          key={folder.id}
+          to={folder.link}
+          className="ws-folder-3d"
+          title={folder.name}
+          aria-label={`Open folder: ${folder.name}`}
+        >
+          <div className="ws-folder-construct">
+            {/* Layer 1: Back flap with top tab */}
+            <div className="ws-folder-back">
+              <div className="ws-folder-tab">
+                <span className="ws-folder-tab-label">{folder.name}</span>
+              </div>
+              <div className="ws-folder-back-body" />
+            </div>
+
+            {/* Layer 2: Documents tucked inside pocket */}
+            <div className="ws-folder-docs" aria-hidden="true">
+              {folder.filesPreview.slice(0, 3).map((doc, i) => (
+                <div key={i} className={`ws-folder-doc ws-folder-doc--${i}`}>
+                  <div className="ws-folder-doc-header">
+                    <span className="ws-folder-doc-label">{doc}</span>
+                  </div>
+                  <div className="ws-folder-doc-lines">
+                    <div className="ws-folder-doc-line ws-folder-doc-line--1" />
+                    <div className="ws-folder-doc-line ws-folder-doc-line--2" />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Layer 3: Front flap with pastel icon and metadata */}
+            <div className="ws-folder-front">
+              <div className="ws-folder-front-icon">
+                {renderFolderIcon(folder.iconType)}
+              </div>
+              <div className="ws-folder-front-meta">
+                <span>{folder.updatedAt}</span>
+              </div>
+            </div>
+          </div>
+        </Link>
+      ))}
+    </div>
+  );
 }
 
 export default function DocsWorkspace(): React.JSX.Element {
@@ -158,7 +301,7 @@ export default function DocsWorkspace(): React.JSX.Element {
     <div className="docs-workspace-wrapper">
       <div className="ws-window-frame">
         <div className="ws-drive-container">
-          {/* Phase 2: Elaboration Phase (Current) */}
+          {/* Phase 2: Elaboration Phase */}
           <div className="ws-phase-section">
             <div className="ws-phase-header">
               <div className="ws-phase-title-group">
@@ -170,80 +313,22 @@ export default function DocsWorkspace(): React.JSX.Element {
               <span className="ws-phase-count">{DOCUMENTATION_FOLDERS.length} Folders</span>
             </div>
 
-            {/* Centered Folders Grid (5 per row) */}
-            <div className="ws-folders-grid">
-              {DOCUMENTATION_FOLDERS.map((folder) => (
-                <Link
-                  key={folder.id}
-                  to={folder.link}
-                  className="ws-folder-3d"
-                  title={folder.name}
-                  aria-label={`Open folder: ${folder.name}`}
-                >
-                  <div className="ws-folder-construct">
-                    {/* Layer 1: Back flap with top tab */}
-                    <div className="ws-folder-back">
-                      <div className="ws-folder-tab">
-                        <span className="ws-folder-tab-label">{folder.name}</span>
-                      </div>
-                      <div className="ws-folder-back-body" />
-                    </div>
-
-                    {/* Layer 2: Documents tucked inside pocket */}
-                    <div className="ws-folder-docs" aria-hidden="true">
-                      {folder.filesPreview.slice(0, 3).map((doc, i) => (
-                        <div key={i} className={`ws-folder-doc ws-folder-doc--${i}`}>
-                          <div className="ws-folder-doc-header">
-                            <span className="ws-folder-doc-label">{doc}</span>
-                          </div>
-                          <div className="ws-folder-doc-lines">
-                            <div className="ws-folder-doc-line ws-folder-doc-line--1" />
-                            <div className="ws-folder-doc-line ws-folder-doc-line--2" />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Layer 3: Front flap with pastel icon and metadata */}
-                    <div className="ws-folder-front">
-                      <div className="ws-folder-front-icon">
-                        {renderFolderIcon(folder.iconType)}
-                      </div>
-                      <div className="ws-folder-front-meta">
-                        <span>{folder.updatedAt}</span>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+            <FoldersGrid folders={DOCUMENTATION_FOLDERS} />
           </div>
 
-          {/* Phase 3: Construction Phase (Future) */}
-          <div className="ws-phase-section ws-phase-section--future">
+          {/* Phase 3: Construction Phase */}
+          <div className="ws-phase-section">
             <div className="ws-phase-header">
               <div className="ws-phase-title-group">
-                <span className="ws-phase-badge ws-phase-badge--upcoming">Phase 3</span>
+                <span className="ws-phase-badge">Phase 3</span>
                 <h3 className="ws-phase-name">Construction Phase</h3>
                 <span className="ws-phase-sep" aria-hidden="true">•</span>
-                <span className="ws-phase-desc">Implementation details, source code specs, test suites & build artifacts</span>
+                <span className="ws-phase-desc">Data protection, licensing, terms of use & accessibility</span>
               </div>
-              <span className="ws-phase-count ws-phase-count--upcoming">Upcoming</span>
+              <span className="ws-phase-count">{CONSTRUCTION_FOLDERS.length} Folders</span>
             </div>
 
-            <div className="ws-future-phase-card">
-              <div className="ws-future-phase-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                </svg>
-              </div>
-              <div className="ws-future-phase-info">
-                <h4 className="ws-future-phase-title">Construction Phase Documentation</h4>
-                <p className="ws-future-phase-text">
-                  To be done...
-                </p>
-              </div>
-            </div>
+            <FoldersGrid folders={CONSTRUCTION_FOLDERS} />
           </div>
 
           {/* Phase 4: Transition Phase (Future) */}
