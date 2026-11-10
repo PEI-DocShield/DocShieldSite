@@ -28,6 +28,14 @@ const config: Config = {
 
   plugins: [
     './src/plugins/milestones-plugin.ts',
+    // Tailwind, used only by the "How it works" section copied from frontend-service (src/how-it-works).
+    () => ({
+      name: 'tailwindcss',
+      configurePostCss(postcssOptions) {
+        postcssOptions.plugins.unshift(require('@tailwindcss/postcss'));
+        return postcssOptions;
+      },
+    }),
   ],
 
   presets: [

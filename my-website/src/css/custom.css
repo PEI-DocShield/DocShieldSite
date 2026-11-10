@@ -1,6 +1,6 @@
 @import url("./calendar.css");
 
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Caveat:wght@700&family=Stardos+Stencil:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Caveat:wght@700&family=Source+Serif+4:wght@400;500&family=Stardos+Stencil:wght@700&display=swap');
 
 /* CSS Variables for Dark & Light Theme in Docusaurus */
 :root, [data-theme='dark'] {
@@ -109,6 +109,22 @@ body {
 
 .navbar__brand {
     margin-right: 1rem;
+}
+
+/* Desktop: center the nav links, keeping logo left and GitHub/theme toggle right */
+@media (min-width: 997px) {
+    .navbar__items:not(.navbar__items--right) {
+        display: contents;
+    }
+
+    .navbar__brand,
+    .navbar__items--right {
+        flex: 1 1 0;
+    }
+
+    .navbar__items--right {
+        justify-content: flex-end;
+    }
 }
 
 .navbar__logo {

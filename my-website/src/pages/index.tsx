@@ -6,7 +6,7 @@ import MouseProximityGrid from '../components/MouseProximityGrid';
 import BentoGrid from '../components/BentoGrid';
 import TeamPolaroids from '../components/TeamPolaroids';
 import AnimatedHero from '../components/AnimatedHero';
-import WorkflowSection from '../components/WorkflowSection';
+import HowItWorksSection from '../how-it-works';
 import ScrollScrubReveal from '../components/ScrollScrubReveal';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
@@ -82,8 +82,8 @@ export default function Home(): React.JSX.Element {
         </motion.div>
       </main>
 
-      {/* Introductory Scroll-Driven Sticky Workflow Section */}
-      <WorkflowSection />
+      {/* How it works — the app's own section, pinned and scroll-driven */}
+      <HowItWorksSection />
 
       {/* Feature Sections */}
       <BentoGrid />

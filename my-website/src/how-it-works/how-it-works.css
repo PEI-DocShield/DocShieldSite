@@ -1,0 +1,185 @@
+/* Tailwind for the "How it works" section copied from frontend-service.
+   No global preflight: it would restyle the whole Docusaurus site. Instead, a reset scoped to `.ds-tw`
+   neutralises Infima's element styles, and utilities are !important so they always win over Infima.
+   Only the copied components are scanned, so no utility can collide with the rest of the site. */
+@import 'tailwindcss/theme.css';
+@import 'tailwindcss/utilities.css' source(none) important;
+
+@source './components';
+@source './index.tsx';
+/* Words in comments get picked up as classes; this one would override Infima's layout container. */
+@source not inline('container');
+
+/* Design tokens from frontend-service/src/styles/global.css. */
+@theme {
+  --color-*: initial;
+  --color-white: #fff;
+  --color-primary: #25828e;
+  --color-primary-hover: #20717c;
+  --color-logo: #238590;
+  --color-teal-700: #5cc3cf;
+  --color-teal-600: #34a8be;
+  --color-teal-500: #2e9bb0;
+  --color-teal-100: rgba(37, 130, 142, 0.32);
+  --color-teal-50: rgba(37, 130, 142, 0.14);
+  --color-page: #0b0f19;
+  --color-surface: #111827;
+  --color-surface-2: #161e2e;
+  --color-surface-hover: rgba(255, 255, 255, 0.05);
+  --color-line: rgba(255, 255, 255, 0.1);
+  --color-line-strong: rgba(255, 255, 255, 0.18);
+  --color-fg: #f8fafc;
+  --color-muted: #94a3b8;
+  --color-amber: #fbbf24;
+  --color-amber-soft: rgba(245, 158, 11, 0.16);
+  --color-blue: #93c5fd;
+  --color-blue-soft: rgba(59, 130, 246, 0.16);
+  --color-red: #f87171;
+  --color-red-soft: rgba(248, 113, 113, 0.12);
+  --color-red-line: rgba(248, 113, 113, 0.3);
+  --color-backdrop: rgba(2, 6, 15, 0.7);
+  --color-glare: rgba(255, 255, 255, 0.1);
+
+  --shadow-card: var(--card-shadow);
+  --shadow-glow: 0 4px 14px 0 rgba(37, 130, 142, 0.39);
+
+  --animate-step-pop: step-pop 0.4s ease-out;
+  @keyframes step-pop {
+    0% {
+      transform: scale(0.6);
+    }
+    60% {
+      transform: scale(1.25);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  --font-sans: Sora, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, serif;
+
+  --text-*: initial;
+  --text-2xs: 11px;
+  --text-xs: 12px;
+  --text-sm: 12.5px;
+  --text-md: 13px;
+  --text-base: 14px;
+  --text-lg: 16px;
+  --text-xl: 18px;
+  --text-2xl: 24px;
+  --text-3xl: 28px;
+  --text-4xl: 30px;
+  --text-5xl: 34px;
+
+  --breakpoint-*: initial;
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 960px;
+  --breakpoint-lg: 1100px;
+}
+
+:root {
+  --card-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+:root[data-theme='light'] {
+  --color-teal-700: #1b616b;
+  --color-teal-600: #25828e;
+  --color-teal-500: #2a818b;
+  --color-teal-100: #cde8eb;
+  --color-teal-50: #e8f4f5;
+  --color-page: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1f5f9;
+  --color-surface-hover: #f1f5f9;
+  --color-line: #e2e8f0;
+  --color-line-strong: #cbd5e1;
+  --color-fg: #0f172a;
+  --color-muted: #475569;
+  --color-amber: #8a5a12;
+  --color-amber-soft: #fbecd0;
+  --color-blue: #2c5d8a;
+  --color-blue-soft: #e2eefa;
+  --color-red: #b83a3a;
+  --color-red-soft: #fbeaea;
+  --color-red-line: #f0caca;
+  --color-backdrop: rgba(15, 23, 42, 0.4);
+  --color-glare: rgba(37, 130, 142, 0.14);
+  --card-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.02);
+}
+
+/* The parts of Tailwind's preflight the components rely on, scoped to the section. */
+.ds-tw {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  color: var(--color-fg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Pseudo-elements aren't allowed inside :where(), so they get their own selectors. */
+.ds-tw,
+.ds-tw :where(*),
+.ds-tw ::before,
+.ds-tw ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+}
+
+.ds-tw :where(h1, h2, h3, h4, h5, h6) {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  font-family: inherit;
+  color: inherit;
+}
+
+.ds-tw :where(ol, ul, menu) {
+  list-style: none;
+}
+
+.ds-tw :where(a) {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.ds-tw :where(img, svg, video, canvas) {
+  display: block;
+  vertical-align: middle;
+}
+
+.ds-tw :where(button, input, select, textarea) {
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 0;
+  opacity: 1;
+}
+
+.ds-tw :where(button:not(:disabled), [role='button']:not(:disabled)) {
+  cursor: pointer;
+}
+
+.ds-tw :where(button:disabled) {
+  cursor: default;
+}
+
+.ds-tw :where(mark) {
+  background: none;
+  color: inherit;
+}
+
+.ds-tw :where(:focus-visible) {
+  outline: 2px solid var(--color-teal-500);
+  outline-offset: 2px;
+}
+
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
